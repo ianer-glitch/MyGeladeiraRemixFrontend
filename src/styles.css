@@ -37,7 +37,8 @@
     --font-proportion: 1;
 
   --primary-color:#FDB713;
-  --primar-color-lighter:#EDCC80;
+  --primary-color-lighter:#EDCC80;
+  --primary-color-darker:#EEAD13;
   
   --background-color:#F0F0F0;
 
@@ -50,6 +51,8 @@
   
   --text-color-lighter: #FFF;
   --text-color-darker: black;
+
+  --box-shadow: 1px 1px 10px 1px var(--accent-color);
   }
   h1 {
     font-size: var(--h1-font-size);

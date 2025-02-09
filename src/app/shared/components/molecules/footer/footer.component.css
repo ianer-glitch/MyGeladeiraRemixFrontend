@@ -1,14 +1,23 @@
 footer{
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    height: 2rem;    
+    height: auto;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.title-nav{
     background-color: var(--primary-color);
     display:  grid;
     align-items: center;
     justify-items: center;
-    grid-template-columns: .1fr 1fr;
+    grid-template-columns: .2fr 1fr;
     grid-template-rows: 1fr;
-    position: absolute;
-    bottom: 0;
+    width: 100%;
+    height: clamp(32px,8vh,4rem);
+    
 }
 
 .title{
@@ -19,4 +28,20 @@ footer{
 prime-icon{
     grid-area: 1/1/2/2;
     color: var(--background-color);
+    width: 100%;
+    height: 100%;
+    transition:all 80ms ease-in-out
+}
+
+ads-container{
+    background-color: var(--primary-color-lighter);
+    width: 100%;
+    border-radius: 20px 20px  0 0 ;
+    box-shadow: var(--box-shadow)
+}
+
+prime-icon:is(:hover,:active){
+    scale: 1.2;
+    cursor: pointer;
+    
 }
