@@ -23,7 +23,7 @@
   h5,
   p,
   li {
-    color: var(--text-color-1);
+    color: var(--text-color-lighter);
   }
   
 
@@ -35,6 +35,21 @@
     --p-font-size: clamp(0.9rem, 1.8vh, 1.2rem);
     --label-font-size: clamp(0.7rem, 1.4vh, 0.9rem);
     --font-proportion: 1;
+
+  --primary-color:#FDB713;
+  --primar-color-lighter:#EDCC80;
+  
+  --background-color:#F0F0F0;
+
+  --accent-color:#C9C9C9;
+  --accent-color-lighter:#C4C4C4;
+  --accent-color-dark:#808080;
+
+  --detail-color:#02558B;
+  --detail-color-lighter:#2B6C96;
+  
+  --text-color-lighter: #FFF;
+  --text-color-darker: black;
   }
   h1 {
     font-size: var(--h1-font-size);
@@ -71,20 +86,3 @@
       /* Safari, Android, iOS */ url('./app/assets/fonts/nunito-v25-latin/nunito-v25-latin-regular.svg#Nunito') format('svg'); /* Legacy iOS */
   }
 
-.light-theme {
-
-  --primary-color:#FDB713;
-  --primar-color-lighter:#EDCC80;
-  
-  --background-color:#F0F0F0;
-
-  --accent-color:#C9C9C9;
-  --accent-color-lighter:#C4C4C4;
-  --accent-color-dark:#808080;
-
-  --detail-color:#02558B;
-  --detail-color-lighter:#2B6C96;
-  
-  --text-color: black;
-
-}
