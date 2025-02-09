@@ -4,17 +4,17 @@ import Aura from '@primeng/themes/aura';
 const FridgeTheme = definePreset(Aura, {
     semantic: {
         primary: {
-            50: '#FFF4A1',   
-            100: '#FCE16F',  
-            200: '#F8D33C',
-            300: '#F6C108',  
-            400: '#FDB713',  
-            500: '#E8A900',  
-            600: '#D69000',
-            700: '#C47E00',
-            800: '#A96A00',
-            900: '#8F5700',  
-            950: '#7A4700'
+            50: '#FFF1A0',   // Lightest
+            100: '#F7D25D',
+            200: '#F6C12A',
+            300: '#F5B600',
+            400: '#F5A100',
+            500: '#EDC976',   // Middle
+            600: '#D4B65B',
+            700: '#C1A13F',
+            800: '#A88C24',
+            900: '#8F7710',  
+            950: '#EEAD13'    // Darkest
         }
     }
 });
