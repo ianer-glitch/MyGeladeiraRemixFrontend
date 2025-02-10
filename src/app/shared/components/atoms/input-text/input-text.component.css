@@ -1,0 +1,13 @@
+fieldset{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.p-inputtext{
+    font-size: var(--input-font-size);
+    padding: var(--input-padding);
+    border-radius: var(--input-border-radius);
+    
+}
