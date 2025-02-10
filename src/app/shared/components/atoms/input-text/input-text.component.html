@@ -5,6 +5,8 @@
       type="text" 
       pInputText
       fluid
-        
+      [placeholder]="placeholder"
+			[ngModel]="text"
+			(ngModelChange)="handleChange($event)"
     />
 </fieldset>
