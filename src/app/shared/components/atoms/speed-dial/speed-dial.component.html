@@ -1,0 +1,21 @@
+
+<p-speeddial 
+	[model]="items" 
+	direction="up" 
+	
+	[style]="{ position: 'absolute',
+					   right: '1rem',
+						 bottom: '6rem',
+						 
+						  }"
+
+	>
+	<ng-template #button let-toggleCallback="toggleCallback">
+		<p-button 
+			rounded 
+			icon="pi pi-pencil" 
+			size="small" 
+		
+			/>
+	</ng-template>
+</p-speeddial>
