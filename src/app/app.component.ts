@@ -6,6 +6,7 @@ import { InputTextComponent } from "./shared/components/atoms/input-text/input-t
 import { SpeedDialComponent } from "./shared/components/atoms/speed-dial/speed-dial.component";
 import { ChipComponent } from './shared/components/atoms/chip/chip.component';
 import { ButtonComponent } from "./shared/components/atoms/button/button.component";
+import { ConfirmationButtonsComponent } from "./shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { ButtonComponent } from "./shared/components/atoms/button/button.compone
     InputTextComponent,
     SpeedDialComponent,
     ChipComponent, ButtonModule,
-    ButtonComponent
+    ButtonComponent,
+    ConfirmationButtonsComponent
 ],
 
   templateUrl: './app.component.html',

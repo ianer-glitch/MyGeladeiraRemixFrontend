@@ -1,0 +1,14 @@
+<div class="button-container">
+	<app-button 
+	  severity="secondary" 
+	  [label]="denyLabel"
+	  (click)="denyClick.emit($event)"
+	  [fluid]="true"
+	/>
+	<app-button 
+	  severity="primary" 
+	  [label]="confirmLabel"
+	  (click)="confirmClick.emit($event)"
+	  [fluid]="true"
+	/>
+</div>
