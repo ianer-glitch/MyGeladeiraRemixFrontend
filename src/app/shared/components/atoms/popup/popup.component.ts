@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 
@@ -18,6 +18,8 @@ import { DialogModule } from 'primeng/dialog';
 })
 export class PopupComponent implements ControlValueAccessor {
   @Input() visible:boolean = false
+  @Output() change =  new EventEmitter<boolean>()
+  
   onChange = (param:any)=>{}
   onTouch = ()=>{}
   writeValue(obj: any): void {
@@ -37,6 +39,7 @@ export class PopupComponent implements ControlValueAccessor {
   handleChange(newVal:boolean){
     this.visible = newVal
     this.onChange(newVal)
+    this.change.emit(newVal)
   }
 
  @Input() title:string = ""

@@ -7,6 +7,7 @@ import { ChipComponent } from './shared/components/atoms/chip/chip.component';
 import { ConfirmationButtonsComponent } from "./shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
 import { PopupComponent } from "./shared/components/atoms/popup/popup.component";
 import { FormsModule } from '@angular/forms';
+import { ConfirmationPopupComponent } from './shared/components/organisms/confirmation-popup/confirmation-popup.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     SpeedDialComponent,
     ChipComponent, ButtonModule,
     ConfirmationButtonsComponent,
-    PopupComponent,FormsModule
+    PopupComponent,FormsModule,ConfirmationPopupComponent
 ],
 
   templateUrl: './app.component.html',
@@ -26,4 +27,8 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   visible=false
   title = 'MyGeladeiraRemixFrontend';
+
+  handleDenyClick(){
+    console.info('bbb')
+  }
 }

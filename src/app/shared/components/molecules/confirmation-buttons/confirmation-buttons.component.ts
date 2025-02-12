@@ -12,4 +12,5 @@ export class ConfirmationButtonsComponent {
   @Input() denyLabel:string = ""
   @Output() confirmClick = new EventEmitter<MouseEvent>()
   @Output() denyClick = new EventEmitter<MouseEvent>()
+  
 }

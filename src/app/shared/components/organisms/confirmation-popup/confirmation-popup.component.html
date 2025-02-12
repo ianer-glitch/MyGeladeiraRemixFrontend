@@ -1,0 +1,19 @@
+<popup [title]="title"
+    [visible]="visible"
+    (change)="handleChange($event)"
+>
+    <section content>
+        <ng-content></ng-content>
+    </section >
+    <form footer>
+        
+        <confirmation-buttons
+            [confirmLabel]="confirmLabel"
+            (confirmClick)="confirmClick.emit($event)"
+            
+            [denyLabel]="denyLabel"
+            (denyClick)="denyClick.emit($event)"
+        />
+        
+    </form>
+</popup>

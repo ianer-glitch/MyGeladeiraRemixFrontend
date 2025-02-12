@@ -1,12 +1,14 @@
 <router-outlet />
 <speed-dial/>
-<confirmation-buttons
- denyLabel="Cancelar"
- confirmLabel="Salvar"
- (confirmClick)="visible = true"
- />
+<confirmation-popup
+    [(ngModel)]="visible" 
+    title="confirmation pop"
+    denyLabel="Cancelar"
+    confirmLabel="Salvar"
+    (denyClick)="visible=false"
+ ></confirmation-popup>
  
- <popup [(ngModel)]="visible" title="aaa"/>
-<chip [removable]="true" label="alo"/>
+ 
+<chip [removable]="true" (click)="visible=true"label="alo"/>
 <app-footer></app-footer>
 
