@@ -1,14 +1,10 @@
 <router-outlet />
-<speed-dial/>
-<confirmation-popup
-    [(ngModel)]="visible" 
-    title="confirmation pop"
-    denyLabel="Cancelar"
-    confirmLabel="Salvar"
-    (denyClick)="visible=false"
- ></confirmation-popup>
- 
- 
+<ul>
+    <list-tem 
+        color="tomato"
+        name="Tomate"
+        />
+</ul>
 <chip [removable]="true" (click)="visible=true"label="alo"/>
 <app-footer></app-footer>
 
