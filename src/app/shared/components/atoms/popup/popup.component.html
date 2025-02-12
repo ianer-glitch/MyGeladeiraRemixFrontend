@@ -1,0 +1,18 @@
+<p-dialog 
+    
+    closable="false"
+    [modal]="true" 
+    [visible]="visible"
+    (visibleChange)="handleChange($event)" 
+    styleClass="popup"
+    >
+    <ng-template #header>
+        <h2>{{title}}</h2>
+    </ng-template>
+    
+    <ng-content select="[content]"></ng-content>
+    
+    <ng-template #footer>
+        <ng-content select="[footer]"></ng-content>
+    </ng-template>
+</p-dialog>

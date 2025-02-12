@@ -1,0 +1,27 @@
+.popup{
+    background: var(--detail-color) !important;
+    border:none !important;
+   width: 90vw;
+    
+}
+
+@media (min-width: 600px) {
+    .popup{
+      width: 60vw;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .popup{
+      width: 40vw;
+    }
+  }
+
+.p-dialog-mask{
+    backdrop-filter: blur(2px);
+}
+
+.p-dialog-header{
+    justify-content: center !important;
+}
+

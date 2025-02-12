@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { FooterComponent } from "./shared/components/molecules/footer/footer.component";
-import { InputTextComponent } from "./shared/components/atoms/input-text/input-text.component";
 import { SpeedDialComponent } from "./shared/components/atoms/speed-dial/speed-dial.component";
 import { ChipComponent } from './shared/components/atoms/chip/chip.component';
-import { ButtonComponent } from "./shared/components/atoms/button/button.component";
 import { ConfirmationButtonsComponent } from "./shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
+import { PopupComponent } from "./shared/components/atoms/popup/popup.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +14,16 @@ import { ConfirmationButtonsComponent } from "./shared/components/molecules/conf
     RouterOutlet,
     ButtonModule,
     FooterComponent,
-    InputTextComponent,
     SpeedDialComponent,
     ChipComponent, ButtonModule,
-    ButtonComponent,
-    ConfirmationButtonsComponent
+    ConfirmationButtonsComponent,
+    PopupComponent,FormsModule
 ],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  visible=false
   title = 'MyGeladeiraRemixFrontend';
 }

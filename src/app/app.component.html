@@ -3,7 +3,10 @@
 <confirmation-buttons
  denyLabel="Cancelar"
  confirmLabel="Salvar"
+ (confirmClick)="visible = true"
  />
+ 
+ <popup [(ngModel)]="visible" title="aaa"/>
 <chip [removable]="true" label="alo"/>
 <app-footer></app-footer>
 
