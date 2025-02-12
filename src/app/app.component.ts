@@ -5,16 +5,19 @@ import { FooterComponent } from "./shared/components/molecules/footer/footer.com
 import { InputTextComponent } from "./shared/components/atoms/input-text/input-text.component";
 import { SpeedDialComponent } from "./shared/components/atoms/speed-dial/speed-dial.component";
 import { ChipComponent } from './shared/components/atoms/chip/chip.component';
+import { ButtonComponent } from "./shared/components/atoms/button/button.component";
 
 @Component({
   selector: 'app-root',
   imports: [
-     RouterOutlet,
-     ButtonModule,
-     FooterComponent,
-     InputTextComponent,
-     SpeedDialComponent,
-     ChipComponent],
+    RouterOutlet,
+    ButtonModule,
+    FooterComponent,
+    InputTextComponent,
+    SpeedDialComponent,
+    ChipComponent, ButtonModule,
+    ButtonComponent
+],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
