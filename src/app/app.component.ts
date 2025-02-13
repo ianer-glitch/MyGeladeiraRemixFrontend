@@ -9,6 +9,7 @@ import { PopupComponent } from "./shared/components/atoms/popup/popup.component"
 import { FormsModule } from '@angular/forms';
 import { ConfirmationPopupComponent } from './shared/components/organisms/confirmation-popup/confirmation-popup.component';
 import { ListTemComponent } from "./shared/components/atoms/list-tem/list-tem.component";
+import { IconInfoComponent } from "./shared/components/molecules/icon-info/icon-info.component";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { ListTemComponent } from "./shared/components/atoms/list-tem/list-tem.co
     ChipComponent, ButtonModule,
     ConfirmationButtonsComponent,
     PopupComponent, FormsModule, ConfirmationPopupComponent,
-    ListTemComponent
+    ListTemComponent,
+    IconInfoComponent
 ],
 
   templateUrl: './app.component.html',

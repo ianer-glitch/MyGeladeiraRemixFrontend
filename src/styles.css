@@ -100,3 +100,7 @@
       /* Safari, Android, iOS */ url('./app/assets/fonts/nunito-v25-latin/nunito-v25-latin-regular.svg#Nunito') format('svg'); /* Legacy iOS */
   }
 
+.page-container{
+  padding: 1rem;
+}
+
