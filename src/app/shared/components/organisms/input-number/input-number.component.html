@@ -1,0 +1,16 @@
+<fieldset>
+  <label  for="{{id}}">
+    {{label}} 
+    <icon-info 
+      *ngIf="information"
+      [infoPosition]="informationPosition" 
+      [information]="information" 
+    />
+  </label>
+  <p-inputNumber
+    [ngModel]="value"
+    (ngModelChange)="handleChange($event)"
+    [min]="min"
+    [max]="max"
+  />
+</fieldset>

@@ -1,13 +1,10 @@
 <router-outlet />
 <section class="page-container">
-   <input-select 
-      [fluid]="true"
-      [options]="[{name:'a',id:1}]"
-      optionLabel="name"
-      optionValue="id"
-      [filter]="true"
-      [(ngModel)]="value"
-   />
+  <input-number
+   [(ngModel)] = "value"
+   [min]="2"
+   [max]="10"
+  ></input-number>
     
 </section>
 

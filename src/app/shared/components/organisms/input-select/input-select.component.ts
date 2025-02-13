@@ -48,7 +48,6 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   value:TKey | null = null
   
   handleChange(event :SelectChangeEvent){
-    console.info(event)
     this.value=event.value
     this.onChange(event.value)
   }

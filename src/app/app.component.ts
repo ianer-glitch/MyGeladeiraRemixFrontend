@@ -12,6 +12,7 @@ import { ListTemComponent } from "./shared/components/atoms/list-tem/list-tem.co
 import { IconInfoComponent } from "./shared/components/molecules/icon-info/icon-info.component";
 import { InputTextComponent } from './shared/components/organisms/input-text/input-text.component';
 import { InputSelectComponent } from "./shared/components/organisms/input-select/input-select.component";
+import { InputNumberComponent } from "./shared/components/organisms/input-number/input-number.component";
 
 
 @Component({
@@ -20,14 +21,10 @@ import { InputSelectComponent } from "./shared/components/organisms/input-select
     RouterOutlet,
     ButtonModule,
     FooterComponent,
-    SpeedDialComponent,
-    ChipComponent, ButtonModule,
-    ConfirmationButtonsComponent,
-    PopupComponent, FormsModule, ConfirmationPopupComponent,
-    ListTemComponent,
-    IconInfoComponent,
-    InputTextComponent,
-    InputSelectComponent
+    ButtonModule,
+    FormsModule,
+    InputSelectComponent,
+    InputNumberComponent
 ],
 
   templateUrl: './app.component.html',
