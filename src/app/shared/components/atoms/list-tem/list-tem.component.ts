@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
+import { PrimeIconComponent } from "../prime-icon/prime-icon.component";
 
 @Component({
   selector: 'list-tem',
-  imports: [CommonModule],
+  imports: [CommonModule, PrimeIconComponent],
   templateUrl: './list-tem.component.html',
   styleUrl: './list-tem.component.css'
 })
 export class ListTemComponent {
   @Input() name:string = ""
   @Input() color:string = "#C4C4C4"
-  @Input() imageLink:string = "https://picsum.photos/50"
+  @Input() imageLink:string = ""
+  @Input() primeIcon:string = ""
 
 
 }

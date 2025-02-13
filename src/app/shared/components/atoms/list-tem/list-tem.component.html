@@ -1,8 +1,11 @@
 <li [ngStyle]="{'background-color':color}">
-    <div 
+    <div *ngIf="imageLink"
         class="image-container"
         [ngStyle]="{'background-image':'url(' + imageLink + ')'}"
     >
     </div>
-    <p><strong>{{name}}</strong>x</p>
+    <div *ngIf="primeIcon" class="image-container">
+        <prime-icon class=" pi pi-pencil"></prime-icon>
+    </div>
+    <p><strong>{{name}}</strong></p>
 </li>
