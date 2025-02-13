@@ -1,0 +1,17 @@
+
+<div class="input-container">
+  <span class="custom-button minus" (click)="handleSub()">
+    <prime-icon name="pi pi-minus" size="1rem"></prime-icon>
+  </span>
+  
+  <input-number
+    [ngModel]="value"
+    (ngModelChange)="handleChange($event)"
+    [min]="min"
+    [max]="max"
+  />
+  <span class="custom-button plus" (click)="handleAdd()">
+    <prime-icon name="pi pi-plus" size="1rem"></prime-icon>
+  </span>
+
+</div>

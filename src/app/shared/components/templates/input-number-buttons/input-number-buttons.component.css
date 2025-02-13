@@ -1,0 +1,48 @@
+.input-container{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  border:2px solid var(--background-color);
+  border-radius: 32px;
+  
+}
+
+.p-inputnumber{
+  padding: 0 !important;
+  border: none;
+  
+}
+.p-inputtext,.p-inputtext:focus{
+  background: transparent ;
+  border: none !important;
+  text-align: center;
+
+}
+
+
+
+.custom-button{
+  width: 2rem;
+  background-color: var(--background-color) ;
+  padding: .2rem;
+  height: 2.4rem;
+  transition: all .1s ease-in-out;
+}
+
+.custom-button:is(:active,:hover){
+  
+  cursor: pointer;
+  background-color: var(--accent-color-lighter);
+  
+}
+
+.minus{
+  border-radius: 32px  0  0 32px;
+ 
+}
+
+.plus{
+  border-radius: 0  32px  32px 0;
+  border: none;
+}

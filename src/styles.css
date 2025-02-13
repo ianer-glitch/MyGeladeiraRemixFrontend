@@ -14,6 +14,7 @@
     font-family: 'Nunito', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background-color);
   }
   
   h1,
@@ -102,5 +103,6 @@
 
 .page-container{
   padding: 1rem;
+  background-color: white;
 }
 
