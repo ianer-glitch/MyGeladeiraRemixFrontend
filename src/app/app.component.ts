@@ -36,5 +36,6 @@ import { InputSelectComponent } from "./shared/components/organisms/input-select
 export class AppComponent {
   visible=false
   title = 'MyGeladeiraRemixFrontend';
+  value:number=0
 
 }

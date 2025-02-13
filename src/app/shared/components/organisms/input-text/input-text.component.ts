@@ -42,6 +42,7 @@ export class InputTextComponent implements ControlValueAccessor {
   @Input() placeholder:string = ""
   @Input() information:string = ""
   @Input() informationPosition:string="right"
+  
   text:string = ""
   
   handleChange(newVal:string){

@@ -1,13 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { SelectChangeEvent, SelectModule } from 'primeng/select';
 import { IconInfoComponent } from '../../molecules/icon-info/icon-info.component';
-import { ControlValueAccessor, FormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'input-select',
-  imports: [SelectModule,IconInfoComponent,FormsModule],
+  imports: [SelectModule,IconInfoComponent,FormsModule,CommonModule],
   templateUrl: './input-select.component.html',
-  styleUrl: './input-select.component.css'
+  styleUrl: './input-select.component.css',
+  providers:[
+    {
+      provide:NG_VALUE_ACCESSOR,
+      useExisting:forwardRef(()=>InputSelectComponent),
+      multi:true
+    }
+  ]
 })
 export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   @Input() id:string = ""
@@ -21,7 +29,8 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   @Input() loading:boolean = false
   @Input() filterBy:string = ""
   @Input() options:any[] = []
-
+  @Input() filter:boolean = false
+  
   onChange : (param:any)=>void = ()=>{}
   onTouch : ()=>void = ()=>{}
 
@@ -35,11 +44,11 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
     this.onTouch=fn
   }
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
   }
   value:TKey | null = null
   
   handleChange(event :SelectChangeEvent){
+    console.info(event)
     this.value=event.value
     this.onChange(event.value)
   }
