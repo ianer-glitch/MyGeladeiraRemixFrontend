@@ -1,5 +1,12 @@
 <fieldset>
-    <label for="{{id}}">{{label}}</label>
+  <label  for="{{id}}">
+    {{label}} 
+    <icon-info 
+      *ngIf="information"
+      [infoPosition]="informationPosition" 
+      [information]="information" 
+    />
+  </label>
     <input 
       id="{{id}}" 
       type="text" 

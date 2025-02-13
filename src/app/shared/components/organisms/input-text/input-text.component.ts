@@ -2,9 +2,12 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 
+import { CommonModule } from '@angular/common';
+import { IconInfoComponent } from '../../molecules/icon-info/icon-info.component';
+
 @Component({
   selector: 'input-text',
-  imports: [InputTextModule,FormsModule],
+  imports: [InputTextModule, FormsModule, IconInfoComponent,CommonModule],
   templateUrl: './input-text.component.html',
   styleUrl: './input-text.component.css',
   providers:[
@@ -37,6 +40,8 @@ export class InputTextComponent implements ControlValueAccessor {
   @Input() label:string = ""
   @Input() fluid:boolean = false
   @Input() placeholder:string = ""
+  @Input() information:string = ""
+  @Input() informationPosition:string="right"
   text:string = ""
   
   handleChange(newVal:string){

@@ -12,4 +12,5 @@ import { CommonModule } from '@angular/common';
 })
 export class IconInfoComponent {
   @Input() information:string =""
+  @Input() infoPosition:string =""
 }

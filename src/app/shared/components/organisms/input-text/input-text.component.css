@@ -11,3 +11,10 @@ fieldset{
     border-radius: var(--input-border-radius);
     
 }
+
+label{
+    display: flex;
+    align-items:  center;
+    justify-content: flex-start;
+    gap:.4rem;
+}

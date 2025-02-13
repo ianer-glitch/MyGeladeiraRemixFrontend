@@ -1,0 +1,20 @@
+<fieldset>
+  <label  for="{{id}}">
+    {{label}} 
+    <icon-info 
+      *ngIf="information"
+      [infoPosition]="informationPosition" 
+      [information]="information" 
+    />
+  </label>
+  <p-select 
+    [optionValue]="optionValue"
+    [optionLabel]="optionLabel"
+    [placeholder]="placeholder"
+    [fluid]="fluid"
+    [loading]="loading"
+    [options]="options"
+    (onChange)="handleChange($event)"
+    [ngModel]="value"
+  ></p-select>
+</fieldset>

@@ -1,11 +1,15 @@
 <figure 
     [pTooltip]="information"
-    tooltipPosition="right"
+    [tooltipPosition]="infoPosition"
     [fitContent]="false"
 		tooltipStyleClass="tooltip"
+    tabindex="0"
+    #hint
+    (click)="$event.stopPropagation(); hint.focus()"
+    [tooltipEvent]="'focus'"
     >
     <prime-icon 
-			size="1rem"
+			size=".6rem"
 			name="pi pi-question"
 		/>
 </figure>

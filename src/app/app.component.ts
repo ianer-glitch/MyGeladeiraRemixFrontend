@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmationPopupComponent } from './shared/components/organisms/confirmation-popup/confirmation-popup.component';
 import { ListTemComponent } from "./shared/components/atoms/list-tem/list-tem.component";
 import { IconInfoComponent } from "./shared/components/molecules/icon-info/icon-info.component";
+import { InputTextComponent } from './shared/components/organisms/input-text/input-text.component';
+import { InputSelectComponent } from "./shared/components/organisms/input-select/input-select.component";
+
 
 @Component({
   selector: 'app-root',
@@ -22,7 +25,9 @@ import { IconInfoComponent } from "./shared/components/molecules/icon-info/icon-
     ConfirmationButtonsComponent,
     PopupComponent, FormsModule, ConfirmationPopupComponent,
     ListTemComponent,
-    IconInfoComponent
+    IconInfoComponent,
+    InputTextComponent,
+    InputSelectComponent
 ],
 
   templateUrl: './app.component.html',

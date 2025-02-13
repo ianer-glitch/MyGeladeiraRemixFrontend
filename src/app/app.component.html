@@ -1,6 +1,14 @@
 <router-outlet />
 <section class="page-container">
-    <icon-info information="Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade."/>
+   <input-select 
+      [fluid]="true"
+      [options]="[{name:'a',id:1}]"
+      optionLabel="name"
+      optionValue="id"
+      filterBy="name"
+         
+   />
+    
 </section>
 
 <app-footer></app-footer>
