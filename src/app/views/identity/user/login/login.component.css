@@ -27,3 +27,14 @@ input-text{
 confirmation-buttons{
   width: 100%;
 }
+
+@media (min-width: 1024px) {
+  section{
+    flex-direction: row;
+    
+  }  
+
+  form{
+    width: 25%;
+  }
+}
