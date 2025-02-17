@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -10,6 +10,7 @@ import { IconInfoComponent } from '../../molecules/icon-info/icon-info.component
   imports: [InputTextModule, FormsModule, IconInfoComponent,CommonModule],
   templateUrl: './input-text.component.html',
   styleUrl: './input-text.component.css',
+  encapsulation:ViewEncapsulation.None,
   providers:[
     {
       provide:NG_VALUE_ACCESSOR,

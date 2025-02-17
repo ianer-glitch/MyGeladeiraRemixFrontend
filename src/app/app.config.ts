@@ -7,12 +7,13 @@ import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import FridgeTheme from './theme.preset';
 import { provideServiceWorker } from '@angular/service-worker';
+import userRoutes from './features/identity/user/user.routes';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter([...routes,...userRoutes]),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
