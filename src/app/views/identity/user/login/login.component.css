@@ -10,21 +10,33 @@ section{
   justify-content: space-between;
 }
 
+login-form{
+  width: 100%;
+}
+
 static-image{
   width: 100%;
   height: auto;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 600px) {
+  static-image{
+    width: 300px;
+    
+  }
+}
+
+@media (min-width: 800px) {
   section{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 400px;
+    gap: 10vw;
+    padding: 5rem;
     
   }  
 
-  form{
+  form,login-form{
     width: 25%;
   }
 
