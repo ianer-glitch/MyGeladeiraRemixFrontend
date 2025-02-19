@@ -8,9 +8,11 @@ form{
   
 }
 
-input-text{
+input-text,input-password{
   width: 100%;
 }
+
+
 
 confirmation-buttons{
   width: 100%;

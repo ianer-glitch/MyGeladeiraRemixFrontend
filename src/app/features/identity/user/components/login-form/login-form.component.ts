@@ -4,11 +4,12 @@ import { ConfirmationButtonsComponent } from "../../../../../shared/components/m
 import { LoginService } from '../../login/login.service';
 import PIsUserPasswordValidIn from '../../login/PIsUserPasswordValidIn';
 import { ReactiveFormsModule,FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
+import { InputPasswordComponent } from "../../../../../shared/components/organisms/input-password/input-password.component";
 
 
 @Component({
   selector: 'login-form',
-  imports: [InputTextComponent, ConfirmationButtonsComponent,ReactiveFormsModule],
+  imports: [InputTextComponent, ConfirmationButtonsComponent, ReactiveFormsModule, InputPasswordComponent],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
