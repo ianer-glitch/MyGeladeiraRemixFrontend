@@ -3,11 +3,12 @@ import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { PasswordModule } from 'primeng/password';
 import { IconInfoComponent } from "../../molecules/icon-info/icon-info.component";
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'input-password',
-  imports: [IconInfoComponent,PasswordModule,FormsModule],
+  imports: [IconInfoComponent,PasswordModule,FormsModule,CommonModule],
   templateUrl: './input-password.component.html',
   styleUrl: './input-password.component.css',
   encapsulation:ViewEncapsulation.None,

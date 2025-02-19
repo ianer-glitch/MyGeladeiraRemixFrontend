@@ -32,12 +32,13 @@ export class LoginFormComponent implements OnInit  {
     
 
     this.loginForm = this.formBuilder.group({
-      Email:[model.Email,Validators.required],
+      Email:[model.Email,Validators.required,Validators.email],
       Password:[model.Password,Validators.required]
     })
   }
 
   login(){
+    console.info(this.loginForm)
     if(this.loginForm.valid){
       const request = new PIsUserPasswordValidIn()
       request.Email= this.loginForm.get("Email")?.value
