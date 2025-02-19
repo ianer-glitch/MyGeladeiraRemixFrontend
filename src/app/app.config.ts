@@ -8,11 +8,13 @@ import { routes } from './app.routes';
 import FridgeTheme from './theme.preset';
 import { provideServiceWorker } from '@angular/service-worker';
 import userRoutes from './features/identity/user/user.routes';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
+    provideHttpClient(withFetch()),
     provideRouter([...routes,...userRoutes]),
     provideAnimationsAsync(),
     providePrimeNG({

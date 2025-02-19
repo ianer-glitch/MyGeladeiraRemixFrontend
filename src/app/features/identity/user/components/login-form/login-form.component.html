@@ -1,18 +1,21 @@
-<form>
+<form [formGroup]="loginForm">
   <input-text 
     [fluid]="true" 
     label="Email"
     placeholder="Insira o email"
     id="email"
-    />
-    <input-text 
+    formControlName="Email" 
+  />
+  <input-text 
     [fluid]="true" 
     label="Senha"
     placeholder="Insira a senha"
     id="senha"
-    />
-    <confirmation-buttons
-      confirmLabel="Entrar"
-      denyLabel="Cadastrar"
-    />
+    formControlName="Password"
+  />
+  <confirmation-buttons
+    confirmLabel="Entrar"
+    (confirmClick)="login()"
+    denyLabel="Cadastrar"
+  />
 </form>

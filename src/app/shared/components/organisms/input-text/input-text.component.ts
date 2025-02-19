@@ -34,7 +34,7 @@ export class InputTextComponent implements ControlValueAccessor {
     this.onTouch=fn
   }
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    
   }
   
   @Input() id:string = ""

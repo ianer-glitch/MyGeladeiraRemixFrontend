@@ -12,6 +12,6 @@ export class LoginService {
 
   public Login( request: PIsUserPasswordValidIn){
     
-    return this.http.post<string>(environment.identityUrl+'/login',request)
+    return this.http.post<string>(environment.identityUrl+'/User/Login',request)
   }
 }
