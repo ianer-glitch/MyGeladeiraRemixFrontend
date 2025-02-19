@@ -28,13 +28,25 @@ confirmation-buttons{
   width: 100%;
 }
 
+static-image{
+  width: 100%;
+  height: auto;
+}
+
 @media (min-width: 1024px) {
   section{
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 400px;
     
   }  
 
   form{
     width: 25%;
+  }
+
+  static-image{
+    width: 500px;
   }
 }
