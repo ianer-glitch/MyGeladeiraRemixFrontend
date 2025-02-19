@@ -10,24 +10,6 @@ section{
   justify-content: space-between;
 }
 
-form{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap:1rem; 
-  width: 100%;
-  
-}
-
-input-text{
-  width: 100%;
-}
-
-confirmation-buttons{
-  width: 100%;
-}
-
 static-image{
   width: 100%;
   height: auto;
