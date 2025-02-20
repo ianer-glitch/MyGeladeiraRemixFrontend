@@ -7,3 +7,24 @@ ol{
   width: 100%;
   height: auto;
 }
+
+li{
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.active{
+  scale: 1.2;
+  box-shadow: 1px 1px 10px 8px var(--primary-color-lighter);
+  border-radius: 50%;
+  
+}
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer,.footer-button{
+  width: 100%;
+}

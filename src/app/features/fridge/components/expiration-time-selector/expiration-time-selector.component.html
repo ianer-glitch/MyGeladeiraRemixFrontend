@@ -1,16 +1,43 @@
 <ol>
-  <li>
+  <li (click)="handleClick(5)" 
+      [ngClass]="{'active': isActive(5)}"
+  >
     <chip label="5 dias"></chip>
   </li>
-  <li>
+  <li (click)="handleClick(10)"
+  [ngClass]="{'active': isActive(10)}"
+  >
     <chip label="10 dias"></chip>
   </li>
-  <li>
+  <li (click)="handleClick(15)"
+  [ngClass]="{'active': isActive(15)}"
+  >
     <chip label="15 dias"></chip>
   </li>
-  <li>
+  <li
+  (click)="showDatePicker = !showDatePicker"
+  [ngClass]="{'active': value.getTime() > handleAddDate(15).getTime()}">
+
     <chip>
-      <prime-icon name="pi pi-calendar" size="1.5rem"></prime-icon>
+      <prime-icon name="pi pi-calendar" size="1.2rem"></prime-icon>
     </chip>
   </li>
 </ol>
+<popup  title="Data personalizada" [(ngModel)]="showDatePicker" >
+
+  <div content class="content">
+    <p-datepicker  
+      [(ngModel)]="value" 
+      [inline]="true" 
+      [showWeek]="false" 
+    />
+  </div>
+
+  <div class="footer" footer>
+    <app-button  
+      class="footer-button"
+      (click)="showDatePicker = false"
+      >Confirmar!
+    </app-button>
+  </div>
+</popup>
