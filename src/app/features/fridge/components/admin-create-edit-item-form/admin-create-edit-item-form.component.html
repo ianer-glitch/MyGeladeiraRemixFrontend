@@ -1,0 +1,20 @@
+<form>
+  <h1>Adicionar/Editar</h1>
+  <input-text 
+    label="Nome do item"
+    />
+  <input-number 
+    label="Quantidade mínima"
+    [min]="0"
+    />
+
+    <input-number 
+    label="Quantidade padrão"
+    [min]="0"
+    />
+  
+  <confirmation-buttons
+    confirmLabel="Salvar"
+    denyLabel="Cancelar"
+  />
+</form>
