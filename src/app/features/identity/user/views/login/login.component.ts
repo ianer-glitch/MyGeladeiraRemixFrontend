@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { StaticImageComponent } from "../../../../shared/components/atoms/static-image/static-image.component";
-import { LoginFormComponent } from "../../../../features/identity/user/components/login-form/login-form.component";
+import { StaticImageComponent } from "../../../../../shared/components/atoms/static-image/static-image.component";
+import { LoginFormComponent } from "../../components/login-form/login-form.component";
 
 @Component({
   selector: 'app-login',

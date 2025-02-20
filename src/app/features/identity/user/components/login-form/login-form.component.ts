@@ -5,7 +5,6 @@ import { LoginService } from '../../login/login.service';
 import PIsUserPasswordValidIn from '../../login/PIsUserPasswordValidIn';
 import { ReactiveFormsModule,FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 import { InputPasswordComponent } from "../../../../../shared/components/organisms/input-password/input-password.component";
-import { MessageService } from 'primeng/api';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 
 
