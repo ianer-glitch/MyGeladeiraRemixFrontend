@@ -6,6 +6,7 @@ import PIsUserPasswordValidIn from '../../login/PIsUserPasswordValidIn';
 import { ReactiveFormsModule,FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 import { InputPasswordComponent } from "../../../../../shared/components/organisms/input-password/input-password.component";
 import { ToastService } from '../../../../../core/services/toast/toast.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +18,10 @@ import { ToastService } from '../../../../../core/services/toast/toast.service';
 export class LoginFormComponent implements OnInit  {
 
   constructor( 
-      private loginService : LoginService,
-      private toastService : ToastService) {
+    private loginService : LoginService,
+    private toastService : ToastService,
+    private router: Router
+    ) {
  
   
   }
@@ -42,12 +45,15 @@ export class LoginFormComponent implements OnInit  {
   }
 
   login(){
+    this.router.navigate(['/home']) 
     if(this.loginForm.valid){
       const request = new PIsUserPasswordValidIn()
       request.Email= this.loginForm.get("Email")?.value
       request.Password = this.loginForm.get("Password")?.value
   
       this.loginService.Login(request).subscribe((res)=>{
+        //storeToken
+        
         console.info(res)
       })
 
