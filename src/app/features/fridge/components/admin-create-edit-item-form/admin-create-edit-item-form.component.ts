@@ -3,10 +3,11 @@ import { InputTextComponent } from "../../../../shared/components/organisms/inpu
 import { InputNumberComponent } from "../../../../shared/components/organisms/input-number/input-number.component";
 import { InputNumberButtonsComponent } from "../../../../shared/components/templates/input-number-buttons/input-number-buttons.component";
 import { ConfirmationButtonsComponent } from "../../../../shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
+import { ExpirationTimeSelectorComponent } from "../expiration-time-selector/expiration-time-selector.component";
 
 @Component({
   selector: 'admin-create-edit-item-form',
-  imports: [InputTextComponent, InputNumberComponent, InputNumberButtonsComponent, ConfirmationButtonsComponent],
+  imports: [InputTextComponent, InputNumberComponent, InputNumberButtonsComponent, ConfirmationButtonsComponent, ExpirationTimeSelectorComponent],
   templateUrl: './admin-create-edit-item-form.component.html',
   styleUrl: './admin-create-edit-item-form.component.css'
 })

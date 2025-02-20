@@ -16,3 +16,7 @@ input-text,input-number,confirmation-buttons{
   color: var(--background-color);
 }
 
+expiration-time-selector{
+  width: 100%;
+}
+
