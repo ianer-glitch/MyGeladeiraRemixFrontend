@@ -9,10 +9,12 @@ import FridgeTheme from './theme.preset';
 import { provideServiceWorker } from '@angular/service-worker';
 import userRoutes from './features/identity/user/user.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    MessageService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withFetch()),
     provideRouter([...routes,...userRoutes]),
