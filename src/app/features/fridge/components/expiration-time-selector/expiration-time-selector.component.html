@@ -1,3 +1,7 @@
+<div class="label-container">
+  <label>Quando vai vencer?</label>
+  <label>{{getFormatedDate(value)}}</label>
+</div>
 <ol>
   <li (click)="handleClick(5)" 
       [ngClass]="{'active': isActive(5)}"

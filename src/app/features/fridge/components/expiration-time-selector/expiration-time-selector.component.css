@@ -28,3 +28,13 @@ li{
 .footer,.footer-button{
   width: 100%;
 }
+
+label{
+  color:var(--background-color)
+}
+
+.label-container{
+  display:  flex;
+  align-items: center;
+  justify-content: space-between;
+}
