@@ -10,6 +10,7 @@ form{
   padding: 2rem 1rem;
   gap: 1rem;
   overflow-y: scroll;
+  margin: 0 auto;
 }
 
 input-text,input-number,confirmation-buttons{
@@ -21,3 +22,8 @@ expiration-time-selector{
   width: 100%;
 }
 
+@media (min-width: 600px) {
+  form{
+    width: 600px;
+  }
+}
