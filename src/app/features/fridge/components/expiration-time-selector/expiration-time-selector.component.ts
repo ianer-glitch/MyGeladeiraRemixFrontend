@@ -45,7 +45,6 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
     this.onTouch = fn
   }
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
   }
 
   handleAddDate(days : number) : Date{

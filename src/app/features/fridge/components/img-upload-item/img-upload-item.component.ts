@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'img-upload-item',
   imports: [],
   templateUrl: './img-upload-item.component.html',
-  styleUrl: './img-upload-item.component.css'
+  styleUrl: './img-upload-item.component.css',
+  providers:[
+   {
+    provide:NG_VALUE_ACCESSOR,
+    useExisting:forwardRef(()=>ImgUploadItemComponent),
+    multi:true
+   } 
+  ]
 })
 export class ImgUploadItemComponent implements ControlValueAccessor{
   onChange : (param:any)=>void = ()=>{}

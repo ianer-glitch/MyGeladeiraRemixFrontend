@@ -1,25 +1,37 @@
-<form>
-  <h1>Adicionar/Editar</h1>
-  <img-upload-item/>
-  <input-text 
-    label="Cor do fundo"
-  />
-  <input-text 
-    label="Nome do item"
+<div class="form-container">
+  <form [formGroup]="itemForm">
+    <h1>Adicionar/Editar</h1>
+    <img-upload-item
+      formControlName="Icon"
     />
-  <input-number 
-    label="Quantidade mínima"
-    [min]="0"
+    <input-text 
+      label="Cor do fundo"
+      formControlName="Color"
     />
-    <expiration-time-selector></expiration-time-selector>
-
+    <input-text 
+      label="Nome do item"
+      formControlName="Name"
+    />
     <input-number 
-    label="Quantidade padrão"
-    [min]="0"
+      label="Quantidade mínima"
+      [min]="0"
+      formControlName="MinimunQuantity"
+    />
+    <expiration-time-selector
+      formControlName="Expiration"
     />
   
+    <input-number 
+      label="Quantidade padrão"
+      [min]="0"
+      formControlName="Quantity"
+    />
+    
+  </form>
   <confirmation-buttons
     confirmLabel="Salvar"
     denyLabel="Cancelar"
+    (confirmClick)="handleSubmit()"
+    (denyClick)="handleCancel()"
   />
-</form>
+</div>
