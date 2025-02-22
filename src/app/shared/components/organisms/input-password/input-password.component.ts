@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 
 import { PasswordModule } from 'primeng/password';
 import { IconInfoComponent } from "../../molecules/icon-info/icon-info.component";
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
       }
     ]
 })
-export class InputPasswordComponent {
+export class InputPasswordComponent implements ControlValueAccessor {
  onChange : (param:any)=>void = ()=>{}
   onTouch : ()=>void = ()=>{}
 

@@ -7,7 +7,6 @@ import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import FridgeTheme from './theme.preset';
 import { provideServiceWorker } from '@angular/service-worker';
-import userRoutes from './features/identity/user/user.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { fridgeRoutes } from './features/fridge/fridge.routes';
@@ -18,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     MessageService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withFetch()),
-    provideRouter([...routes,...userRoutes,...fridgeRoutes]),
+    provideRouter(routes),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
