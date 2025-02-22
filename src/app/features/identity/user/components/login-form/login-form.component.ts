@@ -45,16 +45,14 @@ export class LoginFormComponent implements OnInit  {
   }
 
   login(){
-    this.router.navigate(['/home']) 
     if(this.loginForm.valid){
       const request = new PIsUserPasswordValidIn()
       request.Email= this.loginForm.get("Email")?.value
       request.Password = this.loginForm.get("Password")?.value
-  
+      
       this.loginService.Login(request).subscribe((res)=>{
-        //storeToken
-        
-        console.info(res)
+        localStorage.setItem('token',res.token)
+        this.router.navigate(['/fridge/home']) 
       })
 
     }else{
