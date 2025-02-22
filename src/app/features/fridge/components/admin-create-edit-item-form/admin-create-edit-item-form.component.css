@@ -3,7 +3,6 @@
   border-radius: 1rem;
   padding: 2rem 1rem;
   overflow-y: scroll;
-  margin: 0 auto;
 
 }
 
@@ -26,8 +25,4 @@ expiration-time-selector{
   width: 100%;
 }
 
-@media (min-width: 600px) {
-  .form-container{
-    width: 600px;
-  }
-}
+
