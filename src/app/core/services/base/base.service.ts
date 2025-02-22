@@ -18,7 +18,7 @@ export class BaseService {
     
     
     let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
     });
 
     // If a token is provided, add the Authorization header

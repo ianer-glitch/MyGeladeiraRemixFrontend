@@ -3,7 +3,9 @@
     <h1>Adicionar/Editar</h1>
     <img-upload-item
       formControlName="Icon"
+      (ngModelChange)="handleIconChange($event)"
     />
+
     <input-text 
       label="Cor do fundo"
       formControlName="Color"

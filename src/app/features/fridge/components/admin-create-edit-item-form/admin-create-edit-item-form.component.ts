@@ -24,7 +24,7 @@ import { Location } from '@angular/common';
 })
 export class AdminCreateEditItemFormComponent implements OnInit {
   
-  
+  icon:File = {} as any
    
    
   constructor(private location: Location,
@@ -51,17 +51,31 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       Quantity:[p.Quantity,Validators.min(1)],
     })
   }
-
+  handleIconChange(e:File){
+    this.icon = e
+  }
   handleCancel(){
     this.location.back()
   }
 
   handleSubmit(){
-    console.info(this.itemForm.valid)
-    console.info(this.itemForm.value)
-    // this.createItemService.createItem(this.payload)
+    const p =  new CreateItemIn(
+      this.itemForm.get('Color')?.value,
+      this.itemForm.get('Name')?.value,
+      this.itemForm.get('MinimumQuantity')?.value,
+      this.itemForm.get('Quantity')?.value,
+      this.itemForm.get('Weight')?.value,
+      this.itemForm.get('Expiration')?.value,
+      this.itemForm.get('Icon')?.value,
+    )
+
+    this.createItemService.createItem(p,this.icon).subscribe((res)=>console.info(res))
   }
 
-
+   formGroupToClass<T>(formGroup: FormGroup, classConstructor: { new(...args: any[]): T }): T {
+    const formValues = formGroup.value;
+    const args = Object.keys(formValues).map(key => formValues[key]);
+    return new classConstructor(...args);
+  }
 
 }
