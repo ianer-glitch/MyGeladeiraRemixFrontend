@@ -44,6 +44,10 @@ export class LoginFormComponent implements OnInit  {
     })
   }
 
+  handleDeny(){
+    this.router.navigate(['/auth/create-password'])
+  }
+
   login(){
     if(this.loginForm.valid){
       const request = new PIsUserPasswordValidIn()
