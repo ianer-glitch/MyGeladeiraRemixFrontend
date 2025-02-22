@@ -14,6 +14,7 @@ import { fridgeRoutes } from './features/fridge/fridge.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    {provide:'baseUrl',useValue:""},
     MessageService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withFetch()),
