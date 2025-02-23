@@ -8,6 +8,8 @@ import { ButtonComponent } from "../../atoms/button/button.component";
   styleUrl: './confirmation-buttons.component.css'
 })
 export class ConfirmationButtonsComponent {
+  @Input() isConfirmLoading:boolean = false
+  @Input() isDenyLoading:boolean = false
   @Input() confirmLabel:string = ""
   @Input() denyLabel:string = ""
   @Output() confirmClick = new EventEmitter<MouseEvent>()

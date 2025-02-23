@@ -25,10 +25,11 @@ export class CreateItemService extends FridgeService{
     formData.append('Weight', item.Weight.toString());
     
     // Handle Date property (Expiration) by converting to a string format (ISO string or any desired format)
-    // formData.append('Expiration', item.Expiration.toString());
+    
+    formData.append('Expiration', item.Expiration.toISOString());
   
     // Handle file property (Icon) if it's not null or undefined
-    // formData.append('Icon', icon, icon.name);
+    formData.append('Icon', icon, icon.name);
     
     
     console.info(formData)

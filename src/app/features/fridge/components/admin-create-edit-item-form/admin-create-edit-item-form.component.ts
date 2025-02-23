@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import CreateItemIn from '../../createItem/CreateItemIn';
 import { CreateItemService } from '../../createItem/create-item.service';
 import { Location } from '@angular/common';
+import { ToastService } from '../../../../core/services/toast/toast.service';
+import { Observer } from 'rxjs';
 
 
 @Component({
@@ -25,10 +27,12 @@ import { Location } from '@angular/common';
 export class AdminCreateEditItemFormComponent implements OnInit {
   
   icon:File = {} as any
+  isLoading:boolean = false
    
    
   constructor(private location: Location,
-    private createItemService:CreateItemService) {
+    private createItemService:CreateItemService, 
+    private toastService:ToastService) {
     
     
   }
@@ -59,23 +63,37 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   }
 
   handleSubmit(){
-    const p =  new CreateItemIn(
-      this.itemForm.get('Color')?.value,
-      this.itemForm.get('Name')?.value,
-      this.itemForm.get('MinimumQuantity')?.value,
-      this.itemForm.get('Quantity')?.value,
-      this.itemForm.get('Weight')?.value,
-      this.itemForm.get('Expiration')?.value,
-      this.itemForm.get('Icon')?.value,
-    )
+    if(this.itemForm.valid && this.icon){
+      this.isLoading =true
+      const p =  new CreateItemIn(
+        this.itemForm.get('Color')?.value,
+        this.itemForm.get('Name')?.value,
+        this.itemForm.get('MinimumQuantity')?.value,
+        this.itemForm.get('Quantity')?.value,
+        this.itemForm.get('Weight')?.value,
+        this.itemForm.get('Expiration')?.value,
+        this.itemForm.get('Icon')?.value,
+      )
 
-    this.createItemService.createItem(p,this.icon).subscribe((res)=>console.info(res))
+      const handleRequest:Observer<any> = {
+        next:(res) => this.toastService.showSucces("Item adicionado com sucesso!"),
+        error:(err) => {
+            this.toastService.showError("Algo deu errado")
+            this.isLoading = false
+          },
+        complete:()=> {
+            this.location.back()
+            this.isLoading = false
+          }
+      }
+  
+      this.createItemService.createItem(p,this.icon).subscribe(handleRequest)
+    }else{
+      this.toastService.showWarn("Existem campos incorretos!")
+    }
+
   }
 
-   formGroupToClass<T>(formGroup: FormGroup, classConstructor: { new(...args: any[]): T }): T {
-    const formValues = formGroup.value;
-    const args = Object.keys(formValues).map(key => formValues[key]);
-    return new classConstructor(...args);
-  }
+   
 
 }

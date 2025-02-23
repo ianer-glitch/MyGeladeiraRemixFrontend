@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
+ @Input() isLoading:boolean = false
  @Input() fluid:boolean = false
  @Input() rounded:boolean = false
  @Input() type:string = ""

@@ -4,11 +4,13 @@
 	  [label]="denyLabel"
 	  (click)="denyClick.emit($event)"
 	  [fluid]="true"
+		[isLoading]="isDenyLoading"
 	/>
 	<app-button 
 	  severity="primary" 
 	  [label]="confirmLabel"
 	  (click)="confirmClick.emit($event)"
 	  [fluid]="true"
+		[isLoading]="isConfirmLoading"
 	/>
 </div>

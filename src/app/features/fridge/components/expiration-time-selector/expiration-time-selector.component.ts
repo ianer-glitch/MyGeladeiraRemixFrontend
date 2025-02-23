@@ -49,12 +49,12 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
 
   handleAddDate(days : number) : Date{
     let currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + days);
-
     currentDate.setHours(0)
     currentDate.setMinutes(0)
     currentDate.setSeconds(0)
     currentDate.setMilliseconds(0)
+    
+    currentDate.setDate(currentDate.getDate() + days);
     
     return currentDate
   }
@@ -63,7 +63,7 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
   handleClick(days : number){
     
     this.value = this.handleAddDate(days)
-    this.onChange(days)
+    this.onChange(this.value)
   }
 
   isActive(days : number){
