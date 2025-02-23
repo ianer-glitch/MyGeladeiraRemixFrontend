@@ -1,6 +1,11 @@
 <ul>
-  <li>
-    <item></item>
+  <li *ngFor="let item of itemsList">
+    <item
+      [iconLink]="item.icon"
+      [backgroundColor]="item.color"
+      [iconName]="item.name"
+      [id]="item.id"
+    >{{item}}</item>
   </li>
   <button-add-item (click)="handleClickAddItem()"/>
 </ul>

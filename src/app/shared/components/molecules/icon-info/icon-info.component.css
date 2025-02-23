@@ -1,4 +1,4 @@
-figure{
+.icon-info-container{
   background-color: var(--accent-color-darker);
   color:  var(--background-color);
   display: flex;
@@ -17,7 +17,7 @@ figure{
   max-width: 100vw;
 }
 
-figure:is(:hover,:active){
+.icon-info-container:is(:hover,:active){
   scale: 1.1;
   cursor: pointer;
   box-shadow: 1px 1px 8px 1px var(--accent-color-darker);
