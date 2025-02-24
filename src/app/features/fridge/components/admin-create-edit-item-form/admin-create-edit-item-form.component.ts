@@ -71,7 +71,7 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       formModel.minimumQuantity = editingItem.minimumQuantity
       formModel.name = editingItem.name
       formModel.quantity=editingItem.quantity
-      formModel.weight = 1
+      formModel.weight = editingItem.weight
       this.createFormGroup(formModel)
     }
   }
