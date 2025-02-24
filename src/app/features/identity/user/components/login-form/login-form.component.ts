@@ -45,7 +45,8 @@ export class LoginFormComponent implements OnInit  {
   }
 
   handleDeny(){
-    this.router.navigate(['/auth/create-password'])
+    
+    this.router.navigate(['/auth/define-email'])
   }
 
   login(){

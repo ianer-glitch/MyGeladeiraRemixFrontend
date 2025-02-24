@@ -1,5 +1,5 @@
 <ol class="step-bar-container">
-  <li *ngFor="let step of [0,1,2]">
+  <li *ngFor="let step of [0,1]">
     <static-image
       width="150px"
      
@@ -13,6 +13,6 @@
      *ngIf="step==stepActive" 
      name="step-bar-icon-active.svg"
     />
-    <hr  [ngClass]="{'hide-hr':hideHr(step,2)}" />
+    <hr  [ngClass]="{'hide-hr':hideHr(step,1)}" />
   </li>
 </ol>

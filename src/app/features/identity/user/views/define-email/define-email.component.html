@@ -1,7 +1,11 @@
 <section>
-  <h1>Criação da Conta</h1>
-  <h2>Definição do email</h2>
-
-  <h3>Insira um email válido para criação da conta</h3>
-  <define-email-form/>
+  <div class="title-container">
+    <h1>Cadastro</h1>
+    <h2>Dados básicos</h2>
+  </div>
+  <step-bar-login [stepActive]="0" />
+  <div class="form-container">
+    <h3>Insira um nome e um email válido</h3>
+    <define-email-form/>
+  </div>
 </section>
