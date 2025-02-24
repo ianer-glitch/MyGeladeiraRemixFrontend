@@ -14,6 +14,7 @@ export class UpdateItemService extends FridgeService {
 
   public updateItem(item : UpdateItemIn,icon:File){
 
+    console.info(item)
     const formData = new FormData();
     formData.append('ItemId', item.itemId);
     formData.append('Color', item.color);
@@ -21,11 +22,8 @@ export class UpdateItemService extends FridgeService {
     formData.append('MinimumQuantity', item.minimumQuantity.toString());
     formData.append('Quantity', item.quantity.toString());
     
-    if(item.weight){
-      formData.append('Weight', item.weight.toString());
-    }else{
-      formData.append('Weight', "1");
-    }
+    formData.append('Weight', item.weight.toString());
+    
     
     formData.append('Expiration', item.expiration.toISOString());
   

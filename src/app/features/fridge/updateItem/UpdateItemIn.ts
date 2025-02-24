@@ -7,8 +7,6 @@ export default class UpdateItemIn {
   public weight: number;
   public expiration: Date;
   public icon: File;
-  public userCreationId?: string;
-
   constructor(
     itemId: string,
     color: string,
@@ -18,7 +16,6 @@ export default class UpdateItemIn {
     weight: number,
     expiration: Date,
     icon: File,
-    userCreationId?: string
   ) {
     this.itemId = itemId;
     this.color = color;
@@ -28,6 +25,5 @@ export default class UpdateItemIn {
     this.weight = weight;
     this.expiration = expiration;
     this.icon = icon;
-    this.userCreationId = userCreationId;
   }
 }

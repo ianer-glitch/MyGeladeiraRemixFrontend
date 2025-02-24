@@ -86,6 +86,7 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       name:[p.name,Validators.required],
       minimumQuantity:[p.minimumQuantity,Validators.min(1)],
       quantity:[p.quantity,Validators.min(1)],
+      weight:[p.weight]
     })
   }
   handleIconChange(e:File){
@@ -130,7 +131,6 @@ export class AdminCreateEditItemFormComponent implements OnInit {
             this.isLoading = false
           }
       }
-  
       this.updateItemService.updateItem(p,this.icon).subscribe(handleRequest)
     }else{
       this.toastService.showWarn("Existem campos incorretos!")
