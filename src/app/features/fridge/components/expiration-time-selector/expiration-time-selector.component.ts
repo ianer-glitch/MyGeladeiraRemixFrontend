@@ -71,7 +71,6 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
   }
 
   getFormatedDate(date :Date) {
-    console.info(date)
     let day: number = date.getDate();
     let month: number = date.getMonth() + 1; 
     let year: number = date.getFullYear();

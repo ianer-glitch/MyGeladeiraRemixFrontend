@@ -14,6 +14,8 @@ import { Observer } from 'rxjs';
 import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
 import GetItemsOut from '../../getItems/GetItemsOut';
 import {urlToFile} from '../../../../shared/tools'
+import UpdateItemIn from '../../updateItem/UpdateItemIn';
+import { UpdateItemService } from '../../updateItem/update-item.service';
 
 
 @Component({
@@ -36,7 +38,8 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   constructor(private location: Location,
     private createItemService:CreateItemService, 
     private toastService:ToastService,
-    private localStorageService:LocalStorageService
+    private localStorageService:LocalStorageService,
+    private updateItemService:UpdateItemService
   ) {
     
     
@@ -53,11 +56,13 @@ export class AdminCreateEditItemFormComponent implements OnInit {
 
   }
   iconLink:string=""
+  editingItemId:string = '"'
   handleFormEditing(){
     const editingItem = this.localStorageService.getItem<GetItemsOut>('/fridge/item')
     
-    
-    if(editingItem){
+    if(Object.keys(editingItem).length > 0){
+      this.editingItemId = editingItem.id
+      console.info(this.editingItemId)
       this.iconLink = editingItem.icon
       this.isEditing = true
       const formModel = new CreateItemIn()
@@ -68,11 +73,6 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       formModel.quantity=editingItem.quantity
       formModel.weight = 1
       this.createFormGroup(formModel)
-      
-      // urlToFile(editingItem.icon,'icon').then((file)=>{
-      //   formModel.icon = file
-      // })
-      
     }
   }
 
@@ -99,10 +99,41 @@ export class AdminCreateEditItemFormComponent implements OnInit {
 
   handleSubmit(){
     if(this.isEditing){
-      
+      this.updateItem()
     }else{
       this.createItem()
 
+    }
+  }
+
+  updateItem(){
+    if(this.itemForm.valid && this.icon){
+      this.isLoading =true
+      const p =  new UpdateItemIn(this.editingItemId,
+        this.itemForm.get('color')?.value,
+        this.itemForm.get('name')?.value,
+        this.itemForm.get('minimumQuantity')?.value,
+        this.itemForm.get('quantity')?.value,
+        this.itemForm.get('weight')?.value,
+        this.itemForm.get('expiration')?.value,
+        this.itemForm.get('icon')?.value,
+      )
+
+      const handleRequest:Observer<any> = {
+        next:(res) => this.toastService.showSucces("Item adicionado com sucesso!"),
+        error:(err) => {
+            this.toastService.showError("Algo deu errado")
+            this.isLoading = false
+          },
+        complete:()=> {
+            this.location.back()
+            this.isLoading = false
+          }
+      }
+  
+      this.updateItemService.updateItem(p,this.icon).subscribe(handleRequest)
+    }else{
+      this.toastService.showWarn("Existem campos incorretos!")
     }
   }
 

@@ -15,7 +15,10 @@ export class LocalStorageService {
 
   public getItem<T>(key : string) : T {
     const stringItem = localStorage.getItem(key)
-    return JSON.parse(atob(stringItem ?? "" ))
+    if(stringItem){
+      return JSON.parse(atob(stringItem ?? "" ))
+    }
+    return {} as T
   }
 
   public removeItem(key:string){
