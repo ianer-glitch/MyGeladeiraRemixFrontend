@@ -1,0 +1,18 @@
+<ol class="step-bar-container">
+  <li *ngFor="let step of [0,1,2]">
+    <static-image
+      width="150px"
+     
+     *ngIf="step !=stepActive" 
+     name="step-bar-icon.svg"
+    />
+    <static-image
+      width="150px"
+     
+     
+     *ngIf="step==stepActive" 
+     name="step-bar-icon-active.svg"
+    />
+    <hr  [ngClass]="{'hide-hr':hideHr(step,2)}" />
+  </li>
+</ol>

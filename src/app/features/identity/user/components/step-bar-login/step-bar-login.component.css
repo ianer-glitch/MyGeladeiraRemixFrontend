@@ -1,0 +1,29 @@
+.step-bar-container{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.step-bar-container li{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  /* padding: 1rem; */
+}
+
+.step-bar-container li hr{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+static-image{
+  width: 100px;
+}
+
+.hide-hr{
+  visibility: hidden;
+  
+}

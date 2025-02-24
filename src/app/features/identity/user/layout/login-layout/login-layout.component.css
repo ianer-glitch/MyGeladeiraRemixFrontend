@@ -5,3 +5,11 @@
   background: linear-gradient( 137deg, rgb(240, 240, 240) 0%, rgb(137, 137, 137) 80%);
   padding: 5rem ;
 }
+
+.title-container{
+  display:  flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+  flex-direction: column;
+}
