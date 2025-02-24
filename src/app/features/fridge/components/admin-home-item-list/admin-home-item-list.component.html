@@ -5,6 +5,7 @@
       [backgroundColor]="item.color"
       [iconName]="item.name"
       [id]="item.id"
+      (click)="handleClickItem(item)"
     >{{item}}</item>
   </li>
   <button-add-item (click)="handleClickAddItem()"/>

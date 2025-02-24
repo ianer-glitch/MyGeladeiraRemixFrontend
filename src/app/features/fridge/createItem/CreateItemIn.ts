@@ -1,11 +1,11 @@
 export default class CreateItemIn {
-  Color: string;
-  Name: string;
-  MinimumQuantity: number;
-  Quantity: number;
-  Weight: number;
-  Expiration: Date;
-  Icon: File;
+  color: string;
+  name: string;
+  minimumQuantity: number;
+  quantity: number;
+  weight: number;
+  expiration: Date;
+  icon: File;
 
   // Constructor with default values
   constructor(
@@ -17,12 +17,12 @@ export default class CreateItemIn {
     expiration: Date = new Date(),
     icon: File = {} as File
   ) {
-    this.Color = color;
-    this.Name = name;
-    this.MinimumQuantity = minimumQuantity;
-    this.Quantity = quantity;
-    this.Weight = weight;
-    this.Expiration = expiration;
-    this.Icon = icon;
+    this.color = color;
+    this.name = name;
+    this.minimumQuantity = minimumQuantity;
+    this.quantity = quantity;
+    this.weight = weight;
+    this.expiration = expiration;
+    this.icon = icon;
   }
 }

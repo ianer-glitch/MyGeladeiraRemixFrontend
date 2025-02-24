@@ -2,32 +2,33 @@
   <form [formGroup]="itemForm">
     <h1>Adicionar/Editar</h1>
     <img-upload-item
-      formControlName="Icon"
+      formControlName="icon"
       (ngModelChange)="handleIconChange($event)"
+      [fileUrl]="iconLink"
     />
 
     <input-text 
       label="Cor do fundo"
-      formControlName="Color"
+      formControlName="color"
     />
     <input-text 
       label="Nome do item"
-      formControlName="Name"
+      formControlName="name"
     />
     <input-number 
       label="Quantidade mínima"
       [min]="0"
-      formControlName="MinimumQuantity"
+      formControlName="minimumQuantity"
       information="Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade."
     />
     <expiration-time-selector
-      formControlName="Expiration"
+      formControlName="expiration"
     />
   
     <input-number 
       label="Quantidade padrão"
       [min]="0"
-      formControlName="Quantity"
+      formControlName="quantity"
     />
     
   </form>

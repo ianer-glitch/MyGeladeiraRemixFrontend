@@ -71,6 +71,7 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
   }
 
   getFormatedDate(date :Date) {
+    console.info(date)
     let day: number = date.getDate();
     let month: number = date.getMonth() + 1; 
     let year: number = date.getFullYear();
@@ -80,6 +81,12 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
     month = month < 10 ? Number('0' + month) : month;
 
     return `${day}/${month}/${year}`;
-}
+  }
+
+  hadleCustomActive(){
+    return  this.value.getTime() !== this.handleAddDate(5).getTime() && 
+       this.value.getTime() !== this.handleAddDate(10).getTime() && 
+       this.value.getTime() !== this.handleAddDate(15).getTime();
+  }
 
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import GetItemsOut from '../../getItems/GetItemsOut';
 import { GetItemsService } from '../../getItems/get-items.service';
 import { CommonModule } from '@angular/common';
+import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
 
 @Component({
   selector: 'admin-home-item-list',
@@ -16,7 +17,9 @@ export class AdminHomeItemListComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private getItemsService : GetItemsService) {
+    private getItemsService : GetItemsService,
+    private localStorageService: LocalStorageService
+  ) {
   }
   ngOnInit(): void {
     this.getItems()
@@ -28,12 +31,15 @@ export class AdminHomeItemListComponent implements OnInit {
     this.getItemsService.getItems().subscribe((res)=>this.itemsList = res)
   }
 
-  handleClickEditItem(item:GetItemsOut){
-    console.info(item)
+  handleClickItem(item:GetItemsOut){
+    this.localStorageService.setItem('/fridge/item',item)
+    this.router.navigate(['/fridge/item'])
   }
 
   
   handleClickAddItem(){
+    this.localStorageService.removeItem('/fridge/item')
     this.router.navigate(['/fridge/item'])
   }
+  
 }

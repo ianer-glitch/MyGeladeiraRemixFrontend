@@ -11,6 +11,9 @@ import { CreateItemService } from '../../createItem/create-item.service';
 import { Location } from '@angular/common';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import { Observer } from 'rxjs';
+import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
+import GetItemsOut from '../../getItems/GetItemsOut';
+import {urlToFile} from '../../../../shared/tools'
 
 
 @Component({
@@ -28,11 +31,13 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   
   icon:File = {} as any
   isLoading:boolean = false
-   
+  isEditing:boolean = false
    
   constructor(private location: Location,
     private createItemService:CreateItemService, 
-    private toastService:ToastService) {
+    private toastService:ToastService,
+    private localStorageService:LocalStorageService
+  ) {
     
     
   }
@@ -43,16 +48,44 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   
   ngOnInit(): void {
     this.createFormGroup(this.payload)
+    this.handleFormEditing()
+   
+
   }
+  iconLink:string=""
+  handleFormEditing(){
+    const editingItem = this.localStorageService.getItem<GetItemsOut>('/fridge/item')
+    
+    
+    if(editingItem){
+      this.iconLink = editingItem.icon
+      this.isEditing = true
+      const formModel = new CreateItemIn()
+      formModel.color = editingItem.color
+      formModel.expiration  = new Date(editingItem.expiration)
+      formModel.minimumQuantity = editingItem.minimumQuantity
+      formModel.name = editingItem.name
+      formModel.quantity=editingItem.quantity
+      formModel.weight = 1
+      this.createFormGroup(formModel)
+      
+      // urlToFile(editingItem.icon,'icon').then((file)=>{
+      //   formModel.icon = file
+      // })
+      
+    }
+  }
+
+  
 
   createFormGroup(p:CreateItemIn){
     this.itemForm = this.formBuilder.group({
-      Icon:[p.Icon,Validators.required],
-      Color:[p.Color,Validators.required],
-      Expiration:[p.Expiration,Validators.required],
-      Name:[p.Name,Validators.required],
-      MinimumQuantity:[p.MinimumQuantity,Validators.min(1)],
-      Quantity:[p.Quantity,Validators.min(1)],
+      icon:[p.icon,Validators.required],
+      color:[p.color,Validators.required],
+      expiration:[p.expiration,Validators.required],
+      name:[p.name,Validators.required],
+      minimumQuantity:[p.minimumQuantity,Validators.min(1)],
+      quantity:[p.quantity,Validators.min(1)],
     })
   }
   handleIconChange(e:File){
@@ -62,17 +95,28 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     this.location.back()
   }
 
+
+
   handleSubmit(){
+    if(this.isEditing){
+      
+    }else{
+      this.createItem()
+
+    }
+  }
+
+  createItem(){
     if(this.itemForm.valid && this.icon){
       this.isLoading =true
       const p =  new CreateItemIn(
-        this.itemForm.get('Color')?.value,
-        this.itemForm.get('Name')?.value,
-        this.itemForm.get('MinimumQuantity')?.value,
-        this.itemForm.get('Quantity')?.value,
-        this.itemForm.get('Weight')?.value,
-        this.itemForm.get('Expiration')?.value,
-        this.itemForm.get('Icon')?.value,
+        this.itemForm.get('color')?.value,
+        this.itemForm.get('name')?.value,
+        this.itemForm.get('minimumQuantity')?.value,
+        this.itemForm.get('quantity')?.value,
+        this.itemForm.get('weight')?.value,
+        this.itemForm.get('expiration')?.value,
+        this.itemForm.get('icon')?.value,
       )
 
       const handleRequest:Observer<any> = {

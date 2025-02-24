@@ -20,7 +20,7 @@
   </li>
   <li
   (click)="showDatePicker = !showDatePicker"
-  [ngClass]="{'active': value.getTime() > handleAddDate(15).getTime()}">
+  [ngClass]="{'active': hadleCustomActive()}">
 
     <chip>
       <prime-icon name="pi pi-calendar" size="1.2rem"></prime-icon>
