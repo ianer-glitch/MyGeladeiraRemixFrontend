@@ -10,7 +10,7 @@ export class ToastService{
     
   }
 
-  defaultMessage:ToastMessageOptions = { 
+  private defaultMessage:ToastMessageOptions = { 
     severity: 'info', 
     summary: 'Info', 
     detail: 'message', 

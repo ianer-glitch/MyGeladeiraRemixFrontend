@@ -19,6 +19,8 @@ import { ConfirmationButtonsComponent } from "../../molecules/confirmation-butto
 export class ConfirmationPopupComponent implements ControlValueAccessor {
   @Input() confirmLabel:string = ""
   @Input() denyLabel:string = ""
+  @Input() isConfirmLoading:boolean = false
+  @Input() isDenyLoading:boolean = false
   @Output() confirmClick = new EventEmitter<MouseEvent>()
   @Output() denyClick = new EventEmitter<MouseEvent>()
   

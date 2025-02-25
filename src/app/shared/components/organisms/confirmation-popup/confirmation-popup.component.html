@@ -10,9 +10,11 @@
         <confirmation-buttons
             [confirmLabel]="confirmLabel"
             (confirmClick)="confirmClick.emit($event)"
+            [isConfirmLoading]="isConfirmLoading"
             
             [denyLabel]="denyLabel"
             (denyClick)="denyClick.emit($event)"
+            [isDenyLoading]="isDenyLoading"
         />
         
     </form>

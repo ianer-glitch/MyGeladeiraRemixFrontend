@@ -6,6 +6,11 @@ import { ConfirmationPopupComponent } from "../../../../shared/components/organi
 import { GetItemsService } from '../../getItems/get-items.service';
 import GetItemsOut from '../../getItems/GetItemsOut';
 import { ChipComponent } from "../../../../shared/components/atoms/chip/chip.component";
+import { AddItemsToFridgeService } from '../../addItemsToFridge/add-items-to-fridge.service';
+import AddItemsToFridgeIn from '../../addItemsToFridge/AddItemsToFridgeIn';
+import AddItemsToFridgeOut from '../../addItemsToFridge/AddItemsToFridgeOut';
+import { Observable, Observer } from 'rxjs';
+import { ToastService } from '../../../../core/services/toast/toast.service';
 
 @Component({
   selector: 'popup-add-fridge-item',
@@ -25,16 +30,16 @@ import { ChipComponent } from "../../../../shared/components/atoms/chip/chip.com
 })
 export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit {
   
-  /**
-   *
-   */
-  constructor(private getItemsService:GetItemsService) {
+  constructor(
+      private addItemsToFridgeService:AddItemsToFridgeService,
+      private toastService:ToastService,
+      private getItemsService:GetItemsService) {
     
   }
   ngOnInit(): void {
     this.getItems()
   }
-  
+  isLoading:boolean = false
   visible:boolean = false
   onChange : (param:any)=>void = ()=>{}
   onTouch : ()=>void = ()=>{}
@@ -65,6 +70,34 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
 
   handleItemRemove(item:GetItemsOut){
     this.selectedItems =this.selectedItems.filter(f=>f.id != item.id)
+  }
+
+
+  addItemsToFridge(){
+    this.isLoading=true
+    if(this.selectedItems.length > 0){
+      const payload = new AddItemsToFridgeIn(this.selectedItems.map(m=>m.id))
+      
+      const options : Observer<AddItemsToFridgeOut> = {
+        next:(res)=>{
+          if(res.success)
+            this.toastService.showSucces("Items adicionados com sucesso!")
+        },
+        error:()=>{
+          this.toastService.showError("Ocorreu um erro ao adicionar os items")
+          this.isLoading=false
+        },
+        complete:()=> {
+          this.isLoading=false
+          this.close.emit(true)
+        }
+      }
+  
+      this.addItemsToFridgeService.addItemsToFridge(payload).subscribe(options)
+
+    }else{
+      this.toastService.showWarn("É necessário selecionar pelo menos um item para adicionar!")
+    }
   }
   
 }

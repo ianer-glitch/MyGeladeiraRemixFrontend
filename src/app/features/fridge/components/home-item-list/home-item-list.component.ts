@@ -11,12 +11,10 @@ import { FormsModule } from '@angular/forms';
   selector: 'home-item-list',
   imports: [ButtonAddItemComponent,FormsModule,
      ItemComponent,
-     SpeedDialComponent,
-     FridgeSpeedDialComponent,
      PopupAddFridgeItemComponent,CommonModule],
   templateUrl: './home-item-list.component.html',
   styleUrl: './home-item-list.component.css'
 })
 export class HomeItemListComponent {
-  showPopup:boolean =true
+  showPopup:boolean =false
 }

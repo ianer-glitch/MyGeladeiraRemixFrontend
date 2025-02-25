@@ -2,8 +2,10 @@
   [ngModel]="visible"
   (ngModelChange)="handleChange($event)"
   confirmLabel="Salvar"
+  (confirmClick)="addItemsToFridge()"
   denyLabel="Cancelar"
   (denyClick)="close.emit(true)"
+  [isConfirmLoading]="isLoading"
 >
   <section class="form-container">
     <input-select 
