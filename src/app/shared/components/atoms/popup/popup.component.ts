@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, forwardRef, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'popup',
-  imports: [DialogModule],
+  imports: [DialogModule,CommonModule],
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.css',
   encapsulation:ViewEncapsulation.None,

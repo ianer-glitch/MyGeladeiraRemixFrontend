@@ -4,7 +4,12 @@
   </li>
     
   <li>
-    <button-add-item/>
+    <button-add-item (click)="showPopup = true"/>
   </li> 
 </ul>
-<fridge-speed-dial/>
+
+<popup-add-fridge-item 
+  [(ngModel)]="showPopup"
+  (close)="showPopup = false"
+  />
+<!-- <fridge-speed-dial/> -->

@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { SelectChangeEvent, SelectModule } from 'primeng/select';
 import { IconInfoComponent } from '../../molecules/icon-info/icon-info.component';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [SelectModule,IconInfoComponent,FormsModule,CommonModule],
   templateUrl: './input-select.component.html',
   styleUrl: './input-select.component.css',
+  encapsulation:ViewEncapsulation.None,
   providers:[
     {
       provide:NG_VALUE_ACCESSOR,
@@ -30,6 +31,7 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   @Input() filterBy:string = ""
   @Input() options:any[] = []
   @Input() filter:boolean = false
+  @Input() labelColor:string = "gray"
   
   onChange : (param:any)=>void = ()=>{}
   onTouch : ()=>void = ()=>{}

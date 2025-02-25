@@ -1,0 +1,21 @@
+<confirmation-popup title="Busque os Itens"
+  [ngModel]="visible"
+  (ngModelChange)="handleChange($event)"
+  confirmLabel="Salvar"
+  denyLabel="Cancelar"
+  (denyClick)="close.emit(true)"
+  
+>
+  <section class="form-container">
+    <input-select 
+     label="Guarde na sua geladeira!"
+     information="Os itens selecionados aqui serão adicionados a sua geladeira"
+     [fluid]="true"
+     [options]="items"
+     optionValue="id"
+     optionLabel="name"
+     labelColor="var(--background-color)"
+    />
+
+  </section>
+</confirmation-popup>
