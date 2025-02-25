@@ -4,7 +4,6 @@
   confirmLabel="Salvar"
   denyLabel="Cancelar"
   (denyClick)="close.emit(true)"
-  
 >
   <section class="form-container">
     <input-select 
@@ -12,10 +11,20 @@
      information="Os itens selecionados aqui serão adicionados a sua geladeira"
      [fluid]="true"
      [options]="items"
-     optionValue="id"
      optionLabel="name"
      labelColor="var(--background-color)"
+     (change)="selectedItems.push($event)"
     />
+
+    <ul class="item-list">
+      <li *ngFor="let item of selectedItems">
+        <chip 
+          [label]="item.name" 
+          [removable]="true"
+          (onRemove)="handleItemRemove(item)"  
+        />
+      </li>
+    </ul>
 
   </section>
 </confirmation-popup>

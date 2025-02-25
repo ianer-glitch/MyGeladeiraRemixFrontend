@@ -5,13 +5,14 @@ import { InputSelectComponent } from "../../../../shared/components/organisms/in
 import { ConfirmationPopupComponent } from "../../../../shared/components/organisms/confirmation-popup/confirmation-popup.component";
 import { GetItemsService } from '../../getItems/get-items.service';
 import GetItemsOut from '../../getItems/GetItemsOut';
+import { ChipComponent } from "../../../../shared/components/atoms/chip/chip.component";
 
 @Component({
   selector: 'popup-add-fridge-item',
-  imports: [ FormsModule,
-     CommonModule,
-     InputSelectComponent,
-     ConfirmationPopupComponent],
+  imports: [FormsModule,
+    CommonModule,
+    InputSelectComponent,
+    ConfirmationPopupComponent, ChipComponent],
   templateUrl: './popup-add-fridge-item.component.html',
   styleUrl: './popup-add-fridge-item.component.css',
    providers:[
@@ -57,8 +58,13 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
   }
 
   items: GetItemsOut[] = []
+  selectedItems: GetItemsOut[] = []
   getItems(){
-    this.getItemsService.getItems().subscribe((res)=> this.items)
+    this.getItemsService.getItems().subscribe((res)=> this.items = res)
+  }
+
+  handleItemRemove(item:GetItemsOut){
+    this.selectedItems =this.selectedItems.filter(f=>f.id != item.id)
   }
   
 }

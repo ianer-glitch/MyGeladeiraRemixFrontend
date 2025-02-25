@@ -1,3 +1,27 @@
 .form-container{
   height: 400px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+input-select{
+  width: 100%;
+}
+
+.item-list{
+  width: 100%;
+  list-style-type: none;
+}
+
+.item-list li{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
 }

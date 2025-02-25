@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output, output, ViewEncapsulation } from '@angular/core';
 import { SelectChangeEvent, SelectModule } from 'primeng/select';
 import { IconInfoComponent } from '../../molecules/icon-info/icon-info.component';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -32,6 +32,7 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   @Input() options:any[] = []
   @Input() filter:boolean = false
   @Input() labelColor:string = "gray"
+  @Output() change =  new EventEmitter<TKey>()
   
   onChange : (param:any)=>void = ()=>{}
   onTouch : ()=>void = ()=>{}
@@ -52,6 +53,7 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   handleChange(event :SelectChangeEvent){
     this.value=event.value
     this.onChange(event.value)
+    this.change.emit(event.value)
   }
   
   

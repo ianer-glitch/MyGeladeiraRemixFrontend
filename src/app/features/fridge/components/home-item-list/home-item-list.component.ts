@@ -18,5 +18,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home-item-list.component.css'
 })
 export class HomeItemListComponent {
-  showPopup:boolean =false
+  showPopup:boolean =true
 }
