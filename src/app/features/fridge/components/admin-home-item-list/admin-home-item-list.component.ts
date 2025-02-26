@@ -32,14 +32,14 @@ export class AdminHomeItemListComponent implements OnInit {
   }
 
   handleClickItem(item:GetItemsOut){
-    this.localStorageService.setItem('/fridge/item',item)
-    this.router.navigate(['/fridge/item'])
+    this.localStorageService.setItem('/fridge/item-create-edit',item)
+    this.router.navigate(['/fridge/item-create-edit'])
   }
 
   
   handleClickAddItem(){
-    this.localStorageService.removeItem('/fridge/item')
-    this.router.navigate(['/fridge/item'])
+    this.localStorageService.removeItem('/fridge/item-create-edit')
+    this.router.navigate(['/fridge/item-create-edit'])
   }
   
 }

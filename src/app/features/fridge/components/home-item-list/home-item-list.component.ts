@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GetFridgeItemsService } from '../../getFridgeItems/get-fridge-items.service';
 import GetFridgeItemsOut from '../../getFridgeItems/GetFridgeItemsOut';
+import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home-item-list',
@@ -20,7 +22,12 @@ import GetFridgeItemsOut from '../../getFridgeItems/GetFridgeItemsOut';
 export class HomeItemListComponent implements OnInit{
   showPopup:boolean =false
   
-  constructor(private getFridgeItemsService : GetFridgeItemsService) {
+  
+  constructor(
+    private getFridgeItemsService : GetFridgeItemsService,
+    private localStorageService : LocalStorageService,
+    private router:Router,
+  ) {
 
     
   }
@@ -39,4 +46,9 @@ export class HomeItemListComponent implements OnInit{
     this.showPopup = false
     this.getFridgeItems()
   }
+
+   handleClickItem(item:GetFridgeItemsOut){
+      this.localStorageService.setItem('/fridge/item-edit',item)
+      this.router.navigate(['/fridge/item-edit'])
+    }
 }
