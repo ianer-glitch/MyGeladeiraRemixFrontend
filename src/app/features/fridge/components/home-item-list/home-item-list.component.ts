@@ -35,8 +35,8 @@ export class HomeItemListComponent implements OnInit{
     this.getFridgeItemsService.getFridgeItems().subscribe(res=> this.fridgeItemsList = res)
   }
 
-  handleClose(close:boolean){
-    this.showPopup = close
+  handleClose(){
+    this.showPopup = false
     this.getFridgeItems()
   }
 }

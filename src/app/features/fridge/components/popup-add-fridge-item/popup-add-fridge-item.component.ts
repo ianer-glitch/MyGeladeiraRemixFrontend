@@ -74,14 +74,16 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
 
 
   addItemsToFridge(){
-    this.isLoading=true
     if(this.selectedItems.length > 0){
+      this.isLoading=true
       const payload = new AddItemsToFridgeIn(this.selectedItems.map(m=>m.id))
       
       const options : Observer<AddItemsToFridgeOut> = {
-        next:(res)=>{
-          if(res.success)
+        next:()=>{
             this.toastService.showSucces("Items adicionados com sucesso!")
+            this.isLoading=false
+            this.close.emit(true)
+            
         },
         error:()=>{
           this.toastService.showError("Ocorreu um erro ao adicionar os items")
