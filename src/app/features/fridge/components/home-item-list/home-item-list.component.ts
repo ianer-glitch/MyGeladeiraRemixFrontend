@@ -48,6 +48,7 @@ export class HomeItemListComponent implements OnInit{
   }
 
    handleClickItem(item:GetFridgeItemsOut){
+    console.info(item)
       this.localStorageService.setItem('/fridge/item-edit',item)
       this.router.navigate(['/fridge/item-edit'])
     }

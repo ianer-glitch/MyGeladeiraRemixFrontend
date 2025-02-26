@@ -1,1 +1,35 @@
-<p>edit-item-form works!</p>
+<div class="form-container" [ngStyle]="{'background-color':backgroundColor}">
+  <!-- <form [formGroup]="itemForm"> -->
+    <form>
+    <h1>Adicionar/Editar</h1>
+    <img-upload-item
+      [fileUrl]="iconLink"
+    />
+
+    
+    <input-number 
+      label="Quantidade mínima"
+      [min]="0"
+      information="Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade."
+      />
+      <!-- formControlName="minimumQuantity" -->
+    <expiration-time-selector
+    />
+    
+    <!-- formControlName="expiration" -->
+    <input-number 
+      label="Quantidade padrão"
+      [min]="0"
+      />
+      
+      <!-- formControlName="quantity" -->
+  </form>
+  <confirmation-buttons
+    confirmLabel="Salvar"
+    denyLabel="Cancelar"
+    />
+    <!-- [isConfirmLoading]="isLoading" -->
+    <!-- (confirmClick)="handleSubmit()"
+    (denyClick)="handleCancel()" -->
+</div>
+

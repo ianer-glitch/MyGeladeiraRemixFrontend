@@ -58,7 +58,7 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   iconLink:string=""
   editingItemId:string = '"'
   handleFormEditing(){
-    const editingItem = this.localStorageService.getItem<GetItemsOut>('/fridge/item')
+    const editingItem = this.localStorageService.getItem<GetItemsOut>('/fridge/item-create-edit')
     
     if(Object.keys(editingItem).length > 0){
       this.editingItemId = editingItem.id
