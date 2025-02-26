@@ -37,5 +37,6 @@ export class HomeItemListComponent implements OnInit{
 
   handleClose(close:boolean){
     this.showPopup = close
+    this.getFridgeItems()
   }
 }
