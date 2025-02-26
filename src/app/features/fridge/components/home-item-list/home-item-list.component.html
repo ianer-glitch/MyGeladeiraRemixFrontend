@@ -1,6 +1,12 @@
 <ul>
-  <li>
-    <item/>
+  <li  *ngFor="let item of fridgeItemsList">
+    <item
+      [iconLink]="item.iconLink"
+      [backgroundColor]="item.color"
+      [expirationPercentage]="item.percentageExpired"
+      [id]="item.itemId"
+      [quantity]="item.quantity"
+    />
   </li>
     
   <li>
@@ -10,6 +16,6 @@
 
 <popup-add-fridge-item 
   [(ngModel)]="showPopup"
-  (close)="showPopup = false"
+  (close)="handleClose($event)"
   />
 <!-- <fridge-speed-dial/> -->
