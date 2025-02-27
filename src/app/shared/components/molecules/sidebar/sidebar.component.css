@@ -1,20 +1,48 @@
 .p-drawer {
   background-color: var(--primary-color-lighter) !important;
   border-radius: 0  16px  16px 0;
-  padding: 1rem;
-}
-
-.p-drawer nav{
-  border-radius: 4px;
-  padding: .4rem;
-  border-bottom: 4px solid var(--background-color);
   
 }
 
+.p-drawer nav{
+  border-radius: 8px;
+  padding: .4rem;
+  border-bottom: 4px solid var(--background-color);
+  cursor: pointer;  
+  width: 100%;
+}
+
+.p-drawer ul {
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+
 .active{
-box-shadow: 5px 5px 5px 1px var(--background-color);
+  box-shadow: 5px 5px 5px 1px var(--background-color);
 }
 
 .p-drawer-title {
   color:var(--background-color)
+}
+
+.p-button-text.p-button-secondary {
+  color: var(--background-color) !important;  
+}
+
+.sidebar-footer{
+  display: flex;
+  
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  color:var(--background-color);
+  width: 100%;
+  cursor: pointer;
+  
+  
 }

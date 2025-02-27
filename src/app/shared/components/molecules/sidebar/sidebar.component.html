@@ -2,8 +2,31 @@
 
 <p-drawer  [(visible)]="visible" header="Para Onde?">
   <ul>
-    <nav class="active">
+    <nav 
+      [ngClass]="{'active':isActive('/fridge/home')}"
+      (click)="handleRedirect('/fridge/home')">
       <li><h2>Home</h2></li>
     </nav>
+    <nav 
+      [ngClass]="{'active':isActive('')}"
+      (click)="handleRedirect('/fridge/')">
+      <li><h2>Lista de Compras</h2></li>
+    </nav>
+    <nav 
+      [ngClass]="{'active':isActive('')}"
+      (click)="handleRedirect('/fridge/')">
+      <li><h2>Estatísticas</h2></li>
+    </nav>
+    <nav 
+      [ngClass]="{'active':isActive('')}"
+      (click)="handleRedirect('/fridge/')">
+      <li><h2>Receitas</h2></li>
+    </nav>
   </ul>
+  <ng-template #footer>
+    <div class="sidebar-footer" (click)="handleExit()">
+      <prime-icon name="pi pi-sign-out"/>
+      <h3>Sair</h3>
+    </div>
+  </ng-template>
 </p-drawer>
