@@ -37,10 +37,10 @@ export class InputTextComponent implements ControlValueAccessor {
     
   }
   
-  @Input() id:string = ""
-  @Input() label:string = ""
   @Input() fluid:boolean = false
+  @Input() label:string = ""
   @Input() placeholder:string = ""
+  @Input() id:string = ""
   @Input() information:string = ""
   @Input() informationPosition:string="right"
   

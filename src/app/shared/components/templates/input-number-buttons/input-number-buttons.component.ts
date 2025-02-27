@@ -4,10 +4,11 @@ import { InputNumberComponent } from "../../organisms/input-number/input-number.
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../atoms/button/button.component";
 import { PrimeIconComponent } from "../../atoms/prime-icon/prime-icon.component";
+import { IconInfoComponent } from "../../molecules/icon-info/icon-info.component";
 
 @Component({
   selector: 'app-input-number-buttons',
-  imports: [InputNumberComponent, FormsModule, CommonModule, ButtonComponent, PrimeIconComponent],
+  imports: [InputNumberComponent, FormsModule, CommonModule, ButtonComponent, PrimeIconComponent, IconInfoComponent],
   templateUrl: './input-number-buttons.component.html',
   styleUrl: './input-number-buttons.component.css',
   encapsulation:ViewEncapsulation.None,
@@ -22,6 +23,7 @@ import { PrimeIconComponent } from "../../atoms/prime-icon/prime-icon.component"
 export class InputNumberButtonsComponent implements ControlValueAccessor {
   @Input() id:string = ""
   @Input() label:string = ""
+  @Input() labelColor:string = "var(--background-color)"
   @Input() fluid:boolean = false
   @Input() placeholder:string = ""
   @Input() information:string = ""

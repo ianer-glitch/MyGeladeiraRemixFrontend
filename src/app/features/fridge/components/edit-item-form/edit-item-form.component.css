@@ -3,6 +3,7 @@
   border-radius: 1rem;
   padding: 2rem 1rem;
   overflow-y: scroll;
+  filter: grayscale(.4);
 
 }
 
@@ -22,6 +23,10 @@ input-text,input-number,confirmation-buttons{
 }
 
 expiration-time-selector{
+  width: 100%;
+}
+
+app-input-number-buttons{
   width: 100%;
 }
 

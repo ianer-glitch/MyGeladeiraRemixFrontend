@@ -1,29 +1,45 @@
+.input-number-outer-container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  flex-direction: column;
+}
+
 .input-container{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  
+  width: 100%;
   border:2px solid var(--background-color);
   border-radius: 32px;
   
 }
 
-.p-inputnumber{
+.input-container .p-inputnumber{
   padding: 0 !important;
   border: none;
   
+  
+  
 }
-.p-inputtext,.p-inputtext:focus{
+.input-container .p-inputtext,.input-container .p-inputtext:focus{
+  color:var(--background-color);
   background: transparent ;
   border: none !important;
   text-align: center;
+  
 
 }
 
+input-number{
+  width: 100%;
+}
 
 
 .custom-button{
-  width: 2rem;
+  width: 4rem;
   background-color: var(--background-color) ;
   padding: .2rem;
   height: 2.4rem;

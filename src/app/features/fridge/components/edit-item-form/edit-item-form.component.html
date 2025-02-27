@@ -1,7 +1,7 @@
 <div class="form-container" [ngStyle]="{'background-color':backgroundColor}">
   <!-- <form [formGroup]="itemForm"> -->
     <form>
-    <h1>Adicionar/Editar</h1>
+    <h1>{{itemName}}</h1>
     <img-upload-item
       [fileUrl]="iconLink"
     />
@@ -15,18 +15,18 @@
       <!-- formControlName="minimumQuantity" -->
     <expiration-time-selector
     />
+
+    <app-input-number-buttons
+      label="Qual a quantidade?"
+    />
     
     <!-- formControlName="expiration" -->
-    <input-number 
-      label="Quantidade padrão"
-      [min]="0"
-      />
-      
-      <!-- formControlName="quantity" -->
+    
   </form>
   <confirmation-buttons
     confirmLabel="Salvar"
     denyLabel="Cancelar"
+    (denyClick)="handleDenyClick()"
     />
     <!-- [isConfirmLoading]="isLoading" -->
     <!-- (confirmClick)="handleSubmit()"
