@@ -1,6 +1,6 @@
 
 
-<p-drawer  [(visible)]="visible" header="Para Onde?">
+<p-drawer  [(visible)]="visible" header="Para Onde?" (visibleChange)="handleChange($event)">
   <ul>
     <nav 
       [ngClass]="{'active':isActive('/fridge/home')}"

@@ -1,8 +1,8 @@
 <footer>
     <!-- <ads-container/> -->
     <div class="title-nav">
-        <prime-icon name="pi pi-bars"/>
+        <prime-icon name="pi pi-bars" (click)="visible = true"/>
         <h3 class="title">MyGeladeira</h3>
     </div>
-    <sidebar/>
+    <sidebar [(ngModel)]="visible" (ngModelChange)="visible = $event"/>
 </footer>
