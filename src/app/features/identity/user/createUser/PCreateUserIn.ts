@@ -1,0 +1,22 @@
+
+export default class PCreateUserIn {
+  firstName: string;
+  lastName: string;
+  birthDate: Date;
+  email: string;
+  password: string;
+
+  constructor(
+    firstName: string,
+    lastName: string,
+    birthDate: Date,
+    email: string,
+    password: string
+  ) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.birthDate = birthDate;
+    this.email = email;
+    this.password = password;
+  }
+}

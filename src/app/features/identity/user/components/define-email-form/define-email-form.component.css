@@ -5,6 +5,15 @@ form{
   gap: 1rem;
   flex-direction: column;
 }
-input-text{
+input-text,input-number{
   width: 100%;
 }
+
+.date-picker-container{
+  width: 100%;
+}
+
+.date-picker-container p-datepicker{
+  width: 100%;
+}
+

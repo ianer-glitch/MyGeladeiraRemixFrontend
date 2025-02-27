@@ -1,14 +1,27 @@
-<form>
+<form [formGroup]="userForm">
   <input-text
     label="Nome"
+    formControlName="firstName"
+  />
+  <input-text
+    label="Sobrenome"
+    formControlName="lastName"
   />
   <input-text
     label="Email"
+    formControlName="email"
   />
+  <div class="date-picker-container">
+    <label for="">Data de nascimento</label>
+    <p-datepicker 
+      [fluid]="true" 
+      dateFormat="dd/mm/yy" 
+      formControlName="birthDate"/>
+  </div>
   <confirmation-buttons
-  confirmLabel="avançar"
-  denyLabel="voltar"  
-  (confirmClick)="handleConfirmClick()"
-  (denyClick)="handleDenyClick()"
+    confirmLabel="avançar"
+    denyLabel="voltar"  
+    (confirmClick)="handleConfirmClick()"
+    (denyClick)="handleDenyClick()"
   />
 </form>
