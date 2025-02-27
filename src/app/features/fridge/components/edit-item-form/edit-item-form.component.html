@@ -1,6 +1,5 @@
-<div class="form-container" [ngStyle]="{'background-color':backgroundColor}">
-  <!-- <form [formGroup]="itemForm"> -->
-    <form>
+<div  class="form-container" [ngStyle]="{'background-color':backgroundColor}">
+    <form [formGroup]="itemForm">
     <h1>{{itemName}}</h1>
     <img-upload-item
       [fileUrl]="iconLink"
@@ -11,25 +10,26 @@
       label="Quantidade mínima"
       [min]="0"
       information="Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade."
+      formControlName="minimunQuantity"
       />
-      <!-- formControlName="minimumQuantity" -->
-    <expiration-time-selector
-    />
+      <expiration-time-selector
+      formControlName="expiration"
+      />
 
     <app-input-number-buttons
       label="Qual a quantidade?"
+      formControlName="quantity"
     />
     
-    <!-- formControlName="expiration" -->
     
   </form>
   <confirmation-buttons
     confirmLabel="Salvar"
     denyLabel="Cancelar"
     (denyClick)="handleDenyClick()"
+    (confirmClick)="handleConfirClick()"
+     [isConfirmLoading]="isLoading"
     />
-    <!-- [isConfirmLoading]="isLoading" -->
-    <!-- (confirmClick)="handleSubmit()"
-    (denyClick)="handleCancel()" -->
+    
 </div>
 

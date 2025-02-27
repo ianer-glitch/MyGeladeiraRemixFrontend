@@ -6,6 +6,7 @@ export default class GetFridgeItemsOut {
   itemId: string;
   minimumQuantity : number;
   name : string;
+  expiration:Date
 
   constructor(
       iconLink: string,
@@ -14,7 +15,8 @@ export default class GetFridgeItemsOut {
       quantity: number,
       itemId: string,
       minimumQuantity : number,
-      name:string
+      name:string,
+      expiration:Date
   ) {
       this.iconLink = iconLink;
       this.color = color;
@@ -22,7 +24,8 @@ export default class GetFridgeItemsOut {
       this.quantity = quantity;
       this.itemId = itemId;
       this.minimumQuantity = minimumQuantity
-      this.name = name
+      this.name = name,
+      this.expiration = expiration
 
   }
 }
