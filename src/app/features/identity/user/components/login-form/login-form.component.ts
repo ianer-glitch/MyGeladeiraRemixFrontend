@@ -7,6 +7,8 @@ import { ReactiveFormsModule,FormBuilder, FormGroup,FormControl, Validators } fr
 import { InputPasswordComponent } from "../../../../../shared/components/organisms/input-password/input-password.component";
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 import { Router } from '@angular/router';
+import LoginOut from '../../login/LoginOut';
+import { Observable, Observer } from 'rxjs';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class LoginFormComponent implements OnInit  {
  
   
   }
-
+  isLoading:boolean = false 
   loginForm : FormGroup = new FormGroup({})
   payload : PIsUserPasswordValidIn = new PIsUserPasswordValidIn()
   
@@ -51,14 +53,27 @@ export class LoginFormComponent implements OnInit  {
 
   login(){
     if(this.loginForm.valid){
+      this.isLoading= true
       const request = new PIsUserPasswordValidIn()
       request.Email= this.loginForm.get("Email")?.value
       request.Password = this.loginForm.get("Password")?.value
       
-      this.loginService.Login(request).subscribe((res)=>{
-        localStorage.setItem('token',res.token)
-        this.router.navigate(['/fridge/home']) 
-      })
+      const observer : Observer<LoginOut> = {
+        
+        next:(res)=>{
+          localStorage.setItem('token',res.token)
+          this.isLoading = false
+          this.router.navigate(['/fridge/home']) 
+        },
+        error:()=>{
+          this.toastService.showError("Não foi possível efetuar o login")
+          this.isLoading = false
+        },
+        complete:()=>this.isLoading = false
+      }
+      
+      this.loginService.Login(request).subscribe(observer)
+
 
     }else{
       this.toastService.showWarn('Existem dados incorretos')

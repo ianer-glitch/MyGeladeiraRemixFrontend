@@ -28,7 +28,7 @@ export class ToastService{
   }
 
   public showError(message:string,life?:number){
-    this.defaultMessage.summary='Algo deu Errado'
+    this.defaultMessage.summary='Algo deu errado'
     this.defaultMessage.severity='error'
     this.defaultMessage.detail=message
     if(life)
