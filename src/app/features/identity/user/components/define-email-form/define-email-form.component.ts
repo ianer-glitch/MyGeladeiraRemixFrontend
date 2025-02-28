@@ -65,6 +65,7 @@ export class DefineEmailFormComponent implements OnInit {
     )
 
     this.localStorageService.setItem('createUser',payload)
+    this.router.navigate(['/auth/create-password'])
     
   }else{
     this.toastService.showWarn("Existem campos no formulário que necessitam de atenção")
