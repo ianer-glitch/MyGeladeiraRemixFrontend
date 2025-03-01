@@ -1,5 +1,8 @@
 <ul >
-  <generic-list-item></generic-list-item>
-  <generic-list-item></generic-list-item>
-  <generic-list-item></generic-list-item>
+  <generic-list-item
+    *ngFor="let item of listItems"
+    [backgroundColor]="item.itemColor"
+    [text]="item.itemName"
+    [imageSrc]="item.iconLink"
+  />
 </ul>

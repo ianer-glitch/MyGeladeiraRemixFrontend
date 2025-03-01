@@ -83,6 +83,8 @@ export class EditItemFormComponent implements OnInit {
       this.itemForm.get('quantity')?.value,
       this.itemForm.get('itemId')?.value,
     )
+
+    console.info(payload)
     const options : Observer<UpdateFridgeItemOut> = {
       next:()=>{
         this.toastService.showSucces("Alterações efetuadas com sucesso!")
