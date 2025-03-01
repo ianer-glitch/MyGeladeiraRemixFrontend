@@ -108,6 +108,9 @@
 .page-container{
   padding: 1rem;
 }
+.page-title{
+  color:var(--text-color-darker)
+}
 
 .page-card{
  height: calc(100% - 4rem);

@@ -55,7 +55,6 @@ export class CreatePasswordFormComponent implements OnInit{
   }
 
   handleConfirm(){
-    console.info('a')
     if(this.userForm.valid){
       this.isLoading = true
       const password = this.userForm.get('password')?.value

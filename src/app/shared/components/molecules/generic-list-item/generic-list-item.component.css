@@ -1,0 +1,21 @@
+.generic-list-item-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  
+  border-radius: 12px;
+}
+
+.generic-list-item-container p{
+  font-size: 1.6rem;
+}
+
+.generic-list-item-container img{
+  margin: .8rem;
+  border-radius: 12px;
+  border: 4px solid var(--background-color);
+}
