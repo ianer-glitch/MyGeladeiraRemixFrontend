@@ -1,0 +1,15 @@
+ul{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  
+}
+
+ul generic-list-item{
+  width: 100%;
+}

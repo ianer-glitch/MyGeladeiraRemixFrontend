@@ -109,7 +109,8 @@
   padding: 1rem;
 }
 .page-title{
-  color:var(--text-color-darker)
+  color:var(--text-color-darker);
+  padding-bottom: 1rem;
 }
 
 .page-card{
