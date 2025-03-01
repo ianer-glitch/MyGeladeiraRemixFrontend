@@ -1,15 +1,16 @@
 
+
 export default class PCreateUserIn {
   firstName: string;
   lastName: string;
-  birthDate: Date;
+  birthDate: string;
   email: string;
   password: string;
 
   constructor(
     firstName: string,
     lastName: string,
-    birthDate: Date,
+    birthDate: string,
     email: string,
     password: string
   ) {

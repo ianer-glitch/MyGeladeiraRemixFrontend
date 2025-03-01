@@ -34,7 +34,7 @@ export class DefineEmailFormComponent implements OnInit {
  }
   ngOnInit(): void {
     const initial = new PCreateUserIn(
-      "","",new Date(),"",""
+      "","","","",""
     )
     
     this.createForm(initial)
@@ -59,8 +59,8 @@ export class DefineEmailFormComponent implements OnInit {
     const payload = new PCreateUserIn(
       this.userForm.get('firstName')?.value,
       this.userForm.get('lastName')?.value,
-      this.userForm.get('email')?.value,
       this.userForm.get('birthDate')?.value,
+      this.userForm.get('email')?.value,
       ""
     )
 

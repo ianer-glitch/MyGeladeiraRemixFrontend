@@ -30,7 +30,7 @@ export class CreatePasswordFormComponent implements OnInit{
     
   }
   initial = new PCreateUserIn(
-        "","",new Date(),"",""
+        "","","","",""
       )
 
   isLoading:boolean = false 
