@@ -49,6 +49,7 @@ export class SidebarComponent implements ControlValueAccessor {
 
   handleRedirect(route:string){
     this.router.navigate([route])
+    this.handleChange(false)
   }
 
   isActive(route:string){
