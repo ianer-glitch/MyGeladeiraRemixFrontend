@@ -4,10 +4,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: .2rem;
 }
 
 app-button{
-    width: 200px;
+    width: 100%;
 }    
+
+
+@media (min-width: 600px) {
+    app-button{
+        width: 200px;
+    }  
+
+    .button-container{
+        gap: 2rem; 
+    }
+  }
+
 

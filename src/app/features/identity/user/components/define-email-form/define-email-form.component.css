@@ -4,8 +4,9 @@ form{
   justify-content: flex-start;
   gap: 1rem;
   flex-direction: column;
+  width: 100%;
 }
-input-text,input-number{
+input-text,input-number,confirmation-buttons{
   width: 100%;
 }
 
