@@ -21,6 +21,15 @@
 } 
 
 .graph{
-  width: 600px;
-  height: 700px;
+  width: 80vw;
+  height: 200px;
+}
+
+
+@media (min-width: 600px) {
+  
+  .graph{
+    width: 600px;
+    height: 700px;
+  }
 }
