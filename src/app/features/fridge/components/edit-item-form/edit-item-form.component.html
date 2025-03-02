@@ -22,14 +22,14 @@
     />
     
     
+    <confirmation-buttons
+      confirmLabel="Salvar"
+      denyLabel="Cancelar"
+      (denyClick)="handleDenyClick()"
+      (confirmClick)="handleConfirClick()"
+       [isConfirmLoading]="isLoading"
+      />
   </form>
-  <confirmation-buttons
-    confirmLabel="Salvar"
-    denyLabel="Cancelar"
-    (denyClick)="handleDenyClick()"
-    (confirmClick)="handleConfirClick()"
-     [isConfirmLoading]="isLoading"
-    />
     
 </div>
 
