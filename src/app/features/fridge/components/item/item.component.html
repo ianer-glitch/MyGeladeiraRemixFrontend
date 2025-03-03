@@ -1,4 +1,5 @@
-<button 
+<button
+  [ngClass]="{'editing' : isEditing()}"
   [ngStyle]="{'filter':'grayscale('+expirationPercentage+')','background-color':backgroundColor}">
   <p *ngIf="quantity > 0" class="quantity">{{quantity}}</p>
   <img src="{{iconLink}}" alt="{{iconName}}"/>

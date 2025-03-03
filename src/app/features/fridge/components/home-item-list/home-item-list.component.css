@@ -5,4 +5,13 @@ ul{
   flex-wrap: wrap;
   gap: 1rem;
   list-style-type: none;
+  
+}
+
+.comfirm-edit-buttons{
+  position: absolute;
+  bottom: 5rem;
+  left: 1rem;
+  width: 70%;
+  
 }

@@ -1,16 +1,19 @@
-import { Component, Input, input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, input, output, ViewEncapsulation } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { PrimeIconComponent } from "../prime-icon/prime-icon.component";
 
 @Component({
   selector: 'speed-dial',
-  imports: [SpeedDialModule, ButtonModule,CommonModule],
+  imports: [SpeedDialModule, ButtonModule, CommonModule, PrimeIconComponent],
   templateUrl: './speed-dial.component.html',
   styleUrl: './speed-dial.component.css',
   encapsulation:ViewEncapsulation.None
 })
 export class SpeedDialComponent {
- @Input() items: MenuItem[] = []
+  items =  input<MenuItem[]>([]) 
+  onShow = output()
+  onHide = output()
 }

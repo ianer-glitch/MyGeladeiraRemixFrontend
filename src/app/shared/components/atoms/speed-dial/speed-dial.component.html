@@ -1,21 +1,16 @@
 
 <p-speeddial 
-	[model]="items" 
+	(onShow)="onShow.emit()"
+	(onHide)="onHide.emit()"
+	[model]="items()" 
 	direction="up" 
-	
 	[style]="{ position: 'absolute',
-					   right: '1rem',
-						 bottom: '6rem',
-						 
+					   right: '1.4rem',
+						 bottom: '7rem',
+						 scale: 1.6,
+						
 						  }"
 
 	>
-	<ng-template #button let-toggleCallback="toggleCallback">
-		<p-button 
-			rounded 
-			icon="pi pi-pencil" 
-			size="small" 
-		
-			/>
-	</ng-template>
+
 </p-speeddial>

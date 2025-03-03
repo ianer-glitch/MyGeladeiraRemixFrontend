@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 
 @Component({
   selector: 'item',
@@ -14,5 +14,5 @@ export class ItemComponent {
   @Input() itemId : string = ""
   @Input() iconName:string = ""
   @Input() backgroundColor:string = "tomato"
-
+  isEditing = input<boolean>(false)
 }

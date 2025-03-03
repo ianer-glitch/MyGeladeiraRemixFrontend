@@ -1,4 +1,4 @@
-<ul>
+<ul >
   <li  *ngFor="let item of fridgeItemsList">
     <item
       [iconLink]="item.iconLink"
@@ -7,6 +7,7 @@
       [id]="item.itemId"
       [quantity]="item.quantity"
       (click)="handleClickItem(item)"
+      [isEditing]="isMultipleEditing"
     />
   </li>
     
@@ -15,8 +16,19 @@
   </li> 
 </ul>
 
+<confirmation-buttons
+class="comfirm-edit-buttons"
+  *ngIf="isMultipleEditing"
+  confirmLabel="Salvar"
+  denyLabel="Cancelar"
+  (denyClick)="isMultipleEditing = false"
+></confirmation-buttons>
+
 <popup-add-fridge-item 
   [(ngModel)]="showPopup"
   (close)="handleClose()"
   />
-<!-- <fridge-speed-dial/> -->
+<fridge-speed-dial
+  (addClick)="handleAddMultiple()"
+  (removeClick)="handleRemoveMultiple()"
+/>

@@ -24,3 +24,30 @@ button :is(:hover,:active){
   left: 0;
   padding: .4rem;
 }
+
+.editing{
+  animation: shake .6s ease-in-out infinite;
+}
+
+@keyframes shake{
+  0%{
+    transform: rotate(0deg);
+    scale: 1;
+  }
+  25%{
+    transform: rotate(-5deg);
+    scale: 1.01;
+  }
+  50%{
+    transform: rotate(0deg);
+    scale: 1;
+  }
+  75%{
+    transform: rotate(5deg);
+    scale: 1.01;
+  }
+  100%{
+    transform: rotate(0deg);
+    scale: 1;
+  }
+}

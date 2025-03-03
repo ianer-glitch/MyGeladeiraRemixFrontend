@@ -10,12 +10,13 @@ import { GetFridgeItemsService } from '../../getFridgeItems/get-fridge-items.ser
 import GetFridgeItemsOut from '../../getFridgeItems/GetFridgeItemsOut';
 import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
 import { Router } from '@angular/router';
+import { ConfirmationButtonsComponent } from "../../../../shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
 
 @Component({
   selector: 'home-item-list',
-  imports: [ButtonAddItemComponent,FormsModule,
-     ItemComponent,
-     PopupAddFridgeItemComponent,CommonModule],
+  imports: [ButtonAddItemComponent, FormsModule,
+    ItemComponent,
+    PopupAddFridgeItemComponent, CommonModule, FridgeSpeedDialComponent, ConfirmationButtonsComponent],
   templateUrl: './home-item-list.component.html',
   styleUrl: './home-item-list.component.css'
 })
@@ -47,9 +48,18 @@ export class HomeItemListComponent implements OnInit{
     this.getFridgeItems()
   }
 
-   handleClickItem(item:GetFridgeItemsOut){
-    console.info(item)
-      this.localStorageService.setItem('/fridge/item-edit',item)
-      this.router.navigate(['/fridge/item-edit'])
-    }
+  handleClickItem(item:GetFridgeItemsOut){
+  console.info(item)
+    this.localStorageService.setItem('/fridge/item-edit',item)
+    this.router.navigate(['/fridge/item-edit'])
+  }
+  isMultipleEditing = false
+
+  handleAddMultiple(){
+    this.isMultipleEditing = true
+  }
+
+  handleRemoveMultiple(){
+    this.isMultipleEditing = true
+  }
 }
