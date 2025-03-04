@@ -7,7 +7,7 @@
       [id]="item.itemId"
       [quantity]="item.quantity"
       (click)="handleClickItem(item)"
-      [isEditing]="isMultipleEditing"
+      [isEditing]="isMultipleAdd ||isMultipleSub"
     />
   </li>
     
@@ -18,10 +18,10 @@
 
 <confirmation-buttons
 class="comfirm-edit-buttons"
-  *ngIf="isMultipleEditing"
+  *ngIf="isMultipleAdd ||isMultipleSub"
   confirmLabel="Salvar"
   denyLabel="Cancelar"
-  (denyClick)="isMultipleEditing = false"
+  (denyClick)="handleDenyEditing()"
 ></confirmation-buttons>
 
 <popup-add-fridge-item 

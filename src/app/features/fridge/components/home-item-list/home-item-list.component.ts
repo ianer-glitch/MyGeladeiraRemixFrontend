@@ -49,17 +49,33 @@ export class HomeItemListComponent implements OnInit{
   }
 
   handleClickItem(item:GetFridgeItemsOut){
-  console.info(item)
+    if(this.isMultipleAdd){
+      item.quantity++
+      return 
+
+    }
+    if(this.isMultipleSub && item.quantity > 0){
+      item.quantity--
+      return 
+    }
     this.localStorageService.setItem('/fridge/item-edit',item)
     this.router.navigate(['/fridge/item-edit'])
   }
-  isMultipleEditing = false
+  
+  isMultipleAdd  = false
+  isMultipleSub = false
 
   handleAddMultiple(){
-    this.isMultipleEditing = true
+    this.isMultipleAdd = true
   }
 
   handleRemoveMultiple(){
-    this.isMultipleEditing = true
+    this.isMultipleSub = true
+  }
+
+  handleDenyEditing(){
+    this.isMultipleAdd = false  
+    this.isMultipleSub = false
+    this.getFridgeItems()
   }
 }
