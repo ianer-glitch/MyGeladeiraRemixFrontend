@@ -4,12 +4,23 @@ import { AdminHomeComponent } from './views/admin-home/admin-home.component';
 import { AdminCreateEditItemComponent } from './views/admin-create-edit-item/admin-create-edit-item.component';
 import { EditItemComponent } from './views/edit-item/edit-item.component';
 import { ShoppingListComponent } from './views/shopping-list/shopping-list.component';
+import { inject } from '@angular/core';
+import AdminGuard from '../../core/guards/admin/AdminGuard';
 
 
 export const fridgeRoutes: Routes = [
     {path:'home',component:HomeComponent},
-    {path:'admin',component:AdminHomeComponent},
-    {path:'item-create-edit',component:AdminCreateEditItemComponent},
     {path:'item-edit',component:EditItemComponent},
-    {path:'shopping-list',component:ShoppingListComponent}
+    {path:'shopping-list',component:ShoppingListComponent},
+    {
+        path:'admin',
+        component:AdminHomeComponent,
+        canActivate:[()=>inject(AdminGuard).canActivate()]
+    },
+    {
+        path:'item-create-edit',
+        component:AdminCreateEditItemComponent,
+        canActivate:[()=>inject(AdminGuard).canActivate()]
+    },
+    
 ];
