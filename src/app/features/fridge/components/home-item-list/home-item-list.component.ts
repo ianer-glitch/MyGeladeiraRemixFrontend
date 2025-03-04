@@ -11,6 +11,11 @@ import GetFridgeItemsOut from '../../getFridgeItems/GetFridgeItemsOut';
 import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
 import { Router } from '@angular/router';
 import { ConfirmationButtonsComponent } from "../../../../shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
+import { UpdateMultipleFridgeItemsQuantitiesService } from '../../updateMultipleFridgeItemsQuantities/update-multiple-fridge-items-quantities.service';
+import UpdateMultipleFridgeItemsQuantitiesIn from '../../updateMultipleFridgeItemsQuantities/UpdateMultipleFridgeItemsQuantitiesIn';
+import { Observer } from 'rxjs';
+import { ToastService } from '../../../../core/services/toast/toast.service';
+import UpdateMultipleFridgeItemsQuantitiesOut from '../../updateMultipleFridgeItemsQuantities/UpdateMultipleFridgeItemsQuantitiesOut';
 
 @Component({
   selector: 'home-item-list',
@@ -28,6 +33,8 @@ export class HomeItemListComponent implements OnInit{
     private getFridgeItemsService : GetFridgeItemsService,
     private localStorageService : LocalStorageService,
     private router:Router,
+    private updateMultipleService : UpdateMultipleFridgeItemsQuantitiesService,
+    private toastService : ToastService
   ) {
 
     
@@ -77,5 +84,28 @@ export class HomeItemListComponent implements OnInit{
     this.isMultipleAdd = false  
     this.isMultipleSub = false
     this.getFridgeItems()
+  }
+
+  updateMultipleFridgeItemsQuantities(){
+    const payload : UpdateMultipleFridgeItemsQuantitiesIn[] = 
+      this.fridgeItemsList.map(m=> new UpdateMultipleFridgeItemsQuantitiesIn(m.itemId,m.quantity))
+
+    
+    const options:Observer<UpdateMultipleFridgeItemsQuantitiesOut> = {
+      next:()=>{ 
+        this.toastService.showSucces('As quantidades foram atualizadas!')
+        this.getFridgeItems()
+      },
+      error:()=>{
+        this.toastService.showError('Ocorreu um erro ao atualizar as quantidades')
+        this.getFridgeItems()
+      },
+      complete:()=>{
+        this.isMultipleAdd = false
+        this.isMultipleSub = false
+      }
+    }
+    
+    this.updateMultipleService.updateMultipleFridgeItemsQuantities(payload).subscribe(options)
   }
 }

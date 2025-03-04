@@ -45,6 +45,13 @@ export class BaseService {
       );
   }
 
+  protected patch<T>(endpoint: string, data: any): Observable<T> {
+    return this.http.patch<T>(this.baseUrl + endpoint, data, { headers: this.createHeaders() })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
  
   protected put<T>(endpoint: string, data: any): Observable<T> {
     return this.http.put<T>(this.baseUrl + endpoint, data, { headers: this.createHeaders() })
