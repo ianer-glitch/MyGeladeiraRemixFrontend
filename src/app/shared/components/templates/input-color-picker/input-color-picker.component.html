@@ -1,0 +1,14 @@
+<div class="input-color-picker">
+  <p-colorpicker 
+    [(ngModel)]="value" 
+    [inline]="true"
+    (ngModelChange)="onChange(value)"
+    />
+  <input-text
+    [fluid]="true"
+    [(ngModel)]="value"
+    [label]="label()"
+    (ngModelChange)="onChange(value)"
+    
+  />
+</div>

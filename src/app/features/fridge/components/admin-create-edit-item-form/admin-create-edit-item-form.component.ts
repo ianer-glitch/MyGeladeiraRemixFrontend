@@ -21,6 +21,7 @@ import { DeleteItemService } from '../../deleteItem/delete-item.service';
 import DeleteItemIn from '../../deleteItem/DeleteItemIn';
 import DeleteItemOut from '../../deleteItem/DeleteItemOut';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputColorPickerComponent } from "../../../../shared/components/templates/input-color-picker/input-color-picker.component";
 
 
 @Component({
@@ -30,10 +31,10 @@ import { ColorPickerModule } from 'primeng/colorpicker';
     InputNumberButtonsComponent,
     ConfirmationButtonsComponent,
     ExpirationTimeSelectorComponent,
-    ImgUploadItemComponent, 
+    ImgUploadItemComponent,
     ReactiveFormsModule,
-    ButtonComponent,ColorPickerModule,
-    CommonModule],
+    ButtonComponent, ColorPickerModule,
+    CommonModule, InputColorPickerComponent],
   templateUrl: './admin-create-edit-item-form.component.html',
   styleUrl: './admin-create-edit-item-form.component.css'
 })

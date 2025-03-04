@@ -1,9 +1,10 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, forwardRef, input, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'img-upload-item',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './img-upload-item.component.html',
   styleUrl: './img-upload-item.component.css',
   providers:[
@@ -20,6 +21,7 @@ export class ImgUploadItemComponent implements ControlValueAccessor{
   value:File = {} as File
   @Input() fileUrl:string = ""
   isDisabled:boolean = false
+  backgroundColor = input<string>("transparent")
 
   writeValue(obj: any): void {
     this.value = obj

@@ -16,7 +16,7 @@ form,.form-container{
   gap: 1rem;
 }
 
-input-text,input-number,confirmation-buttons{
+input-text,input-number,confirmation-buttons,input-color-picker{
   width: 100%;
   color: var(--background-color);
 }
@@ -29,4 +29,7 @@ expiration-time-selector{
   width: 100%;
 }
 
+input-color-picker{
+  width: 100%;
+}
 

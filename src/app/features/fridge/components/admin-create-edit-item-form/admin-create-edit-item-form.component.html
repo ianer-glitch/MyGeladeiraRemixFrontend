@@ -5,12 +5,14 @@
       formControlName="icon"
       (ngModelChange)="handleIconChange($event)"
       [fileUrl]="iconLink"
+      [backgroundColor]="itemForm.get('color')?.value"
     />
     
-    <input-text 
-      label="Cor do fundo"
+    <input-color-picker
       formControlName="color"
+      label="Cor do Item"
     />
+    
     <input-text 
       label="Nome do item"
       formControlName="name"
