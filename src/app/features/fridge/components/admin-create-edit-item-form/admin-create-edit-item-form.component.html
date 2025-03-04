@@ -6,7 +6,7 @@
       (ngModelChange)="handleIconChange($event)"
       [fileUrl]="iconLink"
     />
-
+    
     <input-text 
       label="Cor do fundo"
       formControlName="color"
@@ -14,6 +14,11 @@
     <input-text 
       label="Nome do item"
       formControlName="name"
+    />
+    <input-number 
+      label="Peso do item(g)"
+      [min]="0"
+      formControlName="weight"
     />
     <input-number 
       label="Quantidade mínima"
@@ -31,21 +36,21 @@
       formControlName="quantity"
     />
     
+    <app-button 
+        class="remove-button"
+        label="Excluir" 
+        severity="danger"
+        (click)="handleDangerClick()"
+        primeIcon="pi pi-trash"
+        [isLoading]="isRemoveLoading"
+        *ngIf="editingItemId"
+        />
+    <confirmation-buttons
+      confirmLabel="Salvar"
+      denyLabel="Cancelar"
+      (confirmClick)="handleSubmit()"
+      [isConfirmLoading]="isLoading"
+      (denyClick)="handleCancel()"
+    />
   </form>
-  <app-button 
-      class="remove-button"
-      label="Excluir" 
-      severity="danger"
-      (click)="handleDangerClick()"
-      primeIcon="pi pi-trash"
-      [isLoading]="isRemoveLoading"
-      *ngIf="editingItemId"
-      />
-  <confirmation-buttons
-    confirmLabel="Salvar"
-    denyLabel="Cancelar"
-    (confirmClick)="handleSubmit()"
-    [isConfirmLoading]="isLoading"
-    (denyClick)="handleCancel()"
-  />
 </div>

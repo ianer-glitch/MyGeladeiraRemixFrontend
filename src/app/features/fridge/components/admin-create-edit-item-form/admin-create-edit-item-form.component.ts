@@ -20,6 +20,7 @@ import { ButtonComponent } from "../../../../shared/components/atoms/button/butt
 import { DeleteItemService } from '../../deleteItem/delete-item.service';
 import DeleteItemIn from '../../deleteItem/DeleteItemIn';
 import DeleteItemOut from '../../deleteItem/DeleteItemOut';
+import { ColorPickerModule } from 'primeng/colorpicker';
 
 
 @Component({
@@ -31,7 +32,7 @@ import DeleteItemOut from '../../deleteItem/DeleteItemOut';
     ExpirationTimeSelectorComponent,
     ImgUploadItemComponent, 
     ReactiveFormsModule,
-    ButtonComponent,
+    ButtonComponent,ColorPickerModule,
     CommonModule],
   templateUrl: './admin-create-edit-item-form.component.html',
   styleUrl: './admin-create-edit-item-form.component.css'
