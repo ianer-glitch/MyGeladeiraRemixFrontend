@@ -32,6 +32,15 @@
     />
     
   </form>
+  <app-button 
+      class="remove-button"
+      label="Excluir" 
+      severity="danger"
+      (click)="handleDangerClick()"
+      primeIcon="pi pi-trash"
+      [isLoading]="isRemoveLoading"
+      *ngIf="editingItemId"
+      />
   <confirmation-buttons
     confirmLabel="Salvar"
     denyLabel="Cancelar"

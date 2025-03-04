@@ -129,12 +129,12 @@ export class EditItemFormComponent implements OnInit {
         this.toastService.showSucces("Item removido da geladeira com sucesso!")
         this.isRemoveLoading = false
       }else{
-        this.toastService.showSucces("Não foi possível remover o item da geladeira")
+        this.toastService.showError("Não foi possível remover o item da geladeira")
         this.isRemoveLoading = false  
       }
     },
     error:()=>{
-      this.toastService.showSucces("Não foi possível remover o item da geladeira")
+      this.toastService.showError("Não foi possível remover o item da geladeira")
       this.isRemoveLoading = false
     },
     complete:()=>{

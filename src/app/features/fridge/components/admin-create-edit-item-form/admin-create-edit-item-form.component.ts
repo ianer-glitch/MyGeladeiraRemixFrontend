@@ -8,7 +8,7 @@ import { ImgUploadItemComponent } from "../img-upload-item/img-upload-item.compo
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import CreateItemIn from '../../createItem/CreateItemIn';
 import { CreateItemService } from '../../createItem/create-item.service';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import { Observer } from 'rxjs';
 import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
@@ -16,16 +16,23 @@ import GetItemsOut from '../../getItems/GetItemsOut';
 import {urlToFile} from '../../../../shared/tools'
 import UpdateItemIn from '../../updateItem/UpdateItemIn';
 import { UpdateItemService } from '../../updateItem/update-item.service';
+import { ButtonComponent } from "../../../../shared/components/atoms/button/button.component";
+import { DeleteItemService } from '../../deleteItem/delete-item.service';
+import DeleteItemIn from '../../deleteItem/DeleteItemIn';
+import DeleteItemOut from '../../deleteItem/DeleteItemOut';
 
 
 @Component({
   selector: 'admin-create-edit-item-form',
   imports: [InputTextComponent,
-            InputNumberComponent,
-            InputNumberButtonsComponent,
-            ConfirmationButtonsComponent,
-            ExpirationTimeSelectorComponent, 
-            ImgUploadItemComponent,ReactiveFormsModule],
+    InputNumberComponent,
+    InputNumberButtonsComponent,
+    ConfirmationButtonsComponent,
+    ExpirationTimeSelectorComponent,
+    ImgUploadItemComponent, 
+    ReactiveFormsModule,
+    ButtonComponent,
+    CommonModule],
   templateUrl: './admin-create-edit-item-form.component.html',
   styleUrl: './admin-create-edit-item-form.component.css'
 })
@@ -39,7 +46,8 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     private createItemService:CreateItemService, 
     private toastService:ToastService,
     private localStorageService:LocalStorageService,
-    private updateItemService:UpdateItemService
+    private updateItemService:UpdateItemService,
+    private deleteItemService : DeleteItemService
   ) {
     
     
@@ -62,7 +70,6 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     
     if(Object.keys(editingItem).length > 0){
       this.editingItemId = editingItem.id
-      console.info(this.editingItemId)
       this.iconLink = editingItem.icon
       this.isEditing = true
       const formModel = new CreateItemIn()
@@ -167,6 +174,37 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       this.toastService.showWarn("Existem campos incorretos!")
     }
 
+  }
+  isRemoveLoading:boolean = false  
+  
+  handleDangerClick(){
+    this.deleteItem()
+  }
+
+  deleteItem(){
+    this.isRemoveLoading = true
+    const payload = new DeleteItemIn(this.editingItemId)
+
+    const options : Observer<DeleteItemOut> = {
+      next:(res)=>{
+        if(res.success){
+            this.toastService.showSucces("Item removido de todas as geladeiras!")
+            this.isRemoveLoading = false
+          }else{
+            this.toastService.showError("Não foi possível remover o item")
+            this.isRemoveLoading = false
+          }
+        },
+        error:()=>{
+          this.toastService.showError("Não foi possível remover o item")
+          this.isRemoveLoading = false
+        },
+        complete:()=>{
+          this.location.back()
+        }
+    }
+
+    this.deleteItemService.deleteItems(payload).subscribe(options)
   }
 
    
