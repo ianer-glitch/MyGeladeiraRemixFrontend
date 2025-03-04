@@ -15,15 +15,16 @@
     <button-add-item (click)="showPopup = true"/>
   </li> 
 </ul>
-
-<confirmation-buttons
-class="comfirm-edit-buttons"
-  *ngIf="isMultipleAdd ||isMultipleSub"
-  confirmLabel="Salvar"
-  denyLabel="Cancelar"
-  (denyClick)="handleDenyEditing()"
-  (confirmClick)="updateMultipleFridgeItemsQuantities()"
-></confirmation-buttons>
+<div class="comfirm-edit-buttons-container">
+  <confirmation-buttons
+    class="comfirm-edit-buttons"
+    *ngIf="isMultipleAdd ||isMultipleSub "
+    confirmLabel="Salvar"
+    denyLabel="Cancelar"
+    (denyClick)="handleDenyEditing()"
+    (confirmClick)="updateMultipleFridgeItemsQuantities()"
+  ></confirmation-buttons>
+</div>
 
 <popup-add-fridge-item 
   [(ngModel)]="showPopup"
@@ -32,4 +33,5 @@ class="comfirm-edit-buttons"
 <fridge-speed-dial
   (addClick)="handleAddMultiple()"
   (removeClick)="handleRemoveMultiple()"
+  *ngIf="!isMultipleAdd && !isMultipleSub"
 />
