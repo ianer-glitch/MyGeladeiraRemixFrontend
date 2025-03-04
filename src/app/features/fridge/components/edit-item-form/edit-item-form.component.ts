@@ -14,15 +14,19 @@ import { ToastService } from '../../../../core/services/toast/toast.service';
 import { UpdateFridgeItemService } from '../../updateFridgeItem/update-fridge-item.service';
 import { Observer } from 'rxjs';
 import UpdateFridgeItemOut from '../../updateFridgeItem/UpdateFridgeItemOut';
+import { ButtonComponent } from "../../../../shared/components/atoms/button/button.component";
+import { RemoveItemsFridgeService } from '../../removeItemsFridge/remove-items-fridge.service';
+import RemoveItemsFridgeIn from '../../removeItemsFridge/RemoveItemsFridgeIn';
+import RemoveItemsFridgeOut from '../../removeItemsFridge/RemoveItemsFridgeOut';
 
 @Component({
   selector: 'edit-item-form',
   imports: [FormsModule, ReactiveFormsModule,
-    CommonModule, 
+    CommonModule,
     ImgUploadItemComponent,
     InputTextComponent,
     InputNumberComponent,
-    ExpirationTimeSelectorComponent, ConfirmationButtonsComponent, InputNumberButtonsComponent],
+    ExpirationTimeSelectorComponent, ConfirmationButtonsComponent, InputNumberButtonsComponent, ButtonComponent],
   templateUrl: './edit-item-form.component.html',
   styleUrl: './edit-item-form.component.css'
 })
@@ -32,7 +36,8 @@ export class EditItemFormComponent implements OnInit {
     private localStorageService :LocalStorageService,
     private location : Location,
     private toastService:ToastService,
-    private updateFridgeItemService:UpdateFridgeItemService
+    private updateFridgeItemService:UpdateFridgeItemService,
+    private removeItemsService:RemoveItemsFridgeService
   ) {
   
   
@@ -42,6 +47,7 @@ export class EditItemFormComponent implements OnInit {
  itemName:string =""
  isLoading:boolean = false
  payload:UpdateFridgeItemIn = {} as UpdateFridgeItemIn
+ 
 
   ngOnInit(): void {
     const item = this.localStorageService.getItem<GetFridgeItemsOut>("/fridge/item-edit")
@@ -84,7 +90,6 @@ export class EditItemFormComponent implements OnInit {
       this.itemForm.get('itemId')?.value,
     )
 
-    console.info(payload)
     const options : Observer<UpdateFridgeItemOut> = {
       next:()=>{
         this.toastService.showSucces("Alterações efetuadas com sucesso!")
@@ -106,5 +111,38 @@ export class EditItemFormComponent implements OnInit {
   }else{
     this.toastService.showWarn("Existem campos que precisam de atenção?")
   }
+ }
+
+ handleDangerClick(){
+  this.removeItemsFridge()
+ }
+
+ isRemoveLoading : boolean = false
+
+ removeItemsFridge(){
+  this.isRemoveLoading = true
+  const payload = new RemoveItemsFridgeIn([this.payload.itemId])
+
+  const options : Observer<RemoveItemsFridgeOut> = {
+    next:(res)=>{
+      if(res.success){
+        this.toastService.showSucces("Item removido da geladeira com sucesso!")
+        this.isRemoveLoading = false
+      }else{
+        this.toastService.showSucces("Não foi possível remover o item da geladeira")
+        this.isRemoveLoading = false  
+      }
+    },
+    error:()=>{
+      this.toastService.showSucces("Não foi possível remover o item da geladeira")
+      this.isRemoveLoading = false
+    },
+    complete:()=>{
+      this.location.back()
+    }
+
+  }
+
+  this.removeItemsService.removeItemsFridge(payload).subscribe(options)
  }
 }

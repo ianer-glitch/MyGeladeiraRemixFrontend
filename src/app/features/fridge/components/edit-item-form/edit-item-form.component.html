@@ -21,7 +21,15 @@
       formControlName="quantity"
     />
     
-    
+    <app-button 
+      class="remove-button"
+      label="Excluir" 
+      severity="danger"
+      (click)="handleDangerClick()"
+      primeIcon="pi pi-trash"
+      [isLoading]="isRemoveLoading"
+      />
+
     <confirmation-buttons
       confirmLabel="Salvar"
       denyLabel="Cancelar"

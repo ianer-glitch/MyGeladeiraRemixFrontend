@@ -61,12 +61,15 @@ export class BaseService {
   }
 
 
-  protected delete<T>(endpoint: string): Observable<T> {
-    return this.http.delete<T>(this.baseUrl + endpoint, { headers: this.createHeaders() })
-      .pipe(
-        catchError(this.handleError)
-      );
+  protected delete<T>(endpoint: string, body: any): Observable<T> {
+    return this.http.request<T>('DELETE', this.baseUrl + endpoint, {
+      body: body,
+      headers: this.createHeaders()
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
+  
 
   // Error handler for the HTTP requests
   private handleError(error: any): Observable<never> {
