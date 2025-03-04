@@ -11,7 +11,6 @@ export default class AdminGuard implements CanActivate{
   
   canActivate(): MaybeAsync<GuardResult> {
     const token = localStorage.getItem('token'); 
-    console.info(token)
     if (token) {
       try {
         // Decode the JWT token to extract the payload

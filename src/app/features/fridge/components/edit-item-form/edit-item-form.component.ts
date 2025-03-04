@@ -58,7 +58,6 @@ export class EditItemFormComponent implements OnInit {
     this.payload.expiration = new Date(item.expiration)
     this.payload.minimunQuantity = item.minimumQuantity
     this.payload.quantity =item.quantity
-    console.info(item)
     
     this.createForm(this.payload)
     

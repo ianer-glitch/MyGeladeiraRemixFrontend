@@ -14,7 +14,6 @@ export class UpdateItemService extends FridgeService {
 
   public updateItem(item : UpdateItemIn,icon:File){
 
-    console.info(item)
     const formData = new FormData();
     formData.append('ItemId', item.itemId);
     formData.append('Color', item.color);

@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { DrawerModule } from 'primeng/drawer';
 import { PrimeIconComponent } from "../../atoms/prime-icon/prime-icon.component";
 import { LocalStorageService } from '../../../../core/services/local-storage/local-storage.service';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import AdminGuard from '../../../../core/guards/admin/AdminGuard';
 
 @Component({
   selector: 'sidebar',
@@ -21,13 +22,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       }
     ]
 })
-export class SidebarComponent implements ControlValueAccessor {
+export class SidebarComponent implements ControlValueAccessor,OnInit {
   visible:boolean = true
+  canAccessAdmin : boolean = false
   
   constructor(private router : Router,
     private localStorageService:LocalStorageService,
     private toastService:ToastService,
+    private adminGuard:AdminGuard
   ) {
+  }
+  ngOnInit(): void {
+    this.canAccessAdmin = !!this.adminGuard.canActivate().valueOf()
   }
 
   onChange : (param:any)=>void = ()=>{}

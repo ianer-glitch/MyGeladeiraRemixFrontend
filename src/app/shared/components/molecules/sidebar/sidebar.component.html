@@ -22,6 +22,13 @@
       (click)="handleRedirect('/fridge/')">
       <li><h2>Receitas</h2></li>
     </nav>
+    <nav 
+      [ngClass]="{'active':isActive('/fridge/admin')}"
+      (click)="handleRedirect('/fridge/admin')"
+      *ngIf="canAccessAdmin"
+      >
+      <li><h2>Gerenciar</h2></li>
+    </nav>
   </ul>
   <ng-template #footer>
     <div class="sidebar-footer" (click)="handleExit()">
