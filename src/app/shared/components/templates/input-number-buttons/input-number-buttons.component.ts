@@ -53,12 +53,15 @@ export class InputNumberButtonsComponent implements ControlValueAccessor {
   }
 
   handleAdd(){
-    if(this.value < this.max)
-      this.onChange(this.value++)
+    if(this.value < this.max){
+      this.handleChange(this.value+1)
+    }
   }
 
   handleSub(){
-    if(this.value > this.min)
-      this.onChange(this.value--)
+    if(this.value > this.min){
+      this.handleChange(this.value- 1)
+
+    }
   }
 }
