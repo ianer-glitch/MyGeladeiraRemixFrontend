@@ -5,9 +5,10 @@
     <section content>
         <ng-content></ng-content>
     </section >
-    <form footer>
+    <form  class="confirm-buttons-footer" footer>
         
         <confirmation-buttons
+           
             [confirmLabel]="confirmLabel"
             (confirmClick)="confirmClick.emit($event)"
             [isConfirmLoading]="isConfirmLoading"

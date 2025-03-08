@@ -107,5 +107,15 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
       this.toastService.showWarn("É necessário selecionar pelo menos um item para adicionar!")
     }
   }
+
+  handleAddItemsToList(item?:GetItemsOut){
+    if(item && Object.keys(item).length > 0){
+      this.selectedItems.push(item)
+    }
+  }
+
+  handleSelectClear(){
+    this.selectedItems.pop()
+  }
   
 }

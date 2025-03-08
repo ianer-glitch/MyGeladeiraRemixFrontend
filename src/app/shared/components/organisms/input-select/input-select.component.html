@@ -16,6 +16,8 @@
     [options]="options"
     (onChange)="handleChange($event)"
     [ngModel]="value"
-    [filter]="filter"
+    [showClear]="showClear()"
+    (onClear)="handleOnClear($event)"
+    
   ></p-select>
 </fieldset>

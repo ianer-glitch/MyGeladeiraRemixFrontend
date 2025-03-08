@@ -15,7 +15,9 @@
      [options]="items"
      optionLabel="name"
      labelColor="var(--background-color)"
-     (change)="selectedItems.push($event)"
+     (change)="handleAddItemsToList($event)"
+     (onClear)="handleSelectClear()"
+     [showClear]="true"
     />
 
     <ul class="item-list">
