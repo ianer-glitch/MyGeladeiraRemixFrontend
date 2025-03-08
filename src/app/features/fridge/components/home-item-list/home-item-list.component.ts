@@ -16,12 +16,13 @@ import UpdateMultipleFridgeItemsQuantitiesIn from '../../updateMultipleFridgeIte
 import { Observer } from 'rxjs';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import UpdateMultipleFridgeItemsQuantitiesOut from '../../updateMultipleFridgeItemsQuantities/UpdateMultipleFridgeItemsQuantitiesOut';
+import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
 
 @Component({
   selector: 'home-item-list',
   imports: [ButtonAddItemComponent, FormsModule,
     ItemComponent,
-    PopupAddFridgeItemComponent, CommonModule, FridgeSpeedDialComponent, ConfirmationButtonsComponent],
+    PopupAddFridgeItemComponent, CommonModule, FridgeSpeedDialComponent, ConfirmationButtonsComponent, SkeletonComponent],
   templateUrl: './home-item-list.component.html',
   styleUrl: './home-item-list.component.css'
 })
@@ -47,7 +48,20 @@ export class HomeItemListComponent implements OnInit{
   fridgeItemsList : GetFridgeItemsOut[] = []
 
   getFridgeItems(){
-    this.getFridgeItemsService.getFridgeItems().subscribe(res=> this.fridgeItemsList = res)
+    this.isLoading = true
+    const options :Observer<GetFridgeItemsOut[]> = {
+      next:(res)=>{
+        this.fridgeItemsList = res
+      },
+      error:()=>{
+        this.toastService.showError("Não foi possível buscar os items")
+        this.isLoading = false
+      },
+      complete:()=>{
+        this.isLoading = false
+      }
+    }
+    this.getFridgeItemsService.getFridgeItems().subscribe(options)
   }
 
   handleClose(){
@@ -86,7 +100,10 @@ export class HomeItemListComponent implements OnInit{
     this.getFridgeItems()
   }
 
+  isLoading : boolean = false
+
   updateMultipleFridgeItemsQuantities(){
+    this.isLoading=true
     const payload : UpdateMultipleFridgeItemsQuantitiesIn[] = 
       this.fridgeItemsList.map(m=> new UpdateMultipleFridgeItemsQuantitiesIn(m.itemId,m.quantity))
 
@@ -99,10 +116,12 @@ export class HomeItemListComponent implements OnInit{
       error:()=>{
         this.toastService.showError('Ocorreu um erro ao atualizar as quantidades')
         this.getFridgeItems()
+        this.isLoading=false
       },
       complete:()=>{
         this.isMultipleAdd = false
         this.isMultipleSub = false
+        this.isLoading = false
       }
     }
     

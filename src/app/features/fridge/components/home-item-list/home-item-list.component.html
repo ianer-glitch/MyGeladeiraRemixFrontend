@@ -10,10 +10,32 @@
       [isEditing]="isMultipleAdd ||isMultipleSub"
     />
   </li>
-    
-  <li>
+  
+  <li *ngIf="isLoading">
+    <skeleton
+      width="4rem"
+      height="4rem"
+    />
+  </li>
+  <li *ngIf="isLoading">
+    <skeleton
+      width="4rem"
+      height="4rem"
+    />
+  </li>
+  <li *ngIf="isLoading">
+    <skeleton
+      width="4rem"
+      height="4rem"
+    />
+  </li>
+  
+
+  <li *ngIf="!isLoading"> 
     <button-add-item (click)="showPopup = true"/>
   </li> 
+
+
 </ul>
 <div class="comfirm-edit-buttons-container">
   <confirmation-buttons
