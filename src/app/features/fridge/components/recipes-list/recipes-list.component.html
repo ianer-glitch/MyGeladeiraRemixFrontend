@@ -1,16 +1,10 @@
 <ul class="recipe-list-container">
-  <li>
+  {{isLoading}}
+  <li *ngFor="let re of recipes">
     <recipe-card
-      title="sopa"
-      [ingredients]="['teste']"
-      [method]="'cozinhar'"
-    />
-  </li>
-  <li>
-    <recipe-card
-      title="sopa"
-      [ingredients]="['teste']"
-      [method]="'cozinhar'"
+      [title]="re.title"
+      [ingredients]="re.ingredients"
+      [method]="re.method"
     />
   </li>
 </ul>
