@@ -13,13 +13,13 @@
       <li><h2>Lista de Compras</h2></li>
     </nav>
     <nav 
-      [ngClass]="{'active':isActive('')}"
+      [ngClass]="{'active':isActive('/statistic/manage')}"
       (click)="handleRedirect('/statistic/manage')">
       <li><h2>Estatísticas</h2></li>
     </nav>
     <nav 
-      [ngClass]="{'active':isActive('')}"
-      (click)="handleRedirect('/fridge/')">
+      [ngClass]="{'active':isActive('/fridge/recipes')}"
+      (click)="handleRedirect('/fridge/recipes')">
       <li><h2>Receitas</h2></li>
     </nav>
     <nav 
