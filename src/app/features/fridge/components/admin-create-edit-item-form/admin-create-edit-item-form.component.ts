@@ -22,6 +22,8 @@ import DeleteItemIn from '../../deleteItem/DeleteItemIn';
 import DeleteItemOut from '../../deleteItem/DeleteItemOut';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { InputColorPickerComponent } from "../../../../shared/components/templates/input-color-picker/input-color-picker.component";
+import { GetRecommendedItemWeightService } from '../../getRecommendedItemWeight/get-recommended-item-weight.service';
+import GetRecommendedItemWeightOut from '../../getRecommendedItemWeight/GetRecommendedItemWeightOut';
 
 
 @Component({
@@ -49,7 +51,8 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     private toastService:ToastService,
     private localStorageService:LocalStorageService,
     private updateItemService:UpdateItemService,
-    private deleteItemService : DeleteItemService
+    private deleteItemService : DeleteItemService,
+    private getRecommendedItemWeightService : GetRecommendedItemWeightService
   ) {
     
     
@@ -207,6 +210,32 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     }
 
     this.deleteItemService.deleteItems(payload).subscribe(options)
+  }
+
+  isLoadingWeight : boolean = false
+  getRecommendedItemWeight(){
+    this.isLoadingWeight = true
+    const itemName = this.itemForm.get('name')?.value
+    if(itemName){
+      const options: Observer<GetRecommendedItemWeightOut> = {
+        next:(res)=>{
+          this.itemForm.get('weight')?.setValue(res.weight);
+        },
+        error:()=>{
+          this.toastService.showError('Não foi possível recomendar o peso do item')
+          this.isLoadingWeight = false
+        },
+        complete:()=>{
+          this.isLoadingWeight = false
+        }
+  
+      }
+  
+      this.getRecommendedItemWeightService.GetRecommendedItemWeight(itemName).subscribe(options)
+
+    }else{
+      this.toastService.showWarn("O item precisa de um nome para a recomendação de peso")
+    }
   }
 
    

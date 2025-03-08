@@ -17,11 +17,20 @@
       label="Nome do item"
       formControlName="name"
     />
-    <input-number 
-      label="Peso do item(g)"
-      [min]="0"
-      formControlName="weight"
-    />
+    <div class="input-weight-container">
+      <input-number 
+        label="Peso do item(g)"
+        [min]="0"
+        formControlName="weight"
+        information="Utilizamos inteligência artificial para estimar o peso do item, este mesmo peso será utlizado no cálculo do desperdício alimentar(Food Waste Index)"
+        informationPosition="bottom"
+      />
+      <app-button
+        label="Vai!"
+        [isLoading]="isLoadingWeight"
+        (click)="getRecommendedItemWeight()"
+      />
+    </div>
     <input-number 
       label="Quantidade mínima"
       [min]="0"

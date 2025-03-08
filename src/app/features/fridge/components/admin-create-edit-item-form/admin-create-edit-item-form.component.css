@@ -33,3 +33,12 @@ input-color-picker{
   width: 100%;
 }
 
+.input-weight-container{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  gap: 1rem;
+}
+
