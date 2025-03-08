@@ -1,0 +1,15 @@
+.recipe-list-container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+  list-style-type: none;
+  height: 80vh;
+  overflow-y: scroll;
+
+}
+.recipe-list-container li {
+  width: 100%;
+}

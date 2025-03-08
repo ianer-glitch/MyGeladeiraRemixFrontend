@@ -1,0 +1,14 @@
+<card  [title]="title()">
+  <div class="body">
+    <h3>Ingredientes</h3>
+    <ul class="ingredients-list">
+      <li *ngFor="let ingre of ingredients()">
+        <p>{{ingre}}</p>
+      </li>
+    </ul>
+    <h3>Modo de preparo</h3>
+    <p>{{method()}}</p>
+  </div>
+    
+  
+</card>

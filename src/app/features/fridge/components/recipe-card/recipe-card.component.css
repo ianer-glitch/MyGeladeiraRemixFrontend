@@ -1,0 +1,23 @@
+.body{
+  width: 100%;
+  height: auto;
+  
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.ingredients-list {
+  list-style-type: none;
+}
+
+.body p,
+.body h1,
+.body h2,
+.body h3{
+color:var(--text-color-darker)
+}
