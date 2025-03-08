@@ -5,10 +5,11 @@ import AskRecipesOut from '../../askRecipes/AskRecipesOut';
 import { Observer } from 'rxjs';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import { CommonModule } from '@angular/common';
+import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
 
 @Component({
   selector: 'recipes-list',
-  imports: [RecipeCardComponent,CommonModule],
+  imports: [RecipeCardComponent, CommonModule, SkeletonComponent],
   templateUrl: './recipes-list.component.html',
   styleUrl: './recipes-list.component.css'
 })
@@ -25,10 +26,10 @@ export class RecipesListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this.askRecipes()
+    this.askRecipes()
   }
   recipes : AskRecipesOut[]= []
-  isLoading:boolean = true
+  isLoading:boolean = false
   
   askRecipes(){
     this.isLoading = true

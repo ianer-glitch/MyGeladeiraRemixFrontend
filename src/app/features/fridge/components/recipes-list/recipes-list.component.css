@@ -13,3 +13,7 @@
 .recipe-list-container li {
   width: 100%;
 }
+
+skeleton{
+  margin-bottom: 2rem;
+}

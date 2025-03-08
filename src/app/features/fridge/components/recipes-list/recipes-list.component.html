@@ -1,5 +1,5 @@
 <ul class="recipe-list-container">
-  <li *ngIf="isLoading">isLoading</li>
+  
   <li *ngFor="let re of recipes">
     <recipe-card
       [title]="re.title"
@@ -7,4 +7,19 @@
       [method]="re.method"
     />
   </li>
+
+  <li *ngIf="isLoading">
+    <skeleton
+      width="100%"
+      height="10rem"
+    />
+  </li>
+  
+  <li *ngIf="isLoading">
+    <skeleton
+      width="100%"
+      height="10rem"
+    />
+  </li>
+  
 </ul>
