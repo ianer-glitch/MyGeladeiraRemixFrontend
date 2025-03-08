@@ -109,10 +109,7 @@
   padding: 1rem;
   overflow-y: scroll;
 }
-.page-title{
-  color:var(--text-color-darker);
-  padding-bottom: 1rem;
-}
+
 
 .page-card{
  height: calc(100% - 4rem);
