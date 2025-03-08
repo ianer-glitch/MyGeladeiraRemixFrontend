@@ -4,7 +4,12 @@
   <page-subtitle
     information="Utilizamos inteligência artificial para recomendar alimentos que você pode gostar, a partir dos que já possuí"
     infoPosition="bottom"
-  >
-    Você pode gostar de de:
-  </page-subtitle>
-  
+  >Você pode gostar de:</page-subtitle>
+<ul class="recommended-items-container">
+  <li *ngFor="let item of recommendedItems">
+    <generic-list-item [backgroundColor]="item.color" [text]="item.name"/>
+  </li>
+</ul>
+
+
+</section>
