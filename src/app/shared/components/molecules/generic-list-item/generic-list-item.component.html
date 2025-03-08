@@ -2,6 +2,6 @@
   class="generic-list-item-container" 
   [ngStyle]="{'background-color':backgroundColor()}">
   
-  <img [src]="imageSrc()" width="80px" height="80px">
+  <img *ngIf="imageSrc()" [src]="imageSrc()" width="80px" height="80px">
   <p>{{text()}}</p>
 </div>

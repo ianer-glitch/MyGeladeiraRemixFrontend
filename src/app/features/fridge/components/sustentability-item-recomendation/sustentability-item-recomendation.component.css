@@ -24,3 +24,7 @@
 .recommended-items-container li, .recommended-items-container generic-list-item{
   width: 100%;
 }
+
+.recommended-items-container li{
+  filter: grayscale(.4);
+}
