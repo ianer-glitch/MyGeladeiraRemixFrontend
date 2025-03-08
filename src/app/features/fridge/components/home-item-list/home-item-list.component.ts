@@ -103,7 +103,6 @@ export class HomeItemListComponent implements OnInit{
   isLoading : boolean = false
 
   updateMultipleFridgeItemsQuantities(){
-    this.isLoading=true
     const payload : UpdateMultipleFridgeItemsQuantitiesIn[] = 
       this.fridgeItemsList.map(m=> new UpdateMultipleFridgeItemsQuantitiesIn(m.itemId,m.quantity))
 
@@ -116,7 +115,6 @@ export class HomeItemListComponent implements OnInit{
       error:()=>{
         this.toastService.showError('Ocorreu um erro ao atualizar as quantidades')
         this.getFridgeItems()
-        this.isLoading=false
       },
       complete:()=>{
         this.isMultipleAdd = false
