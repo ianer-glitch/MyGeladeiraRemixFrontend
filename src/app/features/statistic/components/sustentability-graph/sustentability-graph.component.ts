@@ -2,10 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { IconInfoComponent } from "../../../../shared/components/molecules/icon-info/icon-info.component";
 import { GetStatisticByUserService } from '../../getStatisticByUser/get-statistic-by-user.service';
 import { Chart, plugins, registerables } from 'chart.js';
+import { PageSubtitleComponent } from "../../../../shared/components/organisms/page-subtitle/page-subtitle.component";
 
 @Component({
   selector: 'sustentability-graph',
-  imports: [IconInfoComponent],
+  imports: [IconInfoComponent, PageSubtitleComponent],
   templateUrl: './sustentability-graph.component.html',
   styleUrl: './sustentability-graph.component.css'
 })

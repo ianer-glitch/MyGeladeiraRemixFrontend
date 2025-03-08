@@ -1,0 +1,11 @@
+.subtitle-container{
+  display: flex;
+  align-items:center;
+  justify-content:flex-start ;
+  gap: 1rem;
+  width: 100%;
+}
+
+.subtitle-container h2{
+  color: var(--text-color-darker);
+}
