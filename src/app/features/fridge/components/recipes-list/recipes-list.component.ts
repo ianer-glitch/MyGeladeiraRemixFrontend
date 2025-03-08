@@ -25,10 +25,10 @@ export class RecipesListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.askRecipes()
+    // this.askRecipes()
   }
   recipes : AskRecipesOut[]= []
-  isLoading:boolean = false
+  isLoading:boolean = true
   
   askRecipes(){
     this.isLoading = true

@@ -1,5 +1,5 @@
 <ul class="recipe-list-container">
-  {{isLoading}}
+  <li *ngIf="isLoading">isLoading</li>
   <li *ngFor="let re of recipes">
     <recipe-card
       [title]="re.title"
