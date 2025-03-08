@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { IconInfoComponent } from "../../../../shared/components/molecules/icon-info/icon-info.component";
 import { GetStatisticByUserService } from '../../getStatisticByUser/get-statistic-by-user.service';
 import { Chart, plugins, registerables } from 'chart.js';
 import { PageSubtitleComponent } from "../../../../shared/components/organisms/page-subtitle/page-subtitle.component";
+import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'sustentability-graph',
-  imports: [IconInfoComponent, PageSubtitleComponent],
+  imports: [CommonModule, PageSubtitleComponent, SkeletonComponent],
   templateUrl: './sustentability-graph.component.html',
   styleUrl: './sustentability-graph.component.css'
 })
@@ -74,11 +75,14 @@ export class SustentabilityGraphComponent implements AfterViewInit {
     });
    
   }
+  isLoading:boolean = false
 
   getStatisticByUser(){
+    this.isLoading=true
     this.getStatisticByUserService.getStatisticByUser()
           .subscribe((res)=>{
             this.createChart(res.nationalFoodWasteIndex,res.userFoodWasteIndex)
+            this.isLoading=false
           })
   }
 }

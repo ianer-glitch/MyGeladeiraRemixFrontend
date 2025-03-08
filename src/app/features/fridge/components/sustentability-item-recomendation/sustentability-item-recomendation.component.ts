@@ -7,10 +7,11 @@ import { ToastService } from '../../../../core/services/toast/toast.service';
 import { CommonModule } from '@angular/common';
 import { ListTemComponent } from "../../../../shared/components/atoms/list-tem/list-tem.component";
 import { GenericListItemComponent } from "../../../../shared/components/molecules/generic-list-item/generic-list-item.component";
+import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
 
 @Component({
   selector: 'sustentability-item-recomendation',
-  imports: [PageSubtitleComponent, CommonModule, ListTemComponent, GenericListItemComponent],
+  imports: [PageSubtitleComponent, CommonModule, ListTemComponent, GenericListItemComponent, SkeletonComponent],
   templateUrl: './sustentability-item-recomendation.component.html',
   styleUrl: './sustentability-item-recomendation.component.css'
 })

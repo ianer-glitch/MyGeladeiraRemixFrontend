@@ -7,7 +7,13 @@
     Você é sustentável?
   </page-subtitle>
 
+  <skeleton
+   *ngIf="isLoading"
+    width="300px"
+    height="200px"
+  />
   <div>
     <canvas class="graph" #graph ></canvas>
   </div>
+
 </section>

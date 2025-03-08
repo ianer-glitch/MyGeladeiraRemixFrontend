@@ -5,10 +5,29 @@
     information="Utilizamos inteligência artificial para recomendar alimentos que você pode gostar, a partir dos que já possuí"
     infoPosition="bottom"
   >Você pode gostar de:</page-subtitle>
-<ul class="recommended-items-container">
-  <li *ngFor="let item of recommendedItems">
-    <generic-list-item [backgroundColor]="item.color" [text]="item.name"/>
-  </li>
+  <ul class="recommended-items-container">
+    <li *ngFor="let item of recommendedItems">
+      <generic-list-item [backgroundColor]="item.color" [text]="item.name"/>
+    </li>
+    <li *ngIf="isLoading">
+      <skeleton
+        width="100%"
+        height="4rem"
+      />
+    </li>
+    <li *ngIf="isLoading">
+      <skeleton
+        width="100%"
+        height="4rem"
+      />
+    </li>
+    <li *ngIf="isLoading">
+      <skeleton
+        width="100%"
+        height="4rem"
+      />
+    </li>
+
 </ul>
 
 
