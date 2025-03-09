@@ -24,12 +24,6 @@ export class AppComponent implements OnInit {
    this.setSameLanguageAsBrowser()
   }
 
-  
-  visible=false
-  title = 'MyGeladeiraRemixFrontend';
-  value:number=0
-
-  
   service = inject(TranslocoService);
   setSameLanguageAsBrowser(){
     const availableLangs = this.service.getAvailableLangs() as string[];
