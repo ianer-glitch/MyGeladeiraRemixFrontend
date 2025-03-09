@@ -11,6 +11,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { fridgeRoutes } from './features/fridge/fridge.routes';
 import AdminGuard from './core/guards/admin/AdminGuard';
+import { TranslocoHttpLoader } from './transloco-loader';
+import { provideTransloco } from '@jsverse/transloco';
 
 
 export const appConfig: ApplicationConfig = {
@@ -32,7 +34,16 @@ export const appConfig: ApplicationConfig = {
   }), provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
-          })
+          }), provideHttpClient(), provideTransloco({
+        config: { 
+          availableLangs: ['en', 'pt-br'],
+          defaultLang: 'en',
+          // Remove this option if your application doesn't support changing language in runtime.
+          reRenderOnLangChange: true,
+          prodMode: !isDevMode(),
+        },
+        loader: TranslocoHttpLoader
+      })
   ]
 };
 
