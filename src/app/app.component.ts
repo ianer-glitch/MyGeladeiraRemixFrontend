@@ -21,16 +21,25 @@ import { LangDefinition, TranslocoService } from "@jsverse/transloco";
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    this.service.setDefaultLang('en')
+   this.setSameLanguageAsBrowser()
   }
+
+  
   visible=false
   title = 'MyGeladeiraRemixFrontend';
   value:number=0
 
   
   service = inject(TranslocoService);
-
-  availableLangs = this.service.getAvailableLangs() as LangDefinition[];
+  setSameLanguageAsBrowser(){
+    const availableLangs = this.service.getAvailableLangs() as string[];
+    const browserDefaultLanguade = navigator.language.toLowerCase()
+    if(availableLangs.includes(browserDefaultLanguade)){
+      this.service.setActiveLang(browserDefaultLanguade)
+    }else{
+      this.service.setActiveLang('en')
+    }
+  }
   
 
 }
