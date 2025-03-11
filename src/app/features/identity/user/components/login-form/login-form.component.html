@@ -1,24 +1,25 @@
-<form [formGroup]="loginForm">
+<form *transloco="let t; prefix: 'identity.user.login.login-form'" [formGroup]="loginForm">
   <input-text 
     [fluid]="true" 
-    label="Email"
-    placeholder="Insira o email"
+    [label]="t('email-label')"
+    [placeholder]="t('email-placeholder')"
     id="email"
     formControlName="Email" 
   />
+  
   <input-password
     [fluid]="true" 
-    label="Senha"
-    placeholder="Insira a senha"
+    [label]="t('password-label')"
+    [placeholder]="t('password-placeholder')"
     id="senha"
     formControlName="Password"
   
   />
   <confirmation-buttons
-    confirmLabel="Entrar"
+    [confirmLabel]="t('confirm-label')"
     (confirmClick)="login()"
     (denyClick)="handleDeny()"
-    denyLabel="Cadastrar"
+    [denyLabel]="t('deny-label')"
     [isConfirmLoading]="isLoading"
   />
 </form>

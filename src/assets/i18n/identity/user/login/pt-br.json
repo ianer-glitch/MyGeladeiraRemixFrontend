@@ -1,0 +1,19 @@
+{
+
+  "identity":{
+    "user":{
+      "login":{
+        "login-form":{
+          "email-label":"Email",
+          "email-placeholder":"Insira seu email",
+          "password-label":"Senha",
+          "password-placeholder":"Insira sua senha",
+          "confirm-label":"Entrar",
+          "deny-label":"Cadastrar",
+          "login-error-message":"Não foi possível efetuar o login"
+        }
+      }
+    }
+  }
+
+}

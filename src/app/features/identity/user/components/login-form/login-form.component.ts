@@ -9,20 +9,31 @@ import { ToastService } from '../../../../../core/services/toast/toast.service';
 import { Router } from '@angular/router';
 import LoginOut from '../../login/LoginOut';
 import { Observable, Observer } from 'rxjs';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 
 @Component({
   selector: 'login-form',
-  imports: [InputTextComponent, ConfirmationButtonsComponent, ReactiveFormsModule, InputPasswordComponent],
+  imports: [InputTextComponent,
+            ConfirmationButtonsComponent,
+            ReactiveFormsModule,
+            InputPasswordComponent,TranslocoDirective],
   templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+  styleUrl: './login-form.component.css',
+  providers:[
+    provideTranslocoScope({
+      scope: "",
+      alias: "mf",
+    }),
+  ]
 })
 export class LoginFormComponent implements OnInit  {
 
   constructor( 
     private loginService : LoginService,
     private toastService : ToastService,
-    private router: Router
+    private router: Router,
+    private translocoService : TranslocoService
     ) {
  
   
@@ -50,7 +61,7 @@ export class LoginFormComponent implements OnInit  {
     
     this.router.navigate(['/auth/define-email'])
   }
-
+  translocoPath = "identity.user.login.login-form."
   login(){
     if(this.loginForm.valid){
       this.isLoading= true
@@ -66,7 +77,8 @@ export class LoginFormComponent implements OnInit  {
           this.router.navigate(['/fridge/home']) 
         },
         error:()=>{
-          this.toastService.showError("Não foi possível efetuar o login")
+          const message = this.translocoService.translate(this.translocoPath+'login-error-message')
+          this.toastService.showError(message)
           this.isLoading = false
         },
         complete:()=>this.isLoading = false
@@ -80,3 +92,4 @@ export class LoginFormComponent implements OnInit  {
     }
   }
 }
+
