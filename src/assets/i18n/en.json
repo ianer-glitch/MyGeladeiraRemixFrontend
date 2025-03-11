@@ -21,11 +21,20 @@
           "last-name-label":"Last Name",
           "email-label":"Email",
           "birth-date-label":"Birth Date",
-          "birth-date-format":"mm/dd/yyyy",
+          "birth-date-format":"mm/dd/yy",
           "confirm-label":"Next",
           "deny-label":"Back",
           "confirm-click-warn":"There are fields in the form that require attention"
         }
+      },
+      "create-password":{
+        "title":"Register",
+        "subtitle":"Information",
+        "form-title":"It must meet the following criteria:",
+        "form-criteria-0":"At least one special caracter.",
+        "form-criteria-1":"Numbers.",
+        "form-criteria-2":"Letters",
+        "form-criteria-3":"At leas 8 caracters."
       }
     }
   },
