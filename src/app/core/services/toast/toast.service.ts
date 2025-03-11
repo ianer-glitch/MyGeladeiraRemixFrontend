@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { MessageService, ToastMessageOptions } from 'primeng/api';
+import {TranslocoService } from '@jsverse/transloco';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService{
 
-  constructor(private messageService : MessageService) {
+  constructor(
+    private messageService : MessageService,
+    private translocoService : TranslocoService
+  ) {
     
   }
+
+  translocoPath="toast-service."
 
   private defaultMessage:ToastMessageOptions = { 
     severity: 'info', 
@@ -18,7 +24,7 @@ export class ToastService{
   }
 
   public showSucces(message:string,life?:number){
-    this.defaultMessage.summary='Sucesso'
+    this.defaultMessage.summary=this.translocoService.translate(this.translocoPath+'success')
     this.defaultMessage.severity='success'
     this.defaultMessage.detail=message
     if(life)
@@ -28,7 +34,7 @@ export class ToastService{
   }
 
   public showError(message:string,life?:number){
-    this.defaultMessage.summary='Algo deu errado'
+    this.defaultMessage.summary=this.translocoService.translate(this.translocoPath+'error')
     this.defaultMessage.severity='error'
     this.defaultMessage.detail=message
     if(life)
@@ -38,7 +44,7 @@ export class ToastService{
   }
 
   public showWarn(message:string,life?:number){
-    this.defaultMessage.summary='Atenção!'
+    this.defaultMessage.summary=this.translocoService.translate(this.translocoPath+'warn')
     this.defaultMessage.severity='warn'
     this.defaultMessage.detail=message
     if(life)

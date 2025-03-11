@@ -10,10 +10,16 @@
           "password-placeholder":"Enter your password",
           "confirm-label":"Login",
           "deny-label":"Register",
-          "login-error-message":"Could not Login"
+          "login-error-message":"Could not login"
         }
       }
     }
+  },
+
+  "toast-service":{
+    "success":"Success",
+    "error":"Something went wrong",
+    "warn":"Warning!"
   }
 
 }

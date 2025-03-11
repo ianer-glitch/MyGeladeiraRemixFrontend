@@ -41,6 +41,7 @@ export class LoginFormComponent implements OnInit  {
   isLoading:boolean = false 
   loginForm : FormGroup = new FormGroup({})
   payload : PIsUserPasswordValidIn = new PIsUserPasswordValidIn()
+  translocoPath = "identity.user.login.login-form."
   
   ngOnInit(): void {
     this.createFormGroup(this.payload)
@@ -61,7 +62,7 @@ export class LoginFormComponent implements OnInit  {
     
     this.router.navigate(['/auth/define-email'])
   }
-  translocoPath = "identity.user.login.login-form."
+
   login(){
     if(this.loginForm.valid){
       this.isLoading= true
