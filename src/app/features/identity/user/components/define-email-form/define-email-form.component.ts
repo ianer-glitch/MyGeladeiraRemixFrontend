@@ -9,6 +9,7 @@ import PCreateUserIn from '../../createUser/PCreateUserIn';
 import { LocalStorageService } from '../../../../../core/services/local-storage/local-storage.service';
 import { ToastService } from '../../../../../core/services/toast/toast.service';
 import { DatePickerModule } from 'primeng/datepicker';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'define-email-form',
@@ -19,9 +20,16 @@ import { DatePickerModule } from 'primeng/datepicker';
     InputNumberComponent,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    TranslocoDirective],
   templateUrl: './define-email-form.component.html',
-  styleUrl: './define-email-form.component.css'
+  styleUrl: './define-email-form.component.css',
+  providers:[
+      provideTranslocoScope({
+        scope: "",
+        alias: "mf",
+      }),
+    ]
 })
 export class DefineEmailFormComponent implements OnInit {
 
@@ -29,7 +37,9 @@ export class DefineEmailFormComponent implements OnInit {
     private location : Location,
     private router:Router,
     private localStorageService:LocalStorageService,
-    private toastService:ToastService) {
+    private toastService:ToastService,
+    private translocoService:TranslocoService
+  ) {
   
  }
   ngOnInit(): void {
@@ -52,7 +62,7 @@ export class DefineEmailFormComponent implements OnInit {
   })
  }
  
- 
+ translocoPath="identity.user.define-email.define-email-form"
  handleConfirmClick(){
   if(this.userForm.valid){
     this.router.navigate(['/auth/create-password'])
@@ -68,7 +78,8 @@ export class DefineEmailFormComponent implements OnInit {
     this.router.navigate(['/auth/create-password'])
     
   }else{
-    this.toastService.showWarn("Existem campos no formulário que necessitam de atenção")
+    const message = this.translocoService.translate(this.translocoPath+".confirm-click-warn")
+    this.toastService.showWarn(message)
   }
   
   

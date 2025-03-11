@@ -12,6 +12,18 @@
           "deny-label":"Register",
           "login-error-message":"Could not login"
         }
+      },
+      "define-email":{
+        "define-email-form":{
+          "name-label":"Name",
+          "last-name-label":"Last Name",
+          "email-label":"Email",
+          "birth-date-label":"Birth Date",
+          "birth-date-format":"mm/dd/yyyy",
+          "confirm-label":"Next",
+          "deny-label":"Back",
+          "confirm-click-warn":"There are fields in the form that require attention"
+        }
       }
     }
   },
