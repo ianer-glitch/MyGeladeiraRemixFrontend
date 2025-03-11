@@ -10,12 +10,23 @@ import { CreateUserService } from '../../createUser/create-user.service';
 import PCreateUserOut from '../../createUser/PCreateUserOut';
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'create-password-form',
-  imports: [ReactiveFormsModule ,InputPasswordComponent, ConfirmationButtonsComponent],
+  imports: [
+    ReactiveFormsModule ,
+    InputPasswordComponent,
+    ConfirmationButtonsComponent,
+    TranslocoDirective],
   templateUrl: './create-password-form.component.html',
-  styleUrl: './create-password-form.component.css'
+  styleUrl: './create-password-form.component.css',
+  providers:[
+    provideTranslocoScope({
+      scope: "",
+      alias: "mf",
+    }),
+  ]
 })
 export class CreatePasswordFormComponent implements OnInit{
 
@@ -25,7 +36,9 @@ export class CreatePasswordFormComponent implements OnInit{
     private location:Location,
     private localStorageService:LocalStorageService,
     private toastService:ToastService,
-  private createUserService:CreateUserService) {
+    private createUserService:CreateUserService,
+    private translocoService:TranslocoService
+  ) {
     
     
   }
@@ -53,7 +66,7 @@ export class CreatePasswordFormComponent implements OnInit{
   handleDeny(){
     this.location.back()
   }
-
+   translocoPath="identity.user.create-password.create-password-form"
   handleConfirm(){
     if(this.userForm.valid){
       this.isLoading = true
@@ -66,18 +79,21 @@ export class CreatePasswordFormComponent implements OnInit{
 
         const options : Observer<PCreateUserOut> ={
           next:()=>{
-            this.toastService.showSucces("Usuário criado!")
+            const message = this.translocoService.translate(this.translocoPath+'.create-user-success')
+            this.toastService.showSucces(message)
             this.router.navigate(['auth/login'])
           },
           error:()=>{
-            this.toastService.showError("Ocorreu um erro ao tentar criar um usuário")
+            const message = this.translocoService.translate(this.translocoPath+'.create-user-error')
+            this.toastService.showError(message)
             this.isLoading = false
           },
           complete:()=>this.isLoading = false
         } 
         this.createUserService.createUser(this.initial).subscribe(options)
       }else{
-        this.toastService.showWarn("As senhas não conferem!")
+        const message = this.translocoService.translate(this.translocoPath+'.create-user-warn')
+        this.toastService.showWarn(message)
       }
     }
   }

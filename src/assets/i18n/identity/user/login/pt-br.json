@@ -30,11 +30,20 @@
       "create-password":{
         "title":"Register",
         "subtitle":"Definição de Senha",
-        "form-title":"Ela deve atender aos <br>seguintes critérios:",
+        "form-title":"Ela deve atender a:",
         "form-criteria-0":"Pelo menos um caracter especial.",
         "form-criteria-1":"Números.",
         "form-criteria-2":"Letras.",
-        "form-criteria-3":"Mínimo de 8 caracteres."
+        "form-criteria-3":"Mínimo de 8 caracteres.",
+        "create-password-form":{
+          "password-label":"Insira a Senha",
+          "password-confirm-label":"Confirme a Senha",
+          "confirm-label":"Avançar",
+          "deny-label":"Voltar",
+          "create-user-success":"Usuário criado!",
+          "create-user-error":"Ocorreu um erro ao tentar criar um usuário",
+          "create-user-warn":"As senhas não conferem!"
+        }
       }
     }
   },

@@ -29,12 +29,21 @@
       },
       "create-password":{
         "title":"Register",
-        "subtitle":"Information",
-        "form-title":"It must meet the following criteria:",
+        "subtitle":"Define Password",
+        "form-title":"It must be:",
         "form-criteria-0":"At least one special caracter.",
         "form-criteria-1":"Numbers.",
         "form-criteria-2":"Letters",
-        "form-criteria-3":"At leas 8 caracters."
+        "form-criteria-3":"At least 8 caracters.",
+        "create-password-form":{
+          "password-label":"Password",
+          "password-confirm-label":"Confirm password",
+          "confirm-label":"Continue",
+          "deny-label":"Back",
+          "create-user-success":"User created!",
+          "create-user-error":"Could not create user",
+          "create-user-warn":"Passwords must be equal"
+        }
       }
     }
   },
