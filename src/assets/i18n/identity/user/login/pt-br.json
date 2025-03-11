@@ -13,6 +13,8 @@
           "login-error-message":"Não foi possível efetuar o login"
         },
         "define-email":{
+          "title":"Cadastro",
+          "subtitle":"Dados básicos",
         "define-email-form":{
           "name-label":"Nome",
           "last-name-label":"Sobrenome",

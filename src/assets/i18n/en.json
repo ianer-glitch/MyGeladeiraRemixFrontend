@@ -14,6 +14,8 @@
         }
       },
       "define-email":{
+        "title":"Register",
+        "subtitle":"Information",
         "define-email-form":{
           "name-label":"Name",
           "last-name-label":"Last Name",

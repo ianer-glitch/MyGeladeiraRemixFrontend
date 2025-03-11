@@ -1,11 +1,10 @@
-<section>
+<section  *transloco="let t prefix:translocoPath" >
   <div class="title-container">
-    <h1>Cadastro</h1>
-    <h2>Dados básicos</h2>
+    <h1>{{t('title')}}</h1>
+    <h2>{{t('subtitle')}}</h2>
   </div>
   <step-bar-login [stepActive]="0" />
   <div class="form-container">
-    <h3>Insira um nome e um email válido</h3>
     <define-email-form/>
   </div>
 </section>
