@@ -49,32 +49,113 @@
 
   "fridge":{
     "admin-create-edit-item":{
+      "admin-create-edit-item-form":{
+        "title":"add/Edit",
+        "input-color-picker-label":"Item Color",
+        "input-name-label":"Item Name",
+        "input-weight-label":"Item Weight(g)",
+        "input-weight-information":"We use artificial inteligence to estimate the item weight.This will be used to calculate FWI(Food Waste Index)",
+        "input-weight-button-label":"go!",
+        "input-weight-minimum-quantity-label":"Minimum Quantity",
+        "input-minimum-quantity-information":"Here you will define when the item will be added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is 1 unit left.",
+        "expiration-time-selector-label":"When will it expire?",
+        "input-quantity-label":"Default Quantity",
+        "input-quantity-information":"The quantity that users will have when they add the item to the fridge",
+        "button-remove-item-label":"Remove",
+        "confirm-label":"Save",
+        "deny-label":"Cancel",
+        "create-item-success":"Item was created successfully",
+        "create-item-error":"Could not create the Item",
+        "create-item-warn":"There some fields that require attention",
+        
+        "update-item-success":"Item updated!",
+        "update-item-error":"Item Could not be updated",
+        "update-item-warn":"There are incorrect fields!",
+        "delete-item-success":"Item was removed from all fridges successfully",
+        "delete-item-error":"Could not remove Item",
+        "get-recommended-item-weight-error":"Could not recommend item weight"
 
-    },
-    "admin-home":{
-
+      }
     },
     "edit-item":{
-
+      "edit-item-form":{
+        "input-quantity-label":"Quantidade mínima",
+        "input-quantity-information":"Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade.",
+        "expiration-time-select-label":"Quando vai vencer?",
+        "app-input-number-buttons-label":"Qual a quantidade atual?",
+        "button-remove-label":"Excluir",
+        "confirm-label":"Salvar",
+        "deny-label":"Cancelar",
+        "update-fridge-item-success":"Alterações efetuadas com sucesso!",
+        "update-fridge-item-error":"Ocorreu um erro ao salvar as alterações",
+        "update-fridge-item-warn":"Existem campos que precisam de atenção!",
+        "remove-items-fridge-success":"Item removido da geladeira com sucesso!",
+        "remove-items-fridge-error":"Não foi possível remover o item da geladeira"
+       
+      }
     },
     "home":{
       "home-item-list":{
         "get-fridge-items-error":"Não foi possível buscar os items",
         "update-multiple-fridge-items-quantities-success":"As quantidades foram atualizadas!",
-        "update-multiple-fridge-items-quantities-error":"Ocorreu um erro ao atualizar as quantidades"
+        "update-multiple-fridge-items-quantities-error":"Ocorreu um erro ao atualizar as quantidades",
+        "popup-add-fridge-item":{
+          "title":"Busque os Itens",
+          "input-select-label":"Guarde na sua geladeira!",
+          "input-select-information":"Os itens selecionados aqui serão adicionados a sua geladeira",
+          "add-items-to-fridge-success":"Items adicionados com sucesso!",
+          "add-items-to-fridge-error":"Ocorreu um erro ao adicionar os items",
+          "add-items-to-fridge-warn":"É necessário selecionar pelo menos um item para adicionar!",
+          "confirm-label":"Salvar",
+          "deny-label":"Cancelar"
+        }
       }
     },
     "recipes":{
-
+      "title":"O que você pode cozinhar:",
+      "recipes-list":{
+        "recipe-card":{
+          "ingredients":"Ingredientes",
+          "method":"Modo de preparo"
+        }
+      }
     },
     "shopping-list":{
+      "title":"O que está faltando:"
+    }
+    
+  },
+
+  "statistic":{
+    "manage-statistic":{
+      "title":"Estatísticas:",
+      "sustentability-graph":{
+        "label":"Você é sustentável?",
+        "information":"Cálculamos os dados de sustentabilidade segundo o FDI(Food Waste Index),quanto menor o valor, mais sustentável você é."
+      },
+      "sustentability-item-recomendation":{
+        "label":"Você pode gostar de:",
+        "information":"Utilizamos inteligência artificial para recomendar alimentos que você pode gostar, a partir dos que já possuí"
+      }
       
     }
   },
+
   "toast-service":{
     "success":"Success",
     "error":"Something went wrong",
     "warn":"Attention!"
+  },
+
+  "sidebar":{
+    "title":"Para Onde?",
+    "home-nav":"Home",
+    "shopping-list-nav":"Lista de Compras",
+    "statistic-nav":"Estatísticas",
+    "recipes-nav":"Receitas",
+    "manage-nav":"Gerenciar",
+    "exit-button-label":"Sair"
   }
+  
 
 }
