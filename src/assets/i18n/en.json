@@ -41,7 +41,7 @@
           "deny-label":"Back",
           "create-user-success":"User created!",
           "create-user-error":"Could not create user",
-          "create-user-warn":"Passwords must be equal"
+          "create-user-warn":"The two passwords must be the same!"
         }
       }
     }
@@ -50,7 +50,7 @@
   "toast-service":{
     "success":"Success",
     "error":"Something went wrong",
-    "warn":"Warning!"
+    "warn":"Attention!"
   }
 
 }

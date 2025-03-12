@@ -69,11 +69,12 @@ export class CreatePasswordFormComponent implements OnInit{
    translocoPath="identity.user.create-password.create-password-form"
   handleConfirm(){
     if(this.userForm.valid){
-      this.isLoading = true
+      
       const password = this.userForm.get('password')?.value
       const confirmPassword = this.userForm.get('confirmPassword')?.value 
       
       if(password == confirmPassword){
+        this.isLoading = true
         this.initial.password = password
         
 
@@ -95,6 +96,9 @@ export class CreatePasswordFormComponent implements OnInit{
         const message = this.translocoService.translate(this.translocoPath+'.create-user-warn')
         this.toastService.showWarn(message)
       }
+    }else{
+      const message = this.translocoService.translate(this.translocoPath+'.create-user-warn')
+      this.toastService.showWarn(message)
     }
   }
 }
