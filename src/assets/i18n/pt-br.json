@@ -113,7 +113,13 @@
       }
     },
     "recipes":{
-      "title":"O que você pode cozinhar:"
+      "title":"O que você pode cozinhar:",
+      "recipes-list":{
+        "recipe-card":{
+          "ingredients":"Ingredientes",
+          "method":"Modo de preparo"
+        }
+      }
     },
     "shopping-list":{
       "title":"O que está faltando:"

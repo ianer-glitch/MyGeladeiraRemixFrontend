@@ -31,7 +31,8 @@ export class SustentabilityItemRecomendationComponent implements OnInit{
   
   constructor(
     private getRecommendedItemService : GetRecommendedItemsService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private translocoService:TranslocoService
   ) {
     
     
@@ -46,8 +47,8 @@ export class SustentabilityItemRecomendationComponent implements OnInit{
 
   getRecommendedItems(){
     this.isLoading = true
-
-    this.getRecommendedItemService.getRecommendedItems().subscribe((res)=>{
+    const language = this.translocoService.getActiveLang()
+    this.getRecommendedItemService.getRecommendedItems(language).subscribe((res)=>{
       this.recommendedItems=res
       this.isLoading = false
     })

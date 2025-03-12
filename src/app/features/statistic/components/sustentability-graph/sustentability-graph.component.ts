@@ -18,21 +18,20 @@ import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@js
     }),
   ]
 })
-export class SustentabilityGraphComponent implements AfterViewInit {
+export class SustentabilityGraphComponent implements OnInit {
 
 
   constructor(private getStatisticByUserService : GetStatisticByUserService) {
     
   }
+  ngOnInit(): void {
+    Chart.register(...registerables);
+    this.getStatisticByUser()
+  }
   
   translocoPath="statistic.manage-statistic.sustentability-graph"
 
-  ngAfterViewInit(): void {
-    Chart.register(...registerables);
-    this.getStatisticByUser()
-    
-
-  }
+  
   @ViewChild('graph') graph!: ElementRef;
   
   createChart(nationalFdi:number,userFdi:number){

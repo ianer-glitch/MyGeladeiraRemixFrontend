@@ -12,7 +12,7 @@ export class AskRecipesService extends FridgeService {
     super(http);
   }
 
-  askRecipes(){
-    return this.get<AskRecipesOut[]>('/recipes')
+  askRecipes(responseLanguage:string){
+    return this.get<AskRecipesOut[]>('/recipes/'+responseLanguage)
   }
 }

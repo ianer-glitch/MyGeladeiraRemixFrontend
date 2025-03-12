@@ -13,7 +13,7 @@ export class GetRecommendedItemsService extends FridgeService {
   }
 
 
-  getRecommendedItems(){
-    return this.get<GetRecommendedItemsOut[]>("/fridge/recommended-items")
+  getRecommendedItems(languageResponse : string){
+    return this.get<GetRecommendedItemsOut[]>("/fridge/recommended-items/"+languageResponse)
   }
 }

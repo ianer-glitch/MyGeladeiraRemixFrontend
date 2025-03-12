@@ -6,7 +6,7 @@ import { Observer } from 'rxjs';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import { CommonModule } from '@angular/common';
 import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
-
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'recipes-list',
@@ -21,8 +21,10 @@ export class RecipesListComponent implements OnInit {
 
 
   constructor(
-    public askRecipesService:AskRecipesService,
-    public toastService:ToastService ) {
+    private askRecipesService:AskRecipesService,
+    private toastService:ToastService,
+    private translocoService: TranslocoService 
+  ) {
 
     
   }
@@ -35,19 +37,8 @@ export class RecipesListComponent implements OnInit {
   
   askRecipes(){
     this.isLoading = true
-    const options : Observer<AskRecipesOut[]> = {
-      next:(res)=>{
-      
-      },
-      error:()=>{
-        this.toastService.showError("Não foi possível recomendar receitas")
-        this.isLoading = false
-      },
-      complete:()=>{
-        this.isLoading = false
-      }
-    }
-    this.askRecipesService.askRecipes().subscribe((res)=>{
+    const language = this.translocoService.getActiveLang()
+    this.askRecipesService.askRecipes(language).subscribe((res)=>{
       this.recipes = res
       this.isLoading =false
     })

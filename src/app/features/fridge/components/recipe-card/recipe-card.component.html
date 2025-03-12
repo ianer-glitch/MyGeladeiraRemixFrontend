@@ -1,12 +1,12 @@
-<card  [title]="title()">
+<card *transloco="let t; prefix:translocoPath"  [title]="title()">
   <div class="body">
-    <h3>Ingredientes</h3>
+    <h3>{{t('ingredients')}}</h3>
     <ul class="ingredients-list">
       <li *ngFor="let ingre of ingredients()">
         <p>{{ingre}}</p>
       </li>
     </ul>
-    <h3>Modo de preparo</h3>
+    <h3>{{t('method')}}</h3>
     <p>{{method()}}</p>
   </div>
     
