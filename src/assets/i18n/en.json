@@ -54,7 +54,7 @@
         "input-color-picker-label":"Item Color",
         "input-name-label":"Item Name",
         "input-weight-label":"Item Weight(g)",
-        "input-weight-information":"We use artificial inteligence to estimate the item weight.This will be used to calculate FWI(Food Waste Index)",
+        "input-weight-information":"We use artificial inteligence to estimate the item weight.This will be used to calculate FDI(Food Waste Index)",
         "input-weight-button-label":"go!",
         "input-weight-minimum-quantity-label":"Minimum Quantity",
         "input-minimum-quantity-information":"Here you will define when the item will be added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is 1 unit left.",
@@ -79,63 +79,63 @@
     },
     "edit-item":{
       "edit-item-form":{
-        "input-quantity-label":"Quantidade mínima",
-        "input-quantity-information":"Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade.",
-        "expiration-time-select-label":"Quando vai vencer?",
-        "app-input-number-buttons-label":"Qual a quantidade atual?",
-        "button-remove-label":"Excluir",
-        "confirm-label":"Salvar",
-        "deny-label":"Cancelar",
-        "update-fridge-item-success":"Alterações efetuadas com sucesso!",
-        "update-fridge-item-error":"Ocorreu um erro ao salvar as alterações",
-        "update-fridge-item-warn":"Existem campos que precisam de atenção!",
-        "remove-items-fridge-success":"Item removido da geladeira com sucesso!",
-        "remove-items-fridge-error":"Não foi possível remover o item da geladeira"
+        "input-quantity-label":"Minimum quantity",
+        "input-quantity-information":"Here you will define when the item will be added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is 1 unit left.",
+        "expiration-time-select-label":"When will it expire?",
+        "app-input-number-buttons-label":"How much do you have?",
+        "button-remove-label":"Remove",
+        "confirm-label":"Save",
+        "deny-label":"Cancel",
+        "update-fridge-item-success":"Updates occurred successfully!",
+        "update-fridge-item-error":"An error occurred while saving changes",
+        "update-fridge-item-warn":"There are some fields that require attention",
+        "remove-items-fridge-success":"Item was removed successfully!",
+        "remove-items-fridge-error":"Could not remove Itema"
        
       }
     },
     "home":{
       "home-item-list":{
-        "get-fridge-items-error":"Não foi possível buscar os items",
-        "update-multiple-fridge-items-quantities-success":"As quantidades foram atualizadas!",
-        "update-multiple-fridge-items-quantities-error":"Ocorreu um erro ao atualizar as quantidades",
+        "get-fridge-items-error":"Unable to fetch items",
+        "update-multiple-fridge-items-quantities-success":"The item quantities where updated",
+        "update-multiple-fridge-items-quantities-error":"An error occurred while updating quantities",
         "popup-add-fridge-item":{
-          "title":"Busque os Itens",
-          "input-select-label":"Guarde na sua geladeira!",
-          "input-select-information":"Os itens selecionados aqui serão adicionados a sua geladeira",
-          "add-items-to-fridge-success":"Items adicionados com sucesso!",
-          "add-items-to-fridge-error":"Ocorreu um erro ao adicionar os items",
-          "add-items-to-fridge-warn":"É necessário selecionar pelo menos um item para adicionar!",
-          "confirm-label":"Salvar",
-          "deny-label":"Cancelar"
+          "title":"Search the items",
+          "input-select-label":"Store in your fridge!",
+          "input-select-information":"The items selected here will be added to your fridge.",
+          "add-items-to-fridge-success":"Items were added successfully!",
+          "add-items-to-fridge-error":"Something went wrong adding items to fridge",
+          "add-items-to-fridge-warn":"It should select at least one item to add to the fridge",
+          "confirm-label":"Save",
+          "deny-label":"Cancel"
         }
       }
     },
     "recipes":{
-      "title":"O que você pode cozinhar:",
+      "title":"What can you cook:",
       "recipes-list":{
         "recipe-card":{
-          "ingredients":"Ingredientes",
-          "method":"Modo de preparo"
+          "ingredients":"Ingredients",
+          "method":"Method"
         }
       }
     },
     "shopping-list":{
-      "title":"O que está faltando:"
+      "title":"What is missing:"
     }
     
   },
 
   "statistic":{
     "manage-statistic":{
-      "title":"Estatísticas:",
+      "title":"Statistics:",
       "sustentability-graph":{
-        "label":"Você é sustentável?",
-        "information":"Cálculamos os dados de sustentabilidade segundo o FDI(Food Waste Index),quanto menor o valor, mais sustentável você é."
+        "label":"Are you sustentable?",
+        "information":"We calculate sustainability data according to the FDI (Food Waste Index), the lower the value, the more sustainable you are."
       },
       "sustentability-item-recomendation":{
-        "label":"Você pode gostar de:",
-        "information":"Utilizamos inteligência artificial para recomendar alimentos que você pode gostar, a partir dos que já possuí"
+        "label":"You may like:",
+        "information":"We use artificial intelligence to recommend foods you might like, based on the ones that you already have."
       }
       
     }
@@ -148,13 +148,13 @@
   },
 
   "sidebar":{
-    "title":"Para Onde?",
+    "title":"Where to?",
     "home-nav":"Home",
-    "shopping-list-nav":"Lista de Compras",
-    "statistic-nav":"Estatísticas",
-    "recipes-nav":"Receitas",
-    "manage-nav":"Gerenciar",
-    "exit-button-label":"Sair"
+    "shopping-list-nav":"Shopping list",
+    "statistic-nav":"Statistics",
+    "recipes-nav":"Recipes",
+    "manage-nav":"Management",
+    "exit-button-label":"Exit"
   }
   
 
