@@ -33,6 +33,8 @@ export class AppComponent implements OnInit {
     }else{
       this.service.setActiveLang('en')
     }
+
+    this.service.setActiveLang('en')
   }
   
 

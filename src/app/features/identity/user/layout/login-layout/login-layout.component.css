@@ -30,6 +30,7 @@
 .login-layout-container h1,
 .login-layout-container h2,
 .login-layout-container h3,
+.login-layout-container h5,
 .login-layout-container label{
   color: var( --accent-color-darker) !important;
 }
