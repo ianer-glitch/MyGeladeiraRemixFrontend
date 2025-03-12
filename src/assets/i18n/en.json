@@ -47,6 +47,30 @@
     }
   },
 
+  "fridge":{
+    "admin-create-edit-item":{
+
+    },
+    "admin-home":{
+
+    },
+    "edit-item":{
+
+    },
+    "home":{
+      "home-item-list":{
+        "get-fridge-items-error":"Não foi possível buscar os items",
+        "update-multiple-fridge-items-quantities-success":"As quantidades foram atualizadas!",
+        "update-multiple-fridge-items-quantities-error":"Ocorreu um erro ao atualizar as quantidades"
+      }
+    },
+    "recipes":{
+
+    },
+    "shopping-list":{
+      
+    }
+  },
   "toast-service":{
     "success":"Success",
     "error":"Something went wrong",

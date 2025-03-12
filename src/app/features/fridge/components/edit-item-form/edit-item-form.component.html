@@ -1,29 +1,30 @@
-<div  class="form-container" [ngStyle]="{'background-color':backgroundColor}">
+<div *transloco="let t; prefix:translocoPath"  
+      class="form-container" [ngStyle]="{'background-color':backgroundColor}">
     <form [formGroup]="itemForm">
     <h1>{{itemName}}</h1>
     <img-upload-item
-      [fileUrl]="iconLink"
+      [fileUrl]="iconLink"f
     />
-
     
     <input-number 
-      label="Quantidade mínima"
+      [label]="t('input-quantity-label')"
       [min]="0"
-      information="Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade."
+      [information]="t('input-quantity-information')"
       formControlName="minimunQuantity"
-      />
-      <expiration-time-selector
+    />
+    <expiration-time-selector
+      [label]="t('expiration-time-select-label')"
       formControlName="expiration"
-      />
+    />
 
     <app-input-number-buttons
-      label="Qual a quantidade?"
+      [label]="t('app-input-number-buttons-label')"
       formControlName="quantity"
     />
 
     <app-button 
       class="remove-button"
-      label="Excluir" 
+      [label]="t('button-remove-label')" 
       severity="danger"
       (click)="handleDangerClick()"
       primeIcon="pi pi-trash"
@@ -31,8 +32,8 @@
       />
 
     <confirmation-buttons
-      confirmLabel="Salvar"
-      denyLabel="Cancelar"
+      [confirmLabel]="t('confirm-label')"
+      [denyLabel]="t('deny-label')"
       (denyClick)="handleDenyClick()"
       (confirmClick)="handleConfirClick()"
        [isConfirmLoading]="isLoading"

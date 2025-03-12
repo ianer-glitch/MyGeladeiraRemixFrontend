@@ -1,6 +1,6 @@
-<div class="form-container">
+<div *transloco="let t; prefix:translocoPath"  class="form-container">
   <form [formGroup]="itemForm">
-    <h1>Adicionar/Editar</h1>
+    <h1>{{t('title')}}</h1>
     <img-upload-item
       formControlName="icon"
       (ngModelChange)="handleIconChange($event)"
@@ -10,46 +10,48 @@
     
     <input-color-picker
       formControlName="color"
-      label="Cor do Item"
+      [label]="t('input-color-picker-label')"
     />
     
     <input-text 
-      label="Nome do item"
+    [label]="t('input-name-label')"
       formControlName="name"
     />
     <div class="input-weight-container">
       <input-number 
-        label="Peso do item(g)"
+        [label]="t('input-weight-label')"
         [min]="0"
         formControlName="weight"
-        information="Utilizamos inteligência artificial para estimar o peso do item, este mesmo peso será utlizado no cálculo do desperdício alimentar(Food Waste Index)"
+        [information]="t('input-weight-information')"
         informationPosition="bottom"
       />
       <app-button
-        label="Vai!"
+        [label]="t('input-weight-button-label')"
         [isLoading]="isLoadingWeight"
         (click)="getRecommendedItemWeight()"
       />
     </div>
     <input-number 
-      label="Quantidade mínima"
+      [label]="t('input-weight-minimum-quantity-label')"
       [min]="0"
       formControlName="minimumQuantity"
-      information="Aqui você vai definir quado o  item será adicionado a lista de compras. Caso a quantidade seja 1, o item aparecerá na lista de compras quando restar 1 unidade."
+      [information]="t('input-minimum-quantity-information')"
     />
     <expiration-time-selector
+      [label]="t('expiration-time-selector-label')"
       formControlName="expiration"
     />
   
     <input-number 
-      label="Quantidade padrão"
+      [label]="t('input-quantity-label')"
       [min]="0"
+      [information]="t('input-quantity-information')"
       formControlName="quantity"
     />
     
     <app-button 
         class="remove-button"
-        label="Excluir" 
+        [label]="t('button-remove-item-label')"
         severity="danger"
         (click)="handleDangerClick()"
         primeIcon="pi pi-trash"
@@ -57,8 +59,8 @@
         *ngIf="editingItemId"
         />
     <confirmation-buttons
-      confirmLabel="Salvar"
-      denyLabel="Cancelar"
+      [confirmLabel]="t('confirm-label')"
+      [denyLabel]="t('deny-label')"
       (confirmClick)="handleSubmit()"
       [isConfirmLoading]="isLoading"
       (denyClick)="handleCancel()"

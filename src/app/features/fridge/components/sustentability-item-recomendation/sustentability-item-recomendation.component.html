@@ -1,10 +1,13 @@
 
-<section class="statistic-manage-container">
+<section 
+  *transloco="let t; prefix:translocoPath" 
+  class="statistic-manage-container"
+  >
   
   <page-subtitle
-    information="Utilizamos inteligência artificial para recomendar alimentos que você pode gostar, a partir dos que já possuí"
+    [information]="t('information')"
     infoPosition="bottom"
-  >Você pode gostar de:</page-subtitle>
+  >{{t('label')}}</page-subtitle>
   <ul class="recommended-items-container">
     <li *ngFor="let item of recommendedItems">
       <generic-list-item [backgroundColor]="item.color" [text]="item.name"/>

@@ -1,4 +1,4 @@
-<section class="page-container">
-  <page-title>O que você pode cozinhar:</page-title>
+<section *transloco="let t; prefix:translocoPath"   class="page-container">
+  <page-title>{{t('title')}}</page-title>
   <recipes-list/>
 </section>

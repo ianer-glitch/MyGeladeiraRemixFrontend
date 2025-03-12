@@ -7,10 +7,11 @@ import { LocalStorageService } from '../../../../core/services/local-storage/loc
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import AdminGuard from '../../../../core/guards/admin/AdminGuard';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'sidebar',
-  imports: [DrawerModule, CommonModule, PrimeIconComponent],
+  imports: [DrawerModule, CommonModule, PrimeIconComponent,TranslocoDirective],
   encapsulation:ViewEncapsulation.None,
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
@@ -25,6 +26,7 @@ import AdminGuard from '../../../../core/guards/admin/AdminGuard';
 export class SidebarComponent implements ControlValueAccessor,OnInit {
   visible:boolean = true
   canAccessAdmin : boolean = false
+  translocoPath="sidebar"
   
   constructor(private router : Router,
     private localStorageService:LocalStorageService,

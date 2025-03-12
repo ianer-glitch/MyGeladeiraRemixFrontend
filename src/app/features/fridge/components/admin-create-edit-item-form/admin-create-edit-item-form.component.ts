@@ -24,7 +24,7 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 import { InputColorPickerComponent } from "../../../../shared/components/templates/input-color-picker/input-color-picker.component";
 import { GetRecommendedItemWeightService } from '../../getRecommendedItemWeight/get-recommended-item-weight.service';
 import GetRecommendedItemWeightOut from '../../getRecommendedItemWeight/GetRecommendedItemWeightOut';
-
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'admin-create-edit-item-form',
@@ -36,7 +36,7 @@ import GetRecommendedItemWeightOut from '../../getRecommendedItemWeight/GetRecom
     ImgUploadItemComponent,
     ReactiveFormsModule,
     ButtonComponent, ColorPickerModule,
-    CommonModule, InputColorPickerComponent],
+    CommonModule, InputColorPickerComponent,TranslocoDirective],
   templateUrl: './admin-create-edit-item-form.component.html',
   styleUrl: './admin-create-edit-item-form.component.css'
 })
@@ -52,12 +52,13 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     private localStorageService:LocalStorageService,
     private updateItemService:UpdateItemService,
     private deleteItemService : DeleteItemService,
-    private getRecommendedItemWeightService : GetRecommendedItemWeightService
+    private getRecommendedItemWeightService : GetRecommendedItemWeightService,
+    private translocoService:TranslocoService
   ) {
     
     
   }
-
+  translocoPath="fridge.admin-create-edit-item.admin-create-edit-item-form"
   private formBuilder = inject(FormBuilder)
   itemForm:FormGroup = {} as FormGroup
   payload: CreateItemIn = new CreateItemIn()
@@ -65,7 +66,9 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   ngOnInit(): void {
     this.createFormGroup(this.payload)
     this.handleFormEditing()
-   
+    this.translocoService.selectTranslate(this.translocoPath+".get-recommended-item-weight-error").subscribe((res)=>{
+      this.toastService.showError(res)
+    })
 
   }
   iconLink:string=""
@@ -133,9 +136,15 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       )
 
       const handleRequest:Observer<any> = {
-        next:(res) => this.toastService.showSucces("Item adicionado com sucesso!"),
+        next:(res) =>{
+          this.translocoService.selectTranslate(this.translocoPath+".update-item-success").subscribe((res)=>{
+            this.toastService.showSucces(res)
+          })
+        },
         error:(err) => {
-            this.toastService.showError("Algo deu errado")
+          this.translocoService.selectTranslate(this.translocoPath+".update-item-error").subscribe((res)=>{
+            this.toastService.showSucces(res)
+          })
             this.isLoading = false
           },
         complete:()=> {
@@ -145,7 +154,10 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       }
       this.updateItemService.updateItem(p,this.icon).subscribe(handleRequest)
     }else{
-      this.toastService.showWarn("Existem campos incorretos!")
+      this.translocoService.selectTranslate(this.translocoPath+".update-item-warn").subscribe((res)=>{
+        this.toastService.showSucces(res)
+      })
+      
     }
   }
 
@@ -163,9 +175,15 @@ export class AdminCreateEditItemFormComponent implements OnInit {
       )
 
       const handleRequest:Observer<any> = {
-        next:(res) => this.toastService.showSucces("Item adicionado com sucesso!"),
+        next:(res) => {
+          this.translocoService.selectTranslate(this.translocoPath+".create-item-success").subscribe((res)=>{
+            this.toastService.showSucces(res)
+          })
+        },
         error:(err) => {
-            this.toastService.showError("Algo deu errado")
+          this.translocoService.selectTranslate(this.translocoPath+".create-item-error").subscribe((res)=>{
+            this.toastService.showError(res)
+          })
             this.isLoading = false
           },
         complete:()=> {
@@ -176,7 +194,9 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   
       this.createItemService.createItem(p,this.icon).subscribe(handleRequest)
     }else{
-      this.toastService.showWarn("Existem campos incorretos!")
+      this.translocoService.selectTranslate(this.translocoPath+".create-item-warn").subscribe((res)=>{
+        this.toastService.showWarn(res)
+      })
     }
 
   }
@@ -193,15 +213,22 @@ export class AdminCreateEditItemFormComponent implements OnInit {
     const options : Observer<DeleteItemOut> = {
       next:(res)=>{
         if(res.success){
-            this.toastService.showSucces("Item removido de todas as geladeiras!")
+          this.translocoService.selectTranslate(this.translocoPath+".delete-item-success").subscribe((res)=>{
+            this.toastService.showSucces(res)
+          })
             this.isRemoveLoading = false
           }else{
-            this.toastService.showError("Não foi possível remover o item")
+            this.translocoService.selectTranslate(this.translocoPath+".delete-item-error").subscribe((res)=>{
+              this.toastService.showSucces(res)
+            })
             this.isRemoveLoading = false
           }
         },
         error:()=>{
-          this.toastService.showError("Não foi possível remover o item")
+          this.translocoService.selectTranslate(this.translocoPath+".delete-item-error").subscribe((res)=>{
+            this.toastService.showSucces(res)
+          })
+          
           this.isRemoveLoading = false
         },
         complete:()=>{
@@ -222,7 +249,9 @@ export class AdminCreateEditItemFormComponent implements OnInit {
           this.itemForm.get('weight')?.setValue(res.weight);
         },
         error:()=>{
-          this.toastService.showError('Não foi possível recomendar o peso do item')
+          this.translocoService.selectTranslate(this.translocoPath+".get-recommended-item-weight-error").subscribe((res)=>{
+            this.toastService.showError(res)
+          })
           this.isLoadingWeight = false
         },
         complete:()=>{

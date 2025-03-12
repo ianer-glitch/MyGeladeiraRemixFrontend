@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ButtonAddItemComponent } from "../../components/button-add-item/button-add-item.component";
 import { ItemComponent } from "../../components/item/item.component";
 import { SpeedDialComponent } from "../../../../shared/components/atoms/speed-dial/speed-dial.component";
@@ -17,14 +17,28 @@ import { Observer } from 'rxjs';
 import { ToastService } from '../../../../core/services/toast/toast.service';
 import UpdateMultipleFridgeItemsQuantitiesOut from '../../updateMultipleFridgeItemsQuantities/UpdateMultipleFridgeItemsQuantitiesOut';
 import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'home-item-list',
-  imports: [ButtonAddItemComponent, FormsModule,
+  imports: [
+    ButtonAddItemComponent,
+    FormsModule,
     ItemComponent,
-    PopupAddFridgeItemComponent, CommonModule, FridgeSpeedDialComponent, ConfirmationButtonsComponent, SkeletonComponent],
+    PopupAddFridgeItemComponent,
+    CommonModule,
+    FridgeSpeedDialComponent,
+    ConfirmationButtonsComponent,
+    SkeletonComponent,
+    TranslocoDirective],
   templateUrl: './home-item-list.component.html',
-  styleUrl: './home-item-list.component.css'
+  styleUrl: './home-item-list.component.css',
+  providers:[
+    provideTranslocoScope({
+      scope: "",
+      alias: "mf",
+    }),
+  ]
 })
 export class HomeItemListComponent implements OnInit{
   showPopup:boolean =false
@@ -35,26 +49,34 @@ export class HomeItemListComponent implements OnInit{
     private localStorageService : LocalStorageService,
     private router:Router,
     private updateMultipleService : UpdateMultipleFridgeItemsQuantitiesService,
-    private toastService : ToastService
+    private toastService : ToastService,
+    private translocoService :TranslocoService
   ) {
 
     
   }
-
+  
   ngOnInit(): void {
     this.getFridgeItems()
+    
   }
 
   fridgeItemsList : GetFridgeItemsOut[] = []
 
+  translocoPath = "fridge.home.home-item-list"
+
   getFridgeItems(){
+    
     this.isLoading = true
     const options :Observer<GetFridgeItemsOut[]> = {
       next:(res)=>{
         this.fridgeItemsList = res
       },
       error:()=>{
-        this.toastService.showError("Não foi possível buscar os items")
+        this.translocoService.selectTranslate(this.translocoPath+".get-fridge-items-error").subscribe((message)=>{
+          this.toastService.showError(message)
+        })
+        
         this.isLoading = false
       },
       complete:()=>{
@@ -109,11 +131,17 @@ export class HomeItemListComponent implements OnInit{
     
     const options:Observer<UpdateMultipleFridgeItemsQuantitiesOut> = {
       next:()=>{ 
-        this.toastService.showSucces('As quantidades foram atualizadas!')
+        this.translocoService.selectTranslate(this.translocoPath+".update-multiple-fridge-items-quantities-success").subscribe((message)=>{
+          this.toastService.showSucces(message)
+        })
         this.getFridgeItems()
       },
       error:()=>{
-        this.toastService.showError('Ocorreu um erro ao atualizar as quantidades')
+
+        this.translocoService.selectTranslate(this.translocoPath+".update-multiple-fridge-items-quantities-error").subscribe((message)=>{
+          this.toastService.showError(message)
+        })
+       
         this.getFridgeItems()
       },
       complete:()=>{

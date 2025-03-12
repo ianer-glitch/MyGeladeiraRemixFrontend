@@ -1,5 +1,5 @@
 import { Component, EventEmitter, forwardRef, OnInit, output } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputSelectComponent } from "../../../../shared/components/organisms/input-select/input-select.component";
 import { ConfirmationPopupComponent } from "../../../../shared/components/organisms/confirmation-popup/confirmation-popup.component";
@@ -11,13 +11,14 @@ import AddItemsToFridgeIn from '../../addItemsToFridge/AddItemsToFridgeIn';
 import AddItemsToFridgeOut from '../../addItemsToFridge/AddItemsToFridgeOut';
 import { Observable, Observer } from 'rxjs';
 import { ToastService } from '../../../../core/services/toast/toast.service';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'popup-add-fridge-item',
-  imports: [FormsModule,
+  imports: [FormsModule,ReactiveFormsModule,
     CommonModule,
     InputSelectComponent,
-    ConfirmationPopupComponent, ChipComponent],
+    ConfirmationPopupComponent, ChipComponent,TranslocoDirective],
   templateUrl: './popup-add-fridge-item.component.html',
   styleUrl: './popup-add-fridge-item.component.css',
    providers:[
@@ -25,7 +26,11 @@ import { ToastService } from '../../../../core/services/toast/toast.service';
         provide:NG_VALUE_ACCESSOR,
         useExisting:forwardRef(()=>PopupAddFridgeItemComponent),
         multi:true
-      }
+      },
+      provideTranslocoScope({
+        scope: "",
+        alias: "mf",
+      }),
     ]
 })
 export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit {
@@ -33,7 +38,9 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
   constructor(
       private addItemsToFridgeService:AddItemsToFridgeService,
       private toastService:ToastService,
-      private getItemsService:GetItemsService) {
+      private getItemsService:GetItemsService,
+      private translocoService:TranslocoService
+    ) {
     
   }
   ngOnInit(): void {
@@ -64,6 +71,7 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
 
   items: GetItemsOut[] = []
   selectedItems: GetItemsOut[] = []
+  tempSelectedItem :  GetItemsOut | null = null
   getItems(){
     this.getItemsService.getItems().subscribe((res)=> this.items = res)
   }
@@ -71,8 +79,7 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
   handleItemRemove(item:GetItemsOut){
     this.selectedItems =this.selectedItems.filter(f=>f.id != item.id)
   }
-
-
+  translocoPath = "fridge.home.home-item-list.popup-add-fridge-item"
   addItemsToFridge(){
     if(this.selectedItems.length > 0){
       this.isLoading=true
@@ -81,30 +88,39 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
       const options : Observer<AddItemsToFridgeOut> = {
         next:(res)=>{
           if(res.success){
-            this.toastService.showSucces("Items adicionados com sucesso!")
-            this.isLoading=false
-            this.close.emit(true)
+            this.translocoService.selectTranslate(this.translocoPath+".add-items-to-fridge-success").subscribe((res)=>{
+              this.toastService.showSucces(res)
+            })
+            
+            this.handleClose()
 
           }else{
-            this.toastService.showError("Ocorreu um erro ao adicionar os items")
+            this.translocoService.selectTranslate(this.translocoPath+".add-items-to-fridge-error").subscribe((res)=>{
+              this.toastService.showError(res)
+            })
+
             this.isLoading=false
           }
             
         },
         error:()=>{
-          this.toastService.showError("Ocorreu um erro ao adicionar os items")
+          this.translocoService.selectTranslate(this.translocoPath+".add-items-to-fridge-error").subscribe((res)=>{
+            this.toastService.showError(res)
+          })
           this.isLoading=false
         },
         complete:()=> {
-          this.isLoading=false
-          this.close.emit(true)
+         
+          this.handleClose()
         }
       }
   
       this.addItemsToFridgeService.addItemsToFridge(payload).subscribe(options)
 
     }else{
-      this.toastService.showWarn("É necessário selecionar pelo menos um item para adicionar!")
+      this.translocoService.selectTranslate(this.translocoPath+".add-items-to-fridge-warn").subscribe((res)=>{
+        this.toastService.showWarn(res)
+      })
     }
   }
 
@@ -116,6 +132,13 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
 
   handleSelectClear(){
     this.selectedItems.pop()
+  }
+
+  handleClose(){
+    this.isLoading=false
+    this.close.emit(true)
+    this.selectedItems = []
+    this.tempSelectedItem = null
   }
   
 }

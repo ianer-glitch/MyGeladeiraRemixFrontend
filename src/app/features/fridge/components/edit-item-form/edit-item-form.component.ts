@@ -18,6 +18,7 @@ import { ButtonComponent } from "../../../../shared/components/atoms/button/butt
 import { RemoveItemsFridgeService } from '../../removeItemsFridge/remove-items-fridge.service';
 import RemoveItemsFridgeIn from '../../removeItemsFridge/RemoveItemsFridgeIn';
 import RemoveItemsFridgeOut from '../../removeItemsFridge/RemoveItemsFridgeOut';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'edit-item-form',
@@ -25,10 +26,16 @@ import RemoveItemsFridgeOut from '../../removeItemsFridge/RemoveItemsFridgeOut';
     CommonModule,
     ImgUploadItemComponent,
     InputTextComponent,
-    InputNumberComponent,
+    InputNumberComponent,TranslocoDirective,
     ExpirationTimeSelectorComponent, ConfirmationButtonsComponent, InputNumberButtonsComponent, ButtonComponent],
   templateUrl: './edit-item-form.component.html',
-  styleUrl: './edit-item-form.component.css'
+  styleUrl: './edit-item-form.component.css',
+  providers:[
+    provideTranslocoScope({
+      scope: "",
+      alias: "mf",
+    }),
+  ]
 })
 export class EditItemFormComponent implements OnInit {
  
@@ -37,7 +44,8 @@ export class EditItemFormComponent implements OnInit {
     private location : Location,
     private toastService:ToastService,
     private updateFridgeItemService:UpdateFridgeItemService,
-    private removeItemsService:RemoveItemsFridgeService
+    private removeItemsService:RemoveItemsFridgeService,
+    private translocoService:TranslocoService
   ) {
   
   
@@ -47,7 +55,7 @@ export class EditItemFormComponent implements OnInit {
  itemName:string =""
  isLoading:boolean = false
  payload:UpdateFridgeItemIn = {} as UpdateFridgeItemIn
- 
+ translocoPath="fridge.edit-item.edit-item-form"
 
   ngOnInit(): void {
     const item = this.localStorageService.getItem<GetFridgeItemsOut>("/fridge/item-edit")
@@ -60,6 +68,10 @@ export class EditItemFormComponent implements OnInit {
     this.payload.quantity =item.quantity
     
     this.createForm(this.payload)
+
+  
+
+    
     
  }
   private formBuilder = inject(FormBuilder)
@@ -91,11 +103,15 @@ export class EditItemFormComponent implements OnInit {
 
     const options : Observer<UpdateFridgeItemOut> = {
       next:()=>{
-        this.toastService.showSucces("Alterações efetuadas com sucesso!")
+        this.translocoService.selectTranslate(this.translocoPath+'.update-fridge-item-success').subscribe((message)=>{
+          this.toastService.showSucces(message)
+        })
         
       },
       error:()=>{
-        this.toastService.showError("Ocorreu um erro ao salvar as alterações")
+        this.translocoService.selectTranslate(this.translocoPath+'.update-fridge-item-error').subscribe((message)=>{
+          this.toastService.showError(message)
+        })
         this.isLoading = false
         this.location.back()
       },
@@ -108,7 +124,9 @@ export class EditItemFormComponent implements OnInit {
     this.updateFridgeItemService.UpdateFridgeItem(payload).subscribe(options)
 
   }else{
-    this.toastService.showWarn("Existem campos que precisam de atenção?")
+    this.translocoService.selectTranslate(this.translocoPath+'.update-fridge-item-warn').subscribe((message)=>{
+      this.toastService.showWarn(message)
+    })
   }
  }
 
@@ -125,15 +143,21 @@ export class EditItemFormComponent implements OnInit {
   const options : Observer<RemoveItemsFridgeOut> = {
     next:(res)=>{
       if(res.success){
-        this.toastService.showSucces("Item removido da geladeira com sucesso!")
+        this.translocoService.selectTranslate(this.translocoPath+'.remove-items-fridge-success').subscribe((message)=>{
+          this.toastService.showSucces(message)
+        })
         this.isRemoveLoading = false
       }else{
-        this.toastService.showError("Não foi possível remover o item da geladeira")
+        this.translocoService.selectTranslate(this.translocoPath+'.remove-items-fridge-error').subscribe((message)=>{
+          this.toastService.showError(message)
+        })
         this.isRemoveLoading = false  
       }
     },
     error:()=>{
-      this.toastService.showError("Não foi possível remover o item da geladeira")
+      this.translocoService.selectTranslate(this.translocoPath+'.remove-items-fridge-error').subscribe((message)=>{
+        this.toastService.showError(message)
+      })
       this.isRemoveLoading = false
     },
     complete:()=>{

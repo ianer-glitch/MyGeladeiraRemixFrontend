@@ -7,11 +7,13 @@ import { ToastService } from '../../../../core/services/toast/toast.service';
 import { CommonModule } from '@angular/common';
 import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
 
+
 @Component({
   selector: 'recipes-list',
   imports: [RecipeCardComponent, CommonModule, SkeletonComponent],
   templateUrl: './recipes-list.component.html',
-  styleUrl: './recipes-list.component.css'
+  styleUrl: './recipes-list.component.css',
+  
 })
 export class RecipesListComponent implements OnInit {
 
@@ -35,7 +37,7 @@ export class RecipesListComponent implements OnInit {
     this.isLoading = true
     const options : Observer<AskRecipesOut[]> = {
       next:(res)=>{
-        this.recipes = res
+      
       },
       error:()=>{
         this.toastService.showError("Não foi possível recomendar receitas")
@@ -45,7 +47,10 @@ export class RecipesListComponent implements OnInit {
         this.isLoading = false
       }
     }
-    this.askRecipesService.askRecipes().subscribe(options)
+    this.askRecipesService.askRecipes().subscribe((res)=>{
+      this.recipes = res
+      this.isLoading =false
+    })
   }
 
 }

@@ -1,39 +1,44 @@
 
 
-<p-drawer  [(visible)]="visible" header="Para Onde?" (visibleChange)="handleChange($event)">
+<p-drawer  
+  *transloco="let t; prefix:translocoPath"
+  [(visible)]="visible" 
+  [header]="t('title')" 
+  (visibleChange)="handleChange($event)"
+>
   <ul>
     <nav 
       [ngClass]="{'active':isActive('/fridge/home')}"
       (click)="handleRedirect('/fridge/home')">
-      <li><h2>Home</h2></li>
+      <li><h2>{{t('home-nav')}}</h2></li>
     </nav>
     <nav 
       [ngClass]="{'active':isActive('/fridge/shopping-list')}"
       (click)="handleRedirect('/fridge/shopping-list')">
-      <li><h2>Lista de Compras</h2></li>
+      <li><h2>{{t('shopping-list-nav')}}</h2></li>
     </nav>
     <nav 
       [ngClass]="{'active':isActive('/statistic/manage')}"
       (click)="handleRedirect('/statistic/manage')">
-      <li><h2>Estatísticas</h2></li>
+      <li><h2>{{t('statistic-nav')}}</h2></li>
     </nav>
     <nav 
       [ngClass]="{'active':isActive('/fridge/recipes')}"
       (click)="handleRedirect('/fridge/recipes')">
-      <li><h2>Receitas</h2></li>
+      <li><h2>{{t('recipes-nav')}}</h2></li>
     </nav>
     <nav 
       [ngClass]="{'active':isActive('/fridge/admin')}"
       (click)="handleRedirect('/fridge/admin')"
       *ngIf="canAccessAdmin"
       >
-      <li><h2>Gerenciar</h2></li>
+      <li><h2>{{t('manage-nav')}}</h2></li>
     </nav>
   </ul>
   <ng-template #footer>
     <div class="sidebar-footer" (click)="handleExit()">
       <prime-icon name="pi pi-sign-out"/>
-      <h3>Sair</h3>
+      <h3>{{t('exit-button-label')}}</h3>
     </div>
   </ng-template>
 </p-drawer>

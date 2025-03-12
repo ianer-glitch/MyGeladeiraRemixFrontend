@@ -1,10 +1,10 @@
-<section class="statistic-manage-container">
+<section *transloco="let t; prefix:translocoPath" class="statistic-manage-container">
 
   <page-subtitle
-    information="Cálculamos os dados de sustentabilidade segundo o FDI(Food Waste Index),quanto menor o valor, mais sustentável você é."
+    [information]="t('information')"
     infoPosition="bottom"
   >
-    Você é sustentável?
+    {{t('label')}}
   </page-subtitle>
 
   <skeleton

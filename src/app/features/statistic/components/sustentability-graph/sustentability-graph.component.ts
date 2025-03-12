@@ -4,19 +4,29 @@ import { Chart, plugins, registerables } from 'chart.js';
 import { PageSubtitleComponent } from "../../../../shared/components/organisms/page-subtitle/page-subtitle.component";
 import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
 import { CommonModule } from '@angular/common';
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'sustentability-graph',
-  imports: [CommonModule, PageSubtitleComponent, SkeletonComponent],
+  imports: [CommonModule, PageSubtitleComponent, SkeletonComponent,TranslocoDirective],
   templateUrl: './sustentability-graph.component.html',
-  styleUrl: './sustentability-graph.component.css'
+  styleUrl: './sustentability-graph.component.css',
+  providers:[
+    provideTranslocoScope({
+      scope: "",
+      alias: "mf",
+    }),
+  ]
 })
 export class SustentabilityGraphComponent implements AfterViewInit {
+
 
   constructor(private getStatisticByUserService : GetStatisticByUserService) {
     
   }
   
+  translocoPath="statistic.manage-statistic.sustentability-graph"
+
   ngAfterViewInit(): void {
     Chart.register(...registerables);
     this.getStatisticByUser()

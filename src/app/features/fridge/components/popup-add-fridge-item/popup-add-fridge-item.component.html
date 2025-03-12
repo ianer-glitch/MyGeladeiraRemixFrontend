@@ -1,16 +1,18 @@
-<confirmation-popup title="Busque os Itens"
+<confirmation-popup 
+  *transloco="let t; prefix: translocoPath"
+  [title]="t('title')"
   [ngModel]="visible"
   (ngModelChange)="handleChange($event)"
-  confirmLabel="Salvar"
+  [confirmLabel]="t('confirm-label')"
   (confirmClick)="addItemsToFridge()"
-  denyLabel="Cancelar"
-  (denyClick)="close.emit(true)"
+  [denyLabel]="t('deny-label')"
+  (denyClick)="handleClose()"
   [isConfirmLoading]="isLoading"
 >
   <section class="form-container">
     <input-select 
-     label="Guarde na sua geladeira!"
-     information="Os itens selecionados aqui serão adicionados a sua geladeira"
+     [label]="t('input-select-label')"
+     [information]="t('input-select-information')"
      [fluid]="true"
      [options]="items"
      optionLabel="name"
@@ -18,6 +20,9 @@
      (change)="handleAddItemsToList($event)"
      (onClear)="handleSelectClear()"
      [showClear]="true"
+     [(ngModel)]="tempSelectedItem"
+     
+     
     />
 
     <ul class="item-list">

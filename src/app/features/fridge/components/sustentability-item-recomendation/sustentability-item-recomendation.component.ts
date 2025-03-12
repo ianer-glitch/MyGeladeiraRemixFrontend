@@ -8,12 +8,24 @@ import { CommonModule } from '@angular/common';
 import { ListTemComponent } from "../../../../shared/components/atoms/list-tem/list-tem.component";
 import { GenericListItemComponent } from "../../../../shared/components/molecules/generic-list-item/generic-list-item.component";
 import { SkeletonComponent } from "../../../../shared/components/atoms/skeleton/skeleton.component";
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'sustentability-item-recomendation',
-  imports: [PageSubtitleComponent, CommonModule, ListTemComponent, GenericListItemComponent, SkeletonComponent],
+  imports: [PageSubtitleComponent,
+    CommonModule,
+    ListTemComponent,
+    GenericListItemComponent,
+    SkeletonComponent,
+    TranslocoDirective],
   templateUrl: './sustentability-item-recomendation.component.html',
-  styleUrl: './sustentability-item-recomendation.component.css'
+  styleUrl: './sustentability-item-recomendation.component.css',
+  providers:[
+    provideTranslocoScope({
+      scope: "",
+      alias: "mf",
+    }),
+  ]
 })
 export class SustentabilityItemRecomendationComponent implements OnInit{
   
@@ -24,10 +36,9 @@ export class SustentabilityItemRecomendationComponent implements OnInit{
     
     
   }
-  
+  translocoPath="statistic.manage-statistic.sustentability-item-recomendation"
   ngOnInit(): void {
-    this.getRecommendedItems()
-
+   this.getRecommendedItems()
   }
 
   recommendedItems : GetRecommendedItemsOut[] = []
@@ -35,21 +46,11 @@ export class SustentabilityItemRecomendationComponent implements OnInit{
 
   getRecommendedItems(){
     this.isLoading = true
-    const options : Observer<GetRecommendedItemsOut[]> = {
-      next:(res)=>{
-        this.recommendedItems=res
-        
-      },
-      error:()=>{
-        this.toastService.showError("Não foi possível buscar recomendações de items")
-        this.isLoading = false
-      },
-      complete:()=>{
-        this.isLoading = false
-      }
-    }
-    
-    this.getRecommendedItemService.getRecommendedItems().subscribe(options)
+
+    this.getRecommendedItemService.getRecommendedItems().subscribe((res)=>{
+      this.recommendedItems=res
+      this.isLoading = false
+    })
   }
 
 }

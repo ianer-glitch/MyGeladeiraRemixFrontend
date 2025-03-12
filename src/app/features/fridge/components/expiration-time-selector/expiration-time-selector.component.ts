@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, input, Input } from '@angular/core';
 import { ChipComponent } from "../../../../shared/components/atoms/chip/chip.component";
 import { PrimeIconComponent } from "../../../../shared/components/atoms/prime-icon/prime-icon.component";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -30,6 +30,7 @@ import { ButtonComponent } from "../../../../shared/components/atoms/button/butt
 })
 export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
   @Input() value : Date = new Date()
+  label=input<string>("")
   showDatePicker:boolean = false
    
   onChange : (param:any)=>void = ()=>{}
