@@ -17,9 +17,9 @@
         "title":"Register",
         "subtitle":"Information",
         "define-email-form":{
-          "name-label":"Name",
+          "name-label":"First Name",
           "last-name-label":"Last Name",
-          "email-label":"Email",
+          "email-label":"Email Address",
           "birth-date-label":"Date of Birth (month/day/year)",
           "birth-date-format":"mm/dd/yy",
           "confirm-label":"Next",
@@ -36,12 +36,12 @@
         "form-criteria-2":"one special symbol",
         "create-password-form":{
           "password-label":"Password",
-          "password-confirm-label":"Confirm password",
+          "password-confirm-label":"Confirm Password",
           "confirm-label":"Continue",
           "deny-label":"Back",
           "create-user-success":"User created!",
           "create-user-error":"Could not create user",
-          "create-user-warn":"The two passwords must be the same!"
+          "create-user-warn":"The passwords do not match!"
         }
       }
     }
