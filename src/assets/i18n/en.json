@@ -43,6 +43,9 @@
           "create-user-error":"Could not create user",
           "create-user-warn":"The passwords do not match!"
         }
+      },
+      "settings":{
+        "title":"Settings"
       }
     }
   },

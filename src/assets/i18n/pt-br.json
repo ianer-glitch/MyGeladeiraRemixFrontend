@@ -44,6 +44,9 @@
           "create-user-error":"Ocorreu um erro ao tentar criar um usuário",
           "create-user-warn":"As senhas não conferem!"
         }
+      },
+      "settings":{
+        "title":"Configurações"
       }
     }
   },
