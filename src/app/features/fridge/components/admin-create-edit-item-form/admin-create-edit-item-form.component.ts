@@ -66,11 +66,8 @@ export class AdminCreateEditItemFormComponent implements OnInit {
   ngOnInit(): void {
     this.createFormGroup(this.payload)
     this.handleFormEditing()
-    this.translocoService.selectTranslate(this.translocoPath+".get-recommended-item-weight-error").subscribe((res)=>{
-      this.toastService.showError(res)
-    })
-
   }
+
   iconLink:string=""
   editingItemId:string = '"'
   handleFormEditing(){
@@ -152,6 +149,7 @@ export class AdminCreateEditItemFormComponent implements OnInit {
             this.isLoading = false
           }
       }
+      console.info(this.icon)
       this.updateItemService.updateItem(p,this.icon).subscribe(handleRequest)
     }else{
       this.translocoService.selectTranslate(this.translocoPath+".update-item-warn").subscribe((res)=>{

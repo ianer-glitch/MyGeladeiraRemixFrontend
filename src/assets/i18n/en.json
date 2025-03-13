@@ -45,7 +45,10 @@
         }
       },
       "settings":{
-        "title":"Settings"
+        "title":"Settings",
+        "language-switch":{
+          "label":"Select your language"
+        }
       }
     }
   },
@@ -157,6 +160,7 @@
     "statistic-nav":"Statistics",
     "recipes-nav":"Recipes",
     "manage-nav":"Management",
+    "settings-nav":"Settings",
     "exit-button-label":"Exit"
   }
   

@@ -1,9 +1,13 @@
-<fieldset>
-  <label>Selcione o Idioma</label>
+<fieldset *transloco="let t; prefix:translocoPath">
+  <label>{{t('label')}}</label>
   <div class="language-list-container">
     <prime-icon name="pi pi-language" size="1rem"/>
     <ul class="language-list"  >
-      <li class="active-language" *ngFor="let language of avaliableLanguages">
+      <li  
+      *ngFor="let language of avaliableLanguages"
+      [ngClass]="{'active-language':isActive(language)}"
+          (click)="handleLanguageItemClick(language)"
+      >
           <p>{{language}}</p>
       </li>
     </ul>

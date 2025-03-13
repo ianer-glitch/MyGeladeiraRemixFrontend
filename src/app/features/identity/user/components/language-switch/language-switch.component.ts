@@ -15,9 +15,17 @@ export class LanguageSwitchComponent implements OnInit {
   constructor(private translocoService : TranslocoService) {
     
   }
+  translocoPath="identity.user.settings.language-switch"
   avaliableLanguages:string[] = []
   ngOnInit(): void {
     this.avaliableLanguages = this.translocoService.getAvailableLangs() as string[]
-    
+  }
+
+  handleLanguageItemClick(language:string){
+    this.translocoService.setActiveLang(language)
+  }
+
+  isActive(language : string){
+    return this.translocoService.getActiveLang() == language
   }
 }

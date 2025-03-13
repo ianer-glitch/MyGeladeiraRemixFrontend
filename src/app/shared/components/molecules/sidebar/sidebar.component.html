@@ -28,12 +28,19 @@
       <li><h2>{{t('recipes-nav')}}</h2></li>
     </nav>
     <nav 
-      [ngClass]="{'active':isActive('/fridge/admin')}"
-      (click)="handleRedirect('/fridge/admin')"
-      *ngIf="canAccessAdmin"
-      >
-      <li><h2>{{t('manage-nav')}}</h2></li>
-    </nav>
+    [ngClass]="{'active':isActive('/fridge/admin')}"
+    (click)="handleRedirect('/fridge/admin')"
+    *ngIf="canAccessAdmin"
+    >
+    <li><h2>{{t('manage-nav')}}</h2></li>
+  </nav>
+  <nav 
+    [ngClass]="{'active':isActive('/user/settings')}"
+    (click)="handleRedirect('/user/settings')"
+    
+    >
+    <li><h2>{{t('settings-nav')}}</h2></li>
+  </nav>
   </ul>
   <ng-template #footer>
     <div class="sidebar-footer" (click)="handleExit()">

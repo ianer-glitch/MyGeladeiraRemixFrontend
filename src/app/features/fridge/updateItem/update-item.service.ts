@@ -25,8 +25,7 @@ export class UpdateItemService extends FridgeService {
     
     
     formData.append('Expiration', item.expiration.toISOString());
-  
-    if(icon && Object.keys(icon).length > 0 )
+    if(icon instanceof File && icon.size > 0)
       formData.append('Icon', icon, icon.name);
 
     return this.put('/Item',formData)

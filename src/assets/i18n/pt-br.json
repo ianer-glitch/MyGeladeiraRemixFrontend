@@ -46,7 +46,10 @@
         }
       },
       "settings":{
-        "title":"Configurações"
+        "title":"Configurações",
+        "language-switch":{
+          "label":"Selecione seu idioma"
+        }
       }
     }
   },
@@ -158,6 +161,7 @@
     "statistic-nav":"Estatísticas",
     "recipes-nav":"Receitas",
     "manage-nav":"Gerenciamento",
+    "settings-nav":"Configurações",
     "exit-button-label":"Sair"
   }
 
