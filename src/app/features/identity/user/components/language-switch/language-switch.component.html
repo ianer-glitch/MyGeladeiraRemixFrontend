@@ -1,0 +1,11 @@
+<fieldset>
+  <label>Selcione o Idioma</label>
+  <div class="language-list-container">
+    <prime-icon name="pi pi-language" size="1rem"/>
+    <ul class="language-list"  >
+      <li class="active-language" *ngFor="let language of avaliableLanguages">
+          <p>{{language}}</p>
+      </li>
+    </ul>
+  </div>
+</fieldset>

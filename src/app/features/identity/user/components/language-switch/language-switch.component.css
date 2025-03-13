@@ -1,0 +1,38 @@
+.language-list-container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap:1rem;
+  padding: .4rem .6rem;
+  background-color: var(--accent-color-lighter);
+  border-radius: 4px;
+}
+
+.language-list{
+  list-style-type: none;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  
+  gap: 1rem;
+}
+
+.language-list li{
+  padding: .8rem;
+  width: 100%;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.active-language{
+  background-color: var(--primary-color-lighter);
+  box-shadow: 1px 1px 8px solid gray;
+}
+
+prime-icon{
+  color:var(--background-color)
+}
