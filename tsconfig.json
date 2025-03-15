@@ -3,7 +3,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "types": ["node", "primeng"],
+    
+    "types": ["node", "primeng","@jsverse/transloco"],
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
