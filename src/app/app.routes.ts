@@ -6,6 +6,11 @@ import { StatisticLayoutComponent } from './features/statistic/layout/statistic-
 import { UserLayoutComponent } from './features/identity/user/layout/user-layout/user-layout.component';
 
 export const routes: Routes = [
+  { 
+    path:'',
+    redirectTo:'/auth/login',
+    pathMatch:'full'
+  },
   {
     path:'fridge',
     component:FridgeLayoutComponent,
@@ -25,5 +30,8 @@ export const routes: Routes = [
     path:'statistic',
     component:StatisticLayoutComponent,
     loadChildren:()=>import("./features/statistic/statistic.routes").then(t=>t.statisticRoutes)
-  }
+  },
+
+
+
 ];
