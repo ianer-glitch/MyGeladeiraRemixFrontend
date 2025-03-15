@@ -137,7 +137,9 @@
       "title":"Statistics:",
       "sustentability-graph":{
         "label":"Are you sustentable?",
-        "information":"We calculate sustainability data according to the FDI (Food Waste Index), the lower the value, the more sustainable you are."
+        "information":"We calculate sustainability data according to the FDI (Food Waste Index), the lower the value, the more sustainable you are.",
+        "brazil":"Brazil",
+        "you":"You"
       },
       "sustentability-item-recomendation":{
         "label":"You may like:",
@@ -161,7 +163,8 @@
     "recipes-nav":"Recipes",
     "manage-nav":"Management",
     "settings-nav":"Settings",
-    "exit-button-label":"Exit"
+    "exit-button-label":"Exit",
+    "exit-success":"You left!"
   }
   
 

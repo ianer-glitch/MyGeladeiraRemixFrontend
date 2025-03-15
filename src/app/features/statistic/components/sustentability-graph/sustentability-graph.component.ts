@@ -21,7 +21,10 @@ import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@js
 export class SustentabilityGraphComponent implements OnInit {
 
 
-  constructor(private getStatisticByUserService : GetStatisticByUserService) {
+  constructor(
+    private getStatisticByUserService : GetStatisticByUserService,
+    private translocoService:TranslocoService
+  ) {
     
   }
   ngOnInit(): void {
@@ -31,6 +34,17 @@ export class SustentabilityGraphComponent implements OnInit {
   
   translocoPath="statistic.manage-statistic.sustentability-graph"
 
+  getGraphLabels() : string[]{
+    let brazil= ""
+    this.translocoService.selectTranslate(this.translocoPath+'.brazil').subscribe((res)=>brazil = res)
+      
+    let you= ""
+    this.translocoService.selectTranslate(this.translocoPath+'.you').subscribe((res)=>you = res)
+    return [
+      brazil,
+      you
+    ]
+  }
   
   @ViewChild('graph') graph!: ElementRef;
   
@@ -40,7 +54,7 @@ export class SustentabilityGraphComponent implements OnInit {
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Brasil', 'Você'],
+        labels: this.getGraphLabels(),
         datasets: [{
           label: '% Food Waste Index',
           data: [nationalFdi, userFdi],

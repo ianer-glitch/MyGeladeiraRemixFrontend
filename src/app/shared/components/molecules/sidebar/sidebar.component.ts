@@ -31,11 +31,14 @@ export class SidebarComponent implements ControlValueAccessor,OnInit {
   constructor(private router : Router,
     private localStorageService:LocalStorageService,
     private toastService:ToastService,
-    private adminGuard:AdminGuard
+    private adminGuard:AdminGuard,
+    private translocoService:TranslocoService
   ) {
   }
   ngOnInit(): void {
     this.canAccessAdmin = !!this.adminGuard.canActivate().valueOf()
+
+    
   }
 
   onChange : (param:any)=>void = ()=>{}
@@ -67,7 +70,11 @@ export class SidebarComponent implements ControlValueAccessor,OnInit {
   handleExit(){
     this.localStorageService.clear()
     this.router.navigate(["/auth/login"])
-    this.toastService.showSucces("Você saiu!")
+    
+    this.translocoService.selectTranslate(this.translocoPath+'.exit-success').subscribe((message)=>{
+      this.toastService.showSucces(message)
+    })
+    
   }
 
   handleChange(newVal:boolean){
