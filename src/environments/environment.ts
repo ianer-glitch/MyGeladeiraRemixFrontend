@@ -1,5 +1,5 @@
 export const environment = {
-  identityUrl: "/identity/", 
-  fridgeUrl: "/fridge/",
-  statisticUrl: "/statistic/"
+  identityUrl: "/identity-api/", 
+  fridgeUrl: "/fridge-api/",
+  statisticUrl: "/statistic-api/"
 };
