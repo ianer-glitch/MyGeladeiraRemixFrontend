@@ -1,5 +1,5 @@
 export const environment = {
-  identityUrl:"http://localhost:8085",
-  fridgeUrl:"http://localhost:8081",
-  statisticUrl:"http://localhost:8082"
+  identityUrl:"$IDENTITY_URL",
+  fridgeUrl:"$FRIDGE_URL",
+  statisticUrl:"$STATISTI_CURL"
 };

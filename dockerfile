@@ -21,7 +21,7 @@ FROM nginx:stable-alpine
 
 # Copy the build output from the build stage to the Nginx server
 COPY --from=build /app/dist/my-geladeira-remix-frontend/browser /usr/share/nginx/html
-
+COPY default.conf /etc/nginx/conf.d/
 # Expose port 80 for serving the app
 EXPOSE 80
 
