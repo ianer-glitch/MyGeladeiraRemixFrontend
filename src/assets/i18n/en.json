@@ -47,7 +47,7 @@
       "settings":{
         "title":"Settings",
         "language-switch":{
-          "label":"Select your language"
+          "label":"Select language"
         }
       }
     }
@@ -56,17 +56,17 @@
   "fridge":{
     "admin-create-edit-item":{
       "admin-create-edit-item-form":{
-        "title":"add/Edit",
+        "title":"Add/Edit",
         "input-color-picker-label":"Item Color",
         "input-name-label":"Item Name",
         "input-weight-label":"Item Weight(g)",
         "input-weight-information":"We use artificial inteligence to estimate the item weight.This will be used to calculate FDI(Food Waste Index)",
         "input-weight-button-label":"go!",
         "input-weight-minimum-quantity-label":"Minimum Quantity",
-        "input-minimum-quantity-information":"Here you will define when the item will be added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is 1 unit left.",
-        "expiration-time-selector-label":"When will it expire?",
+        "input-minimum-quantity-information":"Here you define when the item is added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is no unit left.",
+        "expiration-time-selector-label":"Estimated expiration",
         "input-quantity-label":"Default Quantity",
-        "input-quantity-information":"The quantity that users will have when they add the item to the fridge",
+        "input-quantity-information":"Quantity that users will have when they add the item to the fridge",
         "button-remove-item-label":"Remove",
         "confirm-label":"Save",
         "deny-label":"Cancel",
@@ -86,8 +86,8 @@
     "edit-item":{
       "edit-item-form":{
         "input-quantity-label":"Minimum quantity",
-        "input-quantity-information":"Here you will define when the item will be added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is 1 unit left.",
-        "expiration-time-select-label":"When will it expire?",
+        "input-quantity-information":"Here you define when the item is added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is no unit left.",
+        "expiration-time-select-label":"Expiry date",
         "app-input-number-buttons-label":"How much do you have?",
         "button-remove-label":"Remove",
         "confirm-label":"Save",
@@ -103,12 +103,12 @@
     "home":{
       "home-item-list":{
         "get-fridge-items-error":"Unable to fetch items",
-        "update-multiple-fridge-items-quantities-success":"The item quantities where updated",
+        "update-multiple-fridge-items-quantities-success":"Quantities have been updated",
         "update-multiple-fridge-items-quantities-error":"An error occurred while updating quantities",
         "popup-add-fridge-item":{
           "title":"Search the items",
           "input-select-label":"Store in your fridge!",
-          "input-select-information":"The items selected here will be added to your fridge.",
+          "input-select-information":"The items selected here will be added to your fridge",
           "add-items-to-fridge-success":"Items were added successfully!",
           "add-items-to-fridge-error":"Something went wrong adding items to fridge",
           "add-items-to-fridge-warn":"It should select at least one item to add to the fridge",
@@ -118,16 +118,16 @@
       }
     },
     "recipes":{
-      "title":"What can you cook:",
+      "title":"Get your recipe started!",
       "recipes-list":{
         "recipe-card":{
           "ingredients":"Ingredients",
-          "method":"Method"
+          "method":"Directions"
         }
       }
     },
     "shopping-list":{
-      "title":"What is missing:"
+      "title":"Need to buy:"
     }
     
   },
@@ -136,8 +136,8 @@
     "manage-statistic":{
       "title":"Statistics:",
       "sustentability-graph":{
-        "label":"Are you sustentable?",
-        "information":"We calculate sustainability data according to the FDI (Food Waste Index), the lower the value, the more sustainable you are.",
+        "label":"Are you sustainable?",
+        "information":"We figure out sustainability data according to the FDI - Food Waste Index: the lower the value, the more sustainable you are.",
         "brazil":"Brazil",
         "you":"You"
       },
