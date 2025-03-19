@@ -1,22 +1,26 @@
-<div class="label-container">
-  <label>{{label()}}</label>
+
+<ng-container *transloco="let t; prefix:translocoPath" >
+
+
+<div  class="label-container">
+  <label>{{t('label')}}</label>
   <label>{{getFormatedDate(value)}}</label>
 </div>
 <ol>
   <li (click)="handleClick(5)" 
       [ngClass]="{'active': isActive(5)}"
   >
-    <chip label="5 dias"></chip>
+    <chip [label]="'5 '+t('button-label')"></chip>
   </li>
   <li (click)="handleClick(10)"
   [ngClass]="{'active': isActive(10)}"
   >
-    <chip label="10 dias"></chip>
+  <chip [label]="'10 '+t('button-label')"></chip>
   </li>
   <li (click)="handleClick(15)"
   [ngClass]="{'active': isActive(15)}"
   >
-    <chip label="15 dias"></chip>
+  <chip [label]="'15 '+t('button-label')"></chip>
   </li>
   <li
   (click)="showDatePicker = !showDatePicker"
@@ -27,7 +31,7 @@
     </chip>
   </li>
 </ol>
-<popup  title="Data personalizada" [(ngModel)]="showDatePicker" >
+<popup  [title]="t('popup-title')" [(ngModel)]="showDatePicker" >
 
   <div content class="content">
     <p-datepicker  
@@ -41,7 +45,9 @@
     <app-button  
       class="footer-button"
       (click)="showDatePicker = false"
-      >Confirmar!
+      >{{t('popup-confirm-button')}}
     </app-button>
   </div>
 </popup>
+
+</ng-container>

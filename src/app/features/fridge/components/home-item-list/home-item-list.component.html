@@ -1,3 +1,6 @@
+<ng-content *transloco="let t; prefix:translocoPath">
+
+
 <ul >
   <li  *ngFor="let item of fridgeItemsList">
     <item
@@ -41,8 +44,8 @@
   <confirmation-buttons
     class="comfirm-edit-buttons"
     *ngIf="isMultipleAdd ||isMultipleSub "
-    confirmLabel="Salvar"
-    denyLabel="Cancelar"
+    [confirmLabel]="t('confirm-label')"
+    [denyLabel]="t('deny-label')"
     (denyClick)="handleDenyEditing()"
     (confirmClick)="updateMultipleFridgeItemsQuantities()"
   ></confirmation-buttons>
@@ -57,3 +60,4 @@
   (removeClick)="handleRemoveMultiple()"
   *ngIf="!isMultipleAdd && !isMultipleSub"
 />
+</ng-content>

@@ -88,6 +88,7 @@
         "input-quantity-label":"Minimum quantity",
         "input-quantity-information":"Here you define when the item is added to the shopping list. If the quantity is 1, the item will appear in the shopping list when there is no unit left.",
         "expiration-time-select-label":"Expiry date",
+        "expiration-time-select-button-label":"Days",
         "app-input-number-buttons-label":"How much do you have?",
         "button-remove-label":"Remove",
         "confirm-label":"Save",
@@ -105,6 +106,8 @@
         "get-fridge-items-error":"Unable to fetch items",
         "update-multiple-fridge-items-quantities-success":"Quantities have been updated",
         "update-multiple-fridge-items-quantities-error":"An error occurred while updating quantities",
+        "confirm-label":"Save",
+        "deny-label":"Cancel",
         "popup-add-fridge-item":{
           "title":"Search the items",
           "input-select-label":"Store in your fridge!",
@@ -165,6 +168,13 @@
     "settings-nav":"Settings",
     "exit-button-label":"Exit",
     "exit-success":"You left!"
+  },
+
+  "expiration-time-selector":{
+    "label":"Expiry date",
+    "button-label":"Days",
+    "popup-title":"Custom date",
+    "popup-confirm-button":"Confirm"
   }
   
 

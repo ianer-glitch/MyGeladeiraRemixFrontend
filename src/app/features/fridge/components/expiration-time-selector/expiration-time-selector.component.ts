@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerModule } from 'primeng/datepicker';
 import { PopupComponent } from "../../../../shared/components/atoms/popup/popup.component";
 import { ButtonComponent } from "../../../../shared/components/atoms/button/button.component";
+import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'expiration-time-selector',
@@ -16,7 +17,8 @@ import { ButtonComponent } from "../../../../shared/components/atoms/button/butt
     DatePickerModule,
     FormsModule,
     PopupComponent,
-    ButtonComponent
+    ButtonComponent,
+    TranslocoDirective
 ],
   templateUrl: './expiration-time-selector.component.html',
   styleUrl: './expiration-time-selector.component.css',
@@ -25,8 +27,13 @@ import { ButtonComponent } from "../../../../shared/components/atoms/button/butt
         provide:NG_VALUE_ACCESSOR,
         useExisting:forwardRef(()=>ExpirationTimeSelectorComponent),
         multi:true
-      }
-    ]
+      },
+      provideTranslocoScope({
+        scope: "",
+        alias: "mf",
+      }),
+    ],
+    
 })
 export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
   @Input() value : Date = new Date()
@@ -35,6 +42,8 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
    
   onChange : (param:any)=>void = ()=>{}
   onTouch : ()=>void = ()=>{}
+
+  translocoPath="expiration-time-selector"
 
   writeValue(obj: any): void {
     this.value = obj

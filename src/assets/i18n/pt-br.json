@@ -106,6 +106,8 @@
         "get-fridge-items-error":"Não foi possível buscar os items",
         "update-multiple-fridge-items-quantities-success":"As quantidades foram atualizadas!",
         "update-multiple-fridge-items-quantities-error":"Ocorreu um erro ao atualizar as quantidades",
+        "confirm-label":"Salvar",
+        "deny-label":"Cancelar",
         "popup-add-fridge-item":{
           "title":"Busque os Itens",
           "input-select-label":"Guarde na sua geladeira!",
@@ -166,8 +168,15 @@
     "settings-nav":"Configurações",
     "exit-button-label":"Sair",
     "exit-success":"Você saiu!"
-  }
+  },
 
+  "expiration-time-selector":{
+    "label":"Quando vai vencer?",
+    "button-label":"Dias",
+    "popup-title":"Data personalizada",
+    "popup-confirm-button":"Confirmar"
+  }
+  
   
 
 }
