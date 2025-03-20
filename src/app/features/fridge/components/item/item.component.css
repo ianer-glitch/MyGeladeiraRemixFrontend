@@ -12,6 +12,11 @@ button{
  
 }
 
+.item-img{
+  width: 40px;
+  height: 40px;
+}
+
 button {
   cursor: pointer;
 }
