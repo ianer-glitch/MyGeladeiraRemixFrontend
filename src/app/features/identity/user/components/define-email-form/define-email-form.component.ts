@@ -86,6 +86,6 @@ export class DefineEmailFormComponent implements OnInit {
  }
 
  handleDenyClick(){
-  this.location.back()
+  this.router.navigate(['/auth/login'])
  }
 }

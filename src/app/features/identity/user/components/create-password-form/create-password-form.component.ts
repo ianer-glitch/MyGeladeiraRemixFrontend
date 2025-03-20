@@ -64,7 +64,7 @@ export class CreatePasswordFormComponent implements OnInit{
   
 
   handleDeny(){
-    this.location.back()
+    this.router.navigate(['auth/define-email'])
   }
    translocoPath="identity.user.create-password.create-password-form"
   handleConfirm(){

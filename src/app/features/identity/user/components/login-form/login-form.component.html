@@ -1,4 +1,4 @@
-<form *transloco="let t; prefix: 'identity.user.login.login-form'" [formGroup]="loginForm">
+<form *transloco="let t; prefix: 'identity.user.login.login-form'" [formGroup]="loginForm" (ngSubmit)="login()">
   <input-text 
     [fluid]="true" 
     [label]="t('email-label')"
