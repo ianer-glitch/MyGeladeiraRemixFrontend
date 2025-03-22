@@ -70,7 +70,7 @@ export class HomeItemListComponent implements OnInit{
     this.isLoading = true
     const options :Observer<GetFridgeItemsOut[]> = {
       next:(res)=>{
-        this.fridgeItemsList = res
+        this.fridgeItemsList = res.concat(res).concat(res).concat(res)
       },
       error:()=>{
         this.translocoService.selectTranslate(this.translocoPath+".get-fridge-items-error").subscribe((message)=>{
