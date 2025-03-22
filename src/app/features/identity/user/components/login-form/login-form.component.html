@@ -5,6 +5,7 @@
     [placeholder]="t('email-placeholder')"
     id="email"
     formControlName="Email" 
+    autocomplete="username"
   />
   
   <input-password
@@ -13,6 +14,7 @@
     [placeholder]="t('password-placeholder')"
     id="senha"
     formControlName="Password"
+    autocomplete="current-password"
   
   />
   <confirmation-buttons
@@ -21,5 +23,6 @@
     (denyClick)="handleDeny()"
     [denyLabel]="t('deny-label')"
     [isConfirmLoading]="isLoading"
+    confirmButtonType="submit"
   />
 </form>

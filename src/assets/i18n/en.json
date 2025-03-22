@@ -30,11 +30,12 @@
       "create-password":{
         "title":"Register",
         "subtitle":"Define Password",
-        "form-title":"It must contain a sequence of at least 8 characters that includes a mix of:",
-        "form-criteria-0":"uppercase and lowercase letters",
-        "form-criteria-1":"numbers",
-        "form-criteria-2":"one special symbol",
         "create-password-form":{
+          "form-title":"It must contain a sequence of at least 8 characters that includes a mix of:",
+          "form-criteria-0":"uppercase letters",
+          "form-criteria-1":"lowercase letters",
+          "form-criteria-2":"numbers",
+          "form-criteria-3":"one special symbol",
           "password-label":"Password",
           "password-confirm-label":"Confirm Password",
           "confirm-label":"Continue",

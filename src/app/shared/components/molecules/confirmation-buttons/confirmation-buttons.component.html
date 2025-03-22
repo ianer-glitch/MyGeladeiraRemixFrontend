@@ -5,6 +5,7 @@
 	  (click)="denyClick.emit($event)"
 	  [fluid]="true"
 		[isLoading]="isDenyLoading"
+		[type]="dennyButtonType()"
 	/>
 	<app-button 
 	  severity="primary" 
@@ -12,5 +13,6 @@
 	  (click)="confirmClick.emit($event)"
 	  [fluid]="true"
 		[isLoading]="isConfirmLoading"
+		[type]="confirmButtonType()"
 	/>
 </div>

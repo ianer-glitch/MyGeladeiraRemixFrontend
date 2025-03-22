@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { InputPasswordComponent } from "../../../../../shared/components/organisms/input-password/input-password.component";
 import { ConfirmationButtonsComponent } from "../../../../../shared/components/molecules/confirmation-buttons/confirmation-buttons.component";
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import PCreateUserIn from '../../createUser/PCreateUserIn';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalStorageService } from '../../../../../core/services/local-storage/local-storage.service';
@@ -18,7 +18,7 @@ import { provideTranslocoScope, TranslocoDirective, TranslocoService } from '@js
     ReactiveFormsModule ,
     InputPasswordComponent,
     ConfirmationButtonsComponent,
-    TranslocoDirective],
+    TranslocoDirective,CommonModule],
   templateUrl: './create-password-form.component.html',
   styleUrl: './create-password-form.component.css',
   providers:[
@@ -50,6 +50,7 @@ export class CreatePasswordFormComponent implements OnInit{
   ngOnInit(): void {
     this.initial = this.localStorageService.getItem<PCreateUserIn>('createUser')
     this.createForm(this.initial)
+  
   }
 
   formBuilder = inject(FormBuilder)
@@ -66,6 +67,44 @@ export class CreatePasswordFormComponent implements OnInit{
   handleDeny(){
     this.router.navigate(['auth/define-email'])
   }
+
+  lentLessThen8 = false
+  passNotContainsNumber = false
+  passNotContainsUpper = false
+  passNotContainsLower = false
+  passNotContainSpecialChar = false
+
+  isPasswordValid(password: string){
+    this.lentLessThen8 = false
+    this.passNotContainsUpper = false
+    this.passNotContainsLower = false
+    this.passNotContainSpecialChar  =false
+    this.passNotContainsNumber = false
+    
+
+    if(password.length < 8)
+      this.lentLessThen8 = true
+    
+    if (!/[A-Z]/.test(password))
+      this.passNotContainsUpper = true
+
+    if (!/[a-z]/.test(password))
+      this.passNotContainsLower = true
+
+    if (!/[\W_]/.test(password))
+      this.passNotContainSpecialChar  =true
+
+    if (!/[0-9]/.test(password))
+      this.passNotContainsNumber  =true
+
+
+    return  !this.lentLessThen8 
+      && !this.passNotContainsUpper 
+      && !this.passNotContainsLower 
+      && !this.passNotContainSpecialChar 
+      && !this.passNotContainsNumber
+  }
+
    translocoPath="identity.user.create-password.create-password-form"
   handleConfirm(){
     if(this.userForm.valid){
@@ -73,7 +112,9 @@ export class CreatePasswordFormComponent implements OnInit{
       const password = this.userForm.get('password')?.value
       const confirmPassword = this.userForm.get('confirmPassword')?.value 
       
-      if(password == confirmPassword){
+      
+      
+      if(this.isPasswordValid(password) && password === confirmPassword){
         this.isLoading = true
         this.initial.password = password
         

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { ButtonComponent } from "../../atoms/button/button.component";
 
 @Component({
@@ -8,6 +8,8 @@ import { ButtonComponent } from "../../atoms/button/button.component";
   styleUrl: './confirmation-buttons.component.css'
 })
 export class ConfirmationButtonsComponent {
+  confirmButtonType = input<string>("button")
+  dennyButtonType = input<string>("button")
   @Input() isConfirmLoading:boolean = false
   @Input() isDenyLoading:boolean = false
   @Input() confirmLabel:string = ""

@@ -125,7 +125,8 @@ export class PopupAddFridgeItemComponent implements ControlValueAccessor,OnInit 
   }
 
   handleAddItemsToList(item?:GetItemsOut){
-    if(item && Object.keys(item).length > 0){
+    
+    if(item && !(item instanceof Event) && Object.keys(item).length > 0){
       this.selectedItems.push(item)
     }
   }

@@ -30,12 +30,12 @@
       "create-password":{
         "title":"Register",
         "subtitle":"Definição de Senha",
-        "form-title":"Ela deve conter pelo menos 8 caracteres e:",
-        "form-criteria-0":"possuir letras maiúsculas e minúsculas",
-        "form-criteria-1":"números.",
-        "form-criteria-2":"um caracter especial",
-        
         "create-password-form":{
+          "form-title":"Ela deve conter pelo menos 8 caracteres e:",
+          "form-criteria-0":"possuir letras maiúsculas",
+          "form-criteria-1":"possuir letras minúsculas",
+          "form-criteria-2":"números",
+          "form-criteria-3":"um caracter especial",
           "password-label":"Insira a Senha",
           "password-confirm-label":"Confirme a Senha",
           "confirm-label":"Avançar",

@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class InputSelectComponent<TKey>  implements ControlValueAccessor{
+  filter=input<boolean>(false)
   @Input() id:string = ""
   @Input() label:string = ""
   @Input() fluid:boolean = false
@@ -30,7 +31,7 @@ export class InputSelectComponent<TKey>  implements ControlValueAccessor{
   @Input() loading:boolean = false
   @Input() filterBy:string = ""
   @Input() options:any[] = []
-  @Input() filter:boolean = false
+
   @Input() labelColor:string = "gray"
   showClear = input<boolean>(false)
 

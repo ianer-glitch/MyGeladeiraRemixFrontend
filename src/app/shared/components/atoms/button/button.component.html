@@ -1,12 +1,12 @@
 <p-button
 	[label]="label"
 	[icon]="primeIcon"
-	[type]="type"
+	[type]="type()"
 	[severity]="severity"
 	fluid="true"
 	[raised]="true"
 	[loading]="isLoading"
-	
+		
 >
     <ng-content></ng-content>
 </p-button>
