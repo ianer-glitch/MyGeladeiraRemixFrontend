@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MessageService, ToastMessageOptions } from 'primeng/api';
 import {TranslocoService } from '@jsverse/transloco';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,20 @@ export class ToastService{
     return  this.messageService.add(this.defaultMessage);
   }
 
+  public clear(key? : string) : void{
+    this.messageService.clear(key)
+  }
+  
+  private removeAllSubscription :Subscription = {} as Subscription
+  
+  public subscribeToClearAllMessages(){
+    this.removeAllSubscription = this.messageService.messageObserver.subscribe(f =>{
+      this.messageService.clear()
+    })
+  }
+
+  public unsubscribeClearAllMessages(){
+    this.removeAllSubscription.unsubscribe()
+  }
   
 }
