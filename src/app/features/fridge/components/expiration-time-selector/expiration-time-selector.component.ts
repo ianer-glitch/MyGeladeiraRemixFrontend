@@ -77,6 +77,10 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
   }
 
   isActive(days : number){
+    this.value.setHours(0)
+    this.value.setMinutes(0)
+    this.value.setSeconds(0)
+    this.value.setMilliseconds(0)
     return this.value.getTime() === this.handleAddDate(days).getTime()
   }
 
@@ -86,10 +90,11 @@ export class ExpirationTimeSelectorComponent implements ControlValueAccessor {
     let year: number = date.getFullYear();
 
     
-    day = day < 10 ? Number('0' + day) : day;
-    month = month < 10 ? Number('0' + month) : month;
+    const dayToPrint = day < 10 ? '0' + day : day;
+    const monthToPrint = month < 10 ? '0' + month : month;
 
-    return `${day}/${month}/${year}`;
+
+    return `${dayToPrint}/${monthToPrint}/${year}`;
   }
 
   hadleCustomActive(){
